@@ -598,1267 +598,38 @@
      * TODO 仓库管理
      */
         /**
-         * TODO 0 读取指定仓库的信息 包括 结构 区域具体信息    GET /arehouseKq/{id}
-         *
-         * 参考
-         *
-         *
-         **
-
+         *TODO 0 对于仓库的区域的增加
          */
         /**
-         * TODO 1 对于仓库的区域 结构的修改
-         *
-         * {
--              "kuQu": [
--                [
--                  {
--                    "row": 0,
--                    "col": 1,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A1-1",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 2,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A1",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 3,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A2",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 4,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A3",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 5,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B0",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 6,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B1",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 7,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B2",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 8,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B3",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 9,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B4",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 10,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C0",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 11,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C1",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 12,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C2",
--                    "select": false
--                  },
--                  {
--                    "row": 0,
--                    "col": 13,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C3",
--                    "select": false
--                  }
--                ],
--                [
--                  {
--                    "row": 1,
--                    "col": 1,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A4",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 2,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A5",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 3,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A6",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 4,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A7",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 5,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B5",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 6,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B6",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 7,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B7",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 8,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B8",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 9,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B9",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 10,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C4",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 11,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C5",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 12,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C6",
--                    "select": false
--                  },
--                  {
--                    "row": 1,
--                    "col": 13,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C7",
--                    "select": false
--                  }
--                ],
--                [
--                  {
--                    "row": 2,
--                    "col": 1,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A8",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 2,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A9",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 3,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A10",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 4,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "A11",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 5,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B10",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 6,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B11",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 7,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B12",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 8,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B13",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 9,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B14",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 10,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C8",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 11,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C9",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 12,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C10",
--                    "select": false
--                  },
--                  {
--                    "row": 2,
--                    "col": 13,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      true,
--                      false,
--                      false
--                    ],
--                    "status": 3,
--                    "id": "C11",
--                    "select": false
--                  }
--                ],
--                [
--                  {
--                    "row": 3,
--                    "col": 1,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      false,
--                      true
--                    ],
--                    "status": 5,
--                    "id": "D0",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 2,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      false,
--                      true
--                    ],
--                    "status": 5,
--                    "id": "D1",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 3,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      false,
--                      true
--                    ],
--                    "status": 5,
--                    "id": "D2",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 4,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      false,
--                      true
--                    ],
--                    "status": 5,
--                    "id": "D3",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 5,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B15",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 6,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B16",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 7,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B17",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 8,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B18",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 9,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B19",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 10,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "E0",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 11,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "E1",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 12,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "E2",
--                    "select": false
--                  },
--                  {
--                    "row": 3,
--                    "col": 13,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "E3",
--                    "select": false
--                  }
--                ],
--                [
--                  {
--                    "row": 4,
--                    "col": 1,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      false,
--                      true
--                    ],
--                    "status": 5,
--                    "id": "D4",
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 2,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      false,
--                      true
--                    ],
--                    "status": 5,
--                    "id": "D5",
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 3,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      false,
--                      true
--                    ],
--                    "status": 5,
--                    "id": "D6",
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 4,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      false,
--                      true
--                    ],
--                    "status": 5,
--                    "id": "D7",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 5,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B20",
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 6,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B21",
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 7,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B22",
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 8,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B23",
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 9,
--                    "statusColor": [
--                      false,
--                      false,
--                      false,
--                      false,
--                      true,
--                      false
--                    ],
--                    "status": 4,
--                    "id": "B24",
--                    "select": false
--                  },
--                  {
--                    "id": -1,
--                    "status": 0,
--                    "statusColor": [
--                      true,
--                      false,
--                      false,
--                      false,
--                      false,
--                      false
--                    ],
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 10,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "E4",
--                    "select": false
--                  },
--                  {
--                    "row": 4,
--                    "col": 11,
--                    "statusColor": [
--                      false,
--                      false,
--                      true,
--                      false,
--                      false,
--                      false
--                    ],
--                    "status": 2,
--                    "id": "E5",
--                    "select": false
--                  }
-         *
-         *
-         * {
-              "status": 200,
-              "model": {
-                "baArehouseId": 1,                      仓库id
-                "baName": "九阳齐河仓",                 仓库名称
-                "baAddr": "齐河",                       仓库地址
-                "baScity": "济南",                      所在地市
-                "baScontacts": "联系人1",               联系人
-                "baPhone": "13267890789",               电话
-                "baAcreage": "baAcreage",               面积
-                "baCtype": "baCtype",                   仓库类型
-                "baHumidity": "baHumidity",             相对湿度
-                "baFax": "baFax",                       传真
-                "baPostoffice": "baPostoffice",         邮编
-                "baIsti": 1,                            是否需要维护ti值 1:存在ti 2:不存在ti
-                "baStatus": 1,                          状态1可用 0软删除
-                "baClientId": 1,                        客户id
-                "baRemarks": "baRemarks",               备注
-                "baCreatetime": 1488092935000,          创建时间
-                "baPgroupinfo": "aaaa bbbbb cccc\r\naaaa bbbbb cccc\r\naaaa bbbbb cccc\r\ndddd bbbbb eeee\r\ndddd bbbbb eeee",  平面图信息
-                "arehouseKqs": [
-                  {
-                    "baqKqId": 1,                       库区id
-                    "baqArehouseId": 1,                 仓库id
-                    "baqKqName": "库区名称",            库区名称
-                    "baqIsdel": 1,                      是否有效 0 删除
-                    "baqStatus": 1,                     1:存储区 2分拣区 3暂存区 4不合格 5其他
-                    "baseRegions": [
-                      {
-                        "brgRegionId": 1,               区域id
-                        "brgArehouseId": 1,             仓库id
-                        "brgRegionNo": "brgRegionNo",   区域编号
-                        "brgKqId": 1,                   库区id
-                        "brgRegionStatus": 1,           区域状态1:存储区 2分拣区 3暂存区 4不合格 5其他   与库区状态保持一致
-                        "baseLocationList": [
-                          {
-                            "blLocationId": 1,          储位id
-                            "blLname": "H11-28-A1",     储位名称
-                            "blRegionId": 1,            区域
-                            "blLtray": 25,              托盘数量
-                            "blLorder": 1,              储位优先级
-                            "blStatus": 1,              0:软删除 1可用
-                            "blArehouseId": 1           仓库id
-                          },
-                          {
-                            "blLocationId": 3,
-                            "blLname": "H16-39-A4",
-                            "blRegionId": 1,
-                            "blLtray": 21,
-                            "blLorder": 3,
-                            "blStatus": 1,
-                            "blArehouseId": 1
-                          },
-                          {
-                            "blLocationId": 8,
-                            "blLname": "blLname",
-                            "blRegionId": 1,
-                            "blLtray": 1,
-                            "blLorder": 1,
-                            "blStatus": 1,
-                            "blArehouseId": 1
-                          }
-                        ]
-                      },
-                      {
-                        "brgRegionId": 7,
-                        "brgArehouseId": 1,
-                        "brgRegionNo": "brgRegionTest",
-                        "brgKqId": 1,
-                        "brgRegionStatus": 2,
-                        "baseLocationList": [
-                          {
-                            "blLocationId": 7,
-                            "blLname": "blLname",
-                            "blRegionId": 7,
-                            "blLtray": 1,
-                            "blLorder": 1,
-                            "blStatus": 1,
-                            "blArehouseId": 1
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "baqKqId": 2,
-                    "baqArehouseId": 1,
-                    "baqKqName": "kucqu_name",
-                    "baqIsdel": 0,
-                    "baqStatus": 1,
-                    "baseRegions": [
-                      {
-                        "brgRegionId": 2,
-                        "brgArehouseId": 1,
-                        "brgRegionNo": "region_002",
-                        "brgKqId": 2,
-                        "brgRegionStatus": 2,
-                        "baseLocationList": [
-                          {
-                            "blLocationId": 2,
-                            "blLname": "H16-39-A2",
-                            "blRegionId": 2,
-                            "blLtray": 23,
-                            "blLorder": 2,
-                            "blStatus": 1,
-                            "blArehouseId": 1
-                          },
-                          {
-                            "blLocationId": 5,
-                            "blLname": "lname35",
-                            "blRegionId": 2,
-                            "blLtray": 11,
-                            "blLorder": 5,
-                            "blStatus": 1,
-                            "blArehouseId": 2
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
+         * TODO 1 对于仓库的区域的修改
          */
         /**
-         * TODO 3 将指定区域（单 多） 冻结区域   //数据库没有冻结解冻字段
+         * TODO 2 对于仓库的区域的查看
          */
         /**
-         * TODO 4 将指定区域（单 多） 启用区域   //数据库没有启用禁用字段
+         * TODO 3 禁止
          */
         /**
-         * TODO 5 将指定库区（单 多） 设为存储区   POST /arehouseKq/modifyKqStatusByKqIds
-         *
-         * {
-              "status": 0,   //需要修改成的状态
-              "ids": [       //指定的单个或多个库区id
-                0
-              ]
-            }
+         * TODO 4 启用
          */
         /**
-         * TODO 6 将指定库区（单 多） 设为暂存区   POST /arehouseKq/modifyKqStatusByKqIds
+         * TODO 5 设为存储区
          */
         /**
-         * TODO 7 将指定库区（单 多） 设为未设定区 POST /arehouseKq/modifyKqStatusByKqIds
+         * TODO 6 设为暂存区
          */
         /**
-         * TODO 8 将指定库区（单 多） 设为分拣区   POST /arehouseKq/modifyKqStatusByKqIds
+         * TODO 7 设为未设定区
          */
         /**
-         * TODO 9 将指定库区（单 多） 设为不合格区  POST /arehouseKq/modifyKqStatusByKqIds
+         * TODO 8 设为分拣区
          */
-        /** TODO 10 查看 指定区域（单 多） 区域中 储位信息     //指定区域查看应该是单个点击区域块
-         *                                             POST /location/findByRegionId/{region_id}
+        /**
+         * TODO 9 设为不合格去区
+         */
+        /** TODO 10 查看区域中库存明细
          *
          */
-        /** TODO 11 查看 指定储位 中 详细信息
-         *                                             GET /location/findByRegionId/{region_id}
-         */
-        /**
-         * TODO 12 将指定储位（单 多） 冻结储位    POST /location/deleteOfSoft
-
 /**
  *       货品管理   goodsManage
              **/
@@ -2036,13 +807,13 @@
                 ]
          */
         /**
-         *   3 货品管理 通过客户id查询一些货品数据 GET /goods/findByClientId/{client_id}
+         *   Delete 3  货品管理 通过客户id查询一些货品数据 GET /goods/findByClientId/{client_id}
          **/
         /**
-         *   4 货品管理 通过货品编号查询一些货品数据 GET /goods/findBygoodsNo/{goods_no}
+         *   Delete 4 货品管理 通过货品编号查询一些货品数据 GET /goods/findBygoodsNo/{goods_no}
          **/
         /**
-            *   5 货品管理 通过货品id查询货品  GET /goods/{id}
+            *   Delete 5 货品管理 通过货品id查询货品  GET /goods/{id}
             *
          **/
         /**
@@ -2059,18 +830,18 @@
          *
          *  **/
         /**
-         *   7  货品管理 通过id删除一条货品数据 DELETE /goods/{id}
-         *
-         *  **/
-        /**
          *   8 货品单号、编号不允许重复  货品管理 判断货品编号是否重复 GET /goods/isRepeatByBgGoodsNo/{bgGoodsNo}
+         *
+         **/
+        /**
+         *   9 查询所有单位
          *
          **/
     /**
      *  RF管理   RFManage
          **/
         /**
-         *  0 (RF管理主页面) 分页查询RF管理详情 POST /user/page
+         *  TODO 0 (RF管理主页面) 分页查询RF管理详情 POST /user/page
          * 参数
          * {
                 "pageNum": 1,
@@ -2102,25 +873,22 @@
          *
          */
         /**
-         * 1 RF管理 关联作业区，判断主作业区是否被占用，是否已关联；是否有PDA任务 GET /user/userAddZyq/{id}/{firstZyq}/{secondZyq}
+         * TODO 1 RF管理 判断主作业区是否被占用，是否已关联；是否有PDA任务 GET /user/userAddZyq/{id}/{firstZyq}/{secondZyq}
+        */
         /**
-         *  TODO 2 获取作业区名称
-         *      ruUserZyq   高位叉车作业区域
-         *   **/
-        /**
-         *  2 获取作业区的名称 用户管理 根据id返回用户信息  GET /user/{id}
+         *  TODO 2  根据id返回用户信息  GET /user/{id}
          */
         /**
-         * 3  RF管理 判断主作业区是否重复 GET /user/isRepeatByFirstZyq/{firstZyq}
+         * TODO 3  RF管理 判断主作业区是否重复 GET /user/isRepeatByFirstZyq/{firstZyq}
          **/
         /**
-         *  4 编辑
+         *  TODO 4  更新用户信息 PUT /user
          */
-/**
+    /**
  *      TODO 作业区管理 operationAreaManage
          *      **/
         /**
-         *  0 (作业区管理主页面) 储位组管理 POST请求查询储位组信息 POST /locations/page
+         *  TODO 0 (作业区管理主页面) 储位组管理 POST请求查询储位组信息 POST /locations/page
          * 参数
          * {
                 "blsName": "储位组1001",
@@ -2137,7 +905,7 @@
              blsRemarks       备注
          */
         /**
-         *  1  储位组管理 新增储位组 POST /locations
+         *  TODO 1  储位组管理 新增储位组 POST /locations
          *  参数
          *  {
          *      "blsName": "string11",
@@ -2154,7 +922,7 @@
                 blsRemarks      备注
          **/
         /**
-         *   2 编辑 储位组管理 更新储位组信息 PUT /locations
+         *   TODO 2  储位组管理 更新储位组信息 PUT /locations
          *  参数
          *  {
          *      "blsLocationsId": 1,
@@ -2176,10 +944,10 @@
          * 3 储位组管理 根据id返回储位组信息 GET /locations/{id}
          */
         /**
-         *  4  储位组管理 通过id删除一条储位组数据 DELETE /locations/{id}
+         *  TODO 4  储位组管理 通过id删除一条储位组数据 DELETE /locations/{id}
          */
         /**
-         *  TODO 5 库位名称不允许重复
+         *  TODO 5  储位管理 判断储位名称是否重复 GET /location/isRepeatByBlLname/{blLname}
          *
          **/
 /**
@@ -2659,6 +1427,12 @@
          *   allCount 总数量
          *   allTj 总体积
          */
+
+        /** TODO 8 入库单 详细信息
+         *
+         *
+         * */
+
     /**
      *      TODO 入库任务 warehousingTask
          */
@@ -2704,52 +1478,68 @@
          *          rkrwDh      司机电话
          *          rkrwStatus  任务状态
          */
-            /** 1 修改 入库任务管理 更新入库任务单 PUT /mfunrkRwDoc
-             *
-             *          参数
-             *          {
-             *              "rkrwId": 1,
-                            "rkrwNo": "111",
-                            "rkrwDhrq": "2017-04-07T03:38:53.205Z",
-                            "rkrwDbd": "111",
-                            "rkrwCys": "111",
-                            "rkrwCph": "111",
-                            "rkrwSjxm": "111",
-                            "rkrwDh": "111",
-                            "rkrwStatus": "1"
-             *          }
-             *          参数说明
-             *          rkrwId      id/入库任务号(系统自动生成格式为当前日期例:入库2017-03-14-16-17-01)
-             *          rkrwNo      入库任务单号(系统自动生成)
-             *          rkrwDhrq    预计到货日期(必填并且精确到分钟)
-             *          rkrwDbd     调拨地(必填)
-             *           rkrwCys    承运商(必填)
-             *          rkrwCph     车牌号(必填)
-             *          rkrwSjxm    司机姓名(必填)
-             *          rkrwDh      司机电话(必填)
-             *          rkrwStatus  任务状态:
-                                        1.初始(创建入库任务后的状态)
-                                        2.已下发任务(下达任务后的状态)
-                                        3.已开始收货(打印收货标签后的状态)
-                                        4.收货中(上架第一个库位后的状态)
-                                        5.1.部分收货(任务下所有订单有一个部分收货整个任务为部分收货)
-                                        5.2.全部收货(任务下所有订单状态为全部收货整个任务状态为全部收货)
-                                        6.收货完成/欠货(全部收货状态下导出台帐为收货完成,部分收货状态下导出台帐为欠货)
-                                        可以手动将欠货标记为收货完成需要输入原因以及补发单号
-             */
-            /**
-             *          TODO 2 修改明细表
-             *          rkRkdjNo        入库单号
-             *          rkCreatetime    下单时间
-             *                          总数量
-             *                          总体积
-             *          rkRemarks       备注
-             */
-            /**
-             * 3 新增 入库任务单     POST /mfunrkRwDoc/add
-             * 参数
-             *
-             *
+        /** 1 修改 入库任务管理 更新入库任务单 PUT /mfunrkRwDoc
+         *
+         *          参数
+         *          {
+         *              "rkrwId": 1,
+                        "rkrwNo": "111",
+                        "rkrwDhrq": "2017-04-07T03:38:53.205Z",
+                        "rkrwDbd": "111",
+                        "rkrwCys": "111",
+                        "rkrwCph": "111",
+                        "rkrwSjxm": "111",
+                        "rkrwDh": "111",
+                        "rkrwStatus": "1"
+         *          }
+         *          参数说明
+         *          rkrwId      id/入库任务号(系统自动生成格式为当前日期例:入库2017-03-14-16-17-01)
+         *          rkrwNo      入库任务单号(系统自动生成)
+         *          rkrwDhrq    预计到货日期(必填并且精确到分钟)
+         *          rkrwDbd     调拨地(必填)
+         *           rkrwCys    承运商(必填)
+         *          rkrwCph     车牌号(必填)
+         *          rkrwSjxm    司机姓名(必填)
+         *          rkrwDh      司机电话(必填)
+         *          rkrwStatus  任务状态:
+                                    1.初始(创建入库任务后的状态)
+                                    2.已下发任务(下达任务后的状态)
+                                    3.已开始收货(打印收货标签后的状态)
+                                    4.收货中(上架第一个库位后的状态)
+                                    5.1.部分收货(任务下所有订单有一个部分收货整个任务为部分收货)
+                                    5.2.全部收货(任务下所有订单状态为全部收货整个任务状态为全部收货)
+                                    6.收货完成/欠货(全部收货状态下导出台帐为收货完成,部分收货状态下导出台帐为欠货)
+                                    可以手动将欠货标记为收货完成需要输入原因以及补发单号
+         */
+        /**
+         *          TODO 2 修改明细表
+         *          rkRkdjNo        入库单号
+         *          rkCreatetime    下单时间
+         *                          总数量
+         *                          总体积
+         *          rkRemarks       备注
+         */
+        /**
+         * 3 新增-入库任务     POST /mfunrkRwDoc/add
+         * 参数
+         *
+         *
+         {
+            "rkrwId": 0,
+            "rkrwNo": "A0001",
+            "rkrwDhrq": "2017-04-13T08:25:12.866Z",
+            "rkrwDbd": "调拨地1",
+            "rkrwCys": "承运商1",
+            "rkrwCph": "鲁A-GF886",
+            "rkrwSjxm": "老司机1",
+            "rkrwDh": "15098879088",
+            "rkrwStatus": "31",
+            "rkrwArehouseId": 1,
+            "rkrwClientId": 1,
+            "docList": [
+             {
+               "rkRkdjId": 8
+             },
              {
                 "rkrwId": 0,
                 "rkrwNo": "A0001",
@@ -3277,162 +2067,11 @@
             /**
              * TODO 5 入库过程 通过入库单据id获取一条入库单据 GET /mfunrkDoc/{rkdoc_id}
              */
-            /**
-             * 6 入库过程 通过入库单据id获取  历史记录 GET /history/{id}/{type}
-             *
-             *
-             *
-             *    参数：
-             *
-             *       {
-             *          id:1,
-             *          type:1
-             *       }
-             *
-             *    参数说明：
-             *
-             *       id  主键id
-             *
-             *       type
-             *           1. 入库标识
-             *           2. 出库标识
-             *
-             *     结果：
-             *
-             *
-             *
-             *     [
-                     {
-                       "mhDjhistoryId": 122,
-                       "mhStatus": 1,
-                       "mhCreatetime": 1492521873000,
-                       "mhUserId": 1,
-                       "mhRkdjId": 0,
-                       "mhCkdjId": 31,
-                       "rmsUser": {
-                         "ruUserId": 1,
-                         "ruUserName": "超级管理员",
-                         "ruLoginName": "admin",
-                         "ruLoginPassword": "d135f41faa533e92dcff73f9179670bc",
-                         "ruPhone": "15098879708",
-                         "ruTelephone": "1234567",
-                         "ruEmail": "infchd@hotmail.com",
-                         "ruSex": true,
-                         "ruBirthday": 1488873925000,
-                         "ruHomeaddress": "",
-                         "ruQicq": "",
-                         "ruCreateTime": 1474165944000,
-                         "ruLastModifiedTime": 1474301742000,
-                         "ruStatus": 1,
-                         "ruSalt": "HKJID",
-                         "ruUserType": 0,
-                         "ruUserZyq": "1,2",
-                         "ruRemarks": "",
-                         "ruIspda": true,
-                         "ruPortrait": "static/images/users/00.jpg"
-                       }
-                     },
-                     {
-                       "mhDjhistoryId": 121,
-                       "mhStatus": 1,
-                       "mhCreatetime": 1492521834000,
-                       "mhUserId": 1,
-                       "mhRkdjId": 0,
-                       "mhCkdjId": 30,
-                       "rmsUser": {
-                         "ruUserId": 1,
-                         "ruUserName": "超级管理员",
-                         "ruLoginName": "admin",
-                         "ruLoginPassword": "d135f41faa533e92dcff73f9179670bc",
-                         "ruPhone": "15098879708",
-                         "ruTelephone": "1234567",
-                         "ruEmail": "infchd@hotmail.com",
-                         "ruSex": true,
-                         "ruBirthday": 1488873925000,
-                         "ruHomeaddress": "",
-                         "ruQicq": "",
-                         "ruCreateTime": 1474165944000,
-                         "ruLastModifiedTime": 1474301742000,
-                         "ruStatus": 1,
-                         "ruSalt": "HKJID",
-                         "ruUserType": 0,
-                         "ruUserZyq": "1,2",
-                         "ruRemarks": "",
-                         "ruIspda": true,
-                         "ruPortrait": "static/images/users/00.jpg"
-                       }
-                     },
-                     {
-                       "mhDjhistoryId": 120,
-                       "mhStatus": 7,
-                       "mhCreatetime": 1491019196000,
-                       "mhUserId": 1,
-                       "mhRkdjId": 8,
-                       "mhCkdjId": 0,
-                       "rmsUser": {
-                         "ruUserId": 1,
-                         "ruUserName": "超级管理员",
-                         "ruLoginName": "admin",
-                         "ruLoginPassword": "d135f41faa533e92dcff73f9179670bc",
-                         "ruPhone": "15098879708",
-                         "ruTelephone": "1234567",
-                         "ruEmail": "infchd@hotmail.com",
-                         "ruSex": true,
-                         "ruBirthday": 1488873925000,
-                         "ruHomeaddress": "",
-                         "ruQicq": "",
-                         "ruCreateTime": 1474165944000,
-                         "ruLastModifiedTime": 1474301742000,
-                         "ruStatus": 1,
-                         "ruSalt": "HKJID",
-                         "ruUserType": 0,
-                         "ruUserZyq": "1,2",
-                         "ruRemarks": "",
-                         "ruIspda": true,
-                         "ruPortrait": "static/images/users/00.jpg"
-                       }
-                     },
-                     {
-                       "mhDjhistoryId": 119,
-                       "mhStatus": 7,
-                       "mhCreatetime": 1491019176000,
-                       "mhUserId": 1,
-                       "mhRkdjId": 8,
-                       "mhCkdjId": 0,
-                       "rmsUser": {
-                         "ruUserId": 1,
-                         "ruUserName": "超级管理员",
-                         "ruLoginName": "admin",
-                         "ruLoginPassword": "d135f41faa533e92dcff73f9179670bc",
-                         "ruPhone": "15098879708",
-                         "ruTelephone": "1234567",
-                         "ruEmail": "infchd@hotmail.com",
-                         "ruSex": true,
-                         "ruBirthday": 1488873925000,
-                         "ruHomeaddress": "",
-                         "ruQicq": "",
-                         "ruCreateTime": 1474165944000,
-                         "ruLastModifiedTime": 1474301742000,
-                         "ruStatus": 1,
-                         "ruSalt": "HKJID",
-                         "ruUserType": 0,
-                         "ruUserZyq": "1,2",
-                         "ruRemarks": "",
-                         "ruIspda": true,
-                         "ruPortrait": "static/images/users/00.jpg"
-                       }
-                     }
-                     ]
-             */
-
-
-
-
     /**
      *      TODO 入库台账       inputLedger
          */
-            /**
-             *         TODO 0 入库台账主页面
+        /**
+             *         TODO 0  分页查询入库台账信息 POST /mfunrktzDoc
              *             rkCreatetime    始发日期
              *             rkSjsj        到货日期
              *             rkSjsj         收货日期
@@ -3462,8 +2101,11 @@
              *             rksCljg         处理结果(操作员手动输入)
              *             rksJssj         结算时间,可以为空操作员手动输入
              */
-            /**
-             *  TODO  1 制作台账
+        /**
+             * TODO 1 制作/欠货 修改入库台账信息  POST /mfunrktzDoc/updateDocs
+             */
+    /**
+ *  TODO  2 制作台账
              *  rkspm       泡沫(可以为0,操作员手动输入)
              *  rksDbPswb   调拨破损外包(可以为0,操作员手动输入)
              *  rksYtPswb   源头破损外包(可以为0,操作员手动输入)
@@ -3476,7 +2118,7 @@
              *  rksJssj     结算时间,可以为空操作员手动输入
              */
             /**
-             *  TODO 2 制作台账明细
+             *  TODO 3 制作台账明细
              *  rkRkdjNo    入库单号
              *  bgGoodsName 货品名称
              *  bgGoodsNo   货品编号
@@ -3484,39 +2126,28 @@
              *  ruUserName  收货人
              */
             /**
-             *          TODO 3 导出按钮
+             *          TODO 4 导出按钮
              */
             /**
-             *  TODO 4 欠货完结    /test   POST
-             *
-             *  参数：
-             *
-             *     user:    //用户名
-             *     userId:    //用户id
-             *
-             *
-             *
-             *  返回
-             *
-             *
-             *
-             *
+             *  TODO 5 欠货完结
              *  rkQhWjyy    欠货完结原因/完结原因
              *  rkQhBfdh  (欠货补发单号)
              */
             /**
-             *  TODO 5 入库单号不允许重复
+             *  TODO 6 入库单号不允许重复
              */
             /**
-             *  TODO 6 数量不允许为负数
+             *  TODO 7 数量不允许为负数
              */
+
+
 
         /**
              TODO 出库预约
 
              **/
             /**
-             * 0 TODO 出库预约 获取 根据分页要求获取没有出库任务的出库单信息 POST /mfunck/selectMfunckDocByPage
+             * 7 TODO 出库预约 获取 根据分页要求获取没有出库任务的出库单信息 POST /mfunck/selectMfunckDocByPage
              *
              *
              * 参数：查询条件 ckDocPageModel（参数对象）
@@ -3530,7 +2161,7 @@
                   "ckStatus": 1,                   出库状态（1初始 21部分分拣，未下架状态 22部分出库，已下架 31全部分拣，未下架 32全部出库，下架完成41已挂起， 50作废）
                   "ckCkdjClientname",              客户名称（支持模糊查询）
                   "ckCkdjType": 0,                 单据类型（0正常单据，1挂起单据，2滞留单据）
-                  "ckArehouseId": 1               （如果是调度员就不传，如果是别的角色就传）
+                  "ckArehouseId": 1               （如果是调度员就传-1，如果是别的角色,就传其他角色的仓库id）
                 }
              *
              *
@@ -3569,14 +2200,14 @@
                   allHeight : null                          总重量
                 }
              */
-            /**
-             * 1 TODO 出库预约 新增 出库单据/包含出库单明细 POST /mfunck/add
+        /**
+             * 0 TODO 出库预约 新增 出库单据/包含出库单明细 POST /mfunck/add
              * 参数
              * {
                   "ckCkdjNo": "CK1482398743793",（必填）
                   "ckErpNo": "hk45645",
                   "ckCkdjClientno": "hlcs2001",（必填）
-                  "ckCkdjClientname": "济南华联超市王舍人店",（必填）
+                  "ckCkdjClientname": "TODO 新加客户",（必填）
                   "ckContacts": "张三丰",（必填）
                   "ckTel": "18856568985",（必填）
                   "ckAdress": "济南市历城区工业北路",（必填）
@@ -3584,12 +2215,13 @@
                   "ckRemarks": "备注",
                   "ckArehouseId": 1,（必填）
                   "ckClientId": 1,（必填）
+                  "userId": 2,                   (创建人ID 即当前用户ID)
                   "mfunckDocs": [
                     {
                       "cksGoodsId": 1,（必填）
                       "cksGoodsCount": 50,（必填）
                       "cksDwid": 1,（必填）
-                      "cksCkfs": "先进先出",（必填）（先进先出,指定批次,指定库位(x：p：k) 默认x）
+                      "cksCkfs": "TODO 先进先出",（必填）（先进先出,指定批次,指定库位(x：p：k) 默认x）
                       "cksZdpc": "X",(根据出库方式选填)
                       "cksLocationId": 1 (根据出库方式选填)
                     },
@@ -3627,35 +2259,157 @@
              * ]
              * }
              */
-            /**
-             * TODO 2 出库预约 获取 出库任务单号
-             *
-             *
-             * */
 
-            /**
-             * TODO 3 出库预约 新增 出库任务单
-             *
-             *
-             * */
-            /**
-             * TODO 4 出库预约 出库单 作废
-             *
-             *
-             * */
-            /**
-             * TODO 5 出库预约 出库单 取消滞留 （取消滞留）
-             *
-             *
-             * */
-            /**
-             * TODO 6 出库预约 出库单 滞留
-             *
-             * */
+/**
+ *  TODO 1 出库预约-组合  /mfunck/insertCkrw
+
+ {
+  "ckrwNo": "CK20170509-03",
+  "ckrwYjdcsj": "2017-04-18T03:45:44.353Z",
+  "ckrwCph": "鲁A56895",
+  "ckrwQhStatus": "1",
+  "ckrwZlStatus": "1",
+  "ckrwWls": "佳怡物流",
+  "ckrwArehouseId": 1,
+  "ckrwClientId": 1,
+"userName":"超级管理员",
+  "ckCkdjIds": [
+    43,
+    44
+  ]
+}
+
+
+ *
+ */
+
+/**
+ *  TODO 3 出库预约-修改-出库单
+ *
+ *
+ */
+/**
+ *  TODO 8 出库预约-查询-出库单-详细 /mfunck/checkMfunckDocsByCkdjId
+ *
+ *
+ {
+  "id": 29
+}
+ *
+ *
+ */
+/**
+ *  TODO 9 出库预约-查询-出库单据-出库单号 /mfunck/mfunckdocAdd
+ *
+ *
+ *
+ *  {
+  "status": 20000,
+  "model": "CK1494319702504"
+}
+ *
+ *
+ */
+/**
+ *  TODO 10 出库预约-查询-出库任务-出库单号 /mfunck/greatCkrwNo
+ *
+ *
+ {
+  "status": null,
+  "model": "CK20170509-01"
+}
+ *
+ *
+ */
+/**
+ *  TODO 11 出库预约-作废-出库单据-出库单号 POST /mfunck/cancelMfunckDocByCkdjId
+ *
+ *
+ *
+ {
+  "id": 0
+ }
+ *
+ *
+ */
+
+/** 12
+ * {
+"ids":[],
+"useId":1
+}
+ */
+
+
+/**
+ * TODO 出库单管理 根据出库单Id查询出库明细详情 POST /mfunck/checkMfunckDocsByCkdjId
+ * 参数类： setModel
+ * {
+ *  "id": 1
+ *  }
+ *  返回 jsonModel mfunckDocs 出库明细集合
+ *  mfunckDocs.getBaseGoods.getBgGoodsNo (货品编号)
+ *  mfunckDocs.getBaseGoods.getBgGoodsName (货品名称)
+ *  mfunckDocs.getBaseDw.getBdName （单位名称）
+ *  mfunckDocs.getCksGoodsCount （货品数量）
+ */
         /**
+ * TODO 出库单管理 修改出库单及明细 POST /mfunck/editMfunckDocAndDocs
+ * 参数类： mfunckDoc 出库单对象
+ * 实例：
+ * {
+      "ckCkdjId": 40                                  （出库单ID ）
+      "ckCkdjNo": "CK1482398743793",                  （出库单号 不能修改）
+      "ckErpNo": "hk45645",                           （客户erp号）
+      "ckCkdjType": 0,                                （单据类型）
+      "ckCkdjClientno": "hlcs2001",                   （客户编号）
+      "ckCkdjClientname": "济南华联超市王舍人店",      （客户名称）
+      "ckContacts": "张三丰",                         （联系人）
+      "ckTel": "18856568985",                         （联系电话）
+      "ckAdress": "济南市历城区工业北路",              （地址）
+      "ckYfhsj": "2017-04-17T05:46:21.260Z",          （预发货时间）
+      "ckRemarks": "备注",                            （备注）
+      "ckCksj": "2017-04-17T05:46:21.260Z",           （出库时间）
+      "ckArehouseId": 1,
+      "ckClientId": 1,
+      "userId": 2,                                    （当前用户ID）
+      "mfunckDocs": [
+        {
+          "cksCkmxId": 56,
+          "cksGoodsId": 1,
+          "cksGoodsCount": 50,
+          "cksDwid": 1,
+          "cksCkfs": "先进先出",
+          "cksZdpc": "X"
+        },
+        {
+          "cksCkmxId": 57,
+          "cksGoodsId": 2,
+          "cksGoodsCount": 100,
+          "cksDwid": 2,
+          "cksCkfs": "先进先出",
+          "cksZdpc": "X"
+        }
+      ]
+    }
+ 返回 jsonModel 20002 成功 50002 失败！
+ */
+        /**
+ * TODO 出库单管理 根据出库单Id作废出库单及明细 POST /mfunck/cancelMfunckDocByCkdjId
+ * 参数类 setModel
+ * {
+ *   "id": 1,           （出库单ID）
+ *   "useId": 2         （当前用户ID）
+ * }
+ * 返回 jsonModel 20002 成功 50002 失败！
+ */
+
+
+
+    /**
          * TODO 出库任务
          */
-            /**
+        /**
              * TODO  出库任务管理 分页查询所有任务状态下的出库任务 POST /mfunck/selectMfunckRwByPage
              * 参数：查询条件 ckRwDocPageParam(参数对象)
              * {
@@ -3693,158 +2447,333 @@
              *
              *
              */
-    /**
-     * TODO 激活数据
-     */
         /**
-         * TODO 2 激活任务   POST /mfunck/rwJiHuo
-         *      参数 setModel
-         *          {
-                 *              "ids" : [6,7],   出库任务ID（多个）
-                 *              "useId" : 1     操作员ID
-                 *          }
-         */
+ * TODO 点击新增系统自动生成出库任务单号 POST /mfunck/greatCkrwNo
+ * 返回参数 jsonModel  ckCkrwNo(任务单号)
+ */
         /**
-         * TODO 3 追加分拣  GET /mfunck/bujianById/{ckdjId}/{userId}
-         *        "ckdjId" : 出库单据ID
-         *        "userId" : 操作员ID
-         */
+ * TODO 新增出库任务及明细 POST /mfunck/insertCkrw
+ * {
+      "ckrwNo": "CK20170418-04",                  任务单号（自动生成）
+      "ckrwYjdcsj": "2017-04-18T03:45:44.353Z",   预计到车时间（必填）
+      "ckrwCph": "鲁A56895",                      车牌号（必填）
+      "ckrwWls": "佳怡物流",                      物流商（必填）
+      "ckrwClientId": 1,                          客户id（必填）
+      "userName": "用户名",                       当前登录用户用户名称
+      "ckCkdjIds": [                              出库单号（可批量）
+        28,
+        29
+      ]
+    }
+ 返回 jsonModel  20002成功 50002失败
+ */
         /**
-         *  TODO 4 修改分拣方式 POST /mfunck/editCkDocsFJFSByCkmxId
-         *      参数名称 paramsModel  （同凯哥出库任务的修改分拣方式）
-         */
+ * TODO 根据任务ID查看出库任务详情 POST /mfunck/checkCkrwInfoByCkrwId
+ * 参数类：setModel
+ * {
+ *   "id": 1
+ * }
+ * 返回 jsonModel ckrwDoc (出库任务对象，包含出库单据以及出库明细)
+ */
         /**
-         *  TODO 5 挂起确认 GET  /mfunck/guaQiById/{ckdjId}
-         *      "ckdjId" : 出库单据ID
-         */
+ * TODO 修改出库任务 POST /mfunck/editCkrw
+ * 参数，出库任务对象mfunckRwDoc
+ * {
+      "ckrwNo": "CK20170418-04",                  任务单号（不可修改）
+      "ckrwYjdcsj": "2017-04-18T03:45:44.353Z",   预计到车时间（可修改）
+      "ckrwCph": "鲁A56895",                      车牌号（可修改）
+      "ckrwWls": "佳怡物流",                      物流商（可修改）
+      "ckrwClientId": 1,                          客户id
+      "userName": "用户名",                       当前登录用户用户名称
+      "ckCkdjIds": [                              出库单号（可批量）
+        28,
+        29
+      ]
+    }
+ */
         /**
-         *  TODO 6 激活单据 GET /mfunck/fenjianById/{ckdjId}/{userId}
-         *      "ckdjId" : 出库单据ID
-         *      "userId" : 操作员ID
-         */
+ * TODO 根据任务ID取消出库任务 POST /mfunck/cancelCkrwByCkrwId
+ * 参数类：setModel
+ * {
+ *   "id": 1,                       （任务ID）
+ *   "userName": "用户名"           （当前登录用户用户名）
+ * }
+ * 返回 jsonModel  20002成功 50002失败
+ */
         /**
-         *  TODO 7 修改出库明细分拣数量 GET /mfunck/xiugaifenjian/{msxMxId}/{mxCount}/{userId}
-         *      "msxMxId" ： 出库单明细ID
-         *      "mxCount" :  修改后的数量（小于分拣数量）
-         *      "userId" :   操作员ID
-         */
-    /**
-     * TODO 出库操作
-     */
+ * TODO 根据出库单id挂起单据 POST /mfunck/hangUpCkdocByCkdjId
+ * 参数 setModel 对象
+ * {
+ *  "userName": "用户名",           （当前登录用户用户名）
+ *  "ids":[                          出库单IDs
+ *     12,
+  *    13
+ *  ]
+ * }
+ * 返回 jsonModel  20002成功 50002失败
+ */
         /**
-        * TODO 2 打印分拣单 GET /mfunck/dayinfenjiandan/{pageNum}/{pageSize}/{draw}/{ckdjId}
-        *      "pageNum" :  第几页
-        *      "pageSize" : 每一页多少条数据
-        *      "draw" :    请求次数
-        *      "ckdjId" : 出库单ID
-         *      */
+ * TODO 根据出库单id取消挂起单据 POST /mfunck/cancelHangUpCkdocByCkdjId
+ * 参数类：setModel
+ * {
+ *   "id": 1,
+ *   "userName": "用户名"           （当前登录用户用户名）
+ * }
+ * 返回 jsonModel  20002成功 50002失败
+ */
+
         /**
-        *TODO 3 打印组合分拣单 GET /mfunck/dayinzuhedan/{pageNum}/{pageSize}/{draw}/{ckdjIds}
-        *       "pageNum" : 第几页
-        *       "pageSize" :  每一页多少条数据
-        *       "draw" : 请求次数
-        *       "ckdjIds" : 出库单ID(多个)
-         *   */
+ * TODO 根据任务ID填写实际到车时间 POST /mfunck/editSJdcsjByCkrwId
+ * 参数类：setModel
+ * {
+ *   "id": 16,
+ *   "ckrwSjdcsj": "2017-05-08T03:14:27.609Z",
+ *   "userName": "张三"
+ * }
+ * 返回jsonModel 20002成功 50002失败
+ */
         /**
-        * TODO 4 打印追加分拣单 GET /mfunck/dayinzuijiadan/{pageNum}/{pageSize}/{draw}/{ckdjId}
-        *         "pageNum" : 第几页
-        *         "pageSize" : 每一页多少条数据
-        *         "draw" : 请求次数
-        *         "ckdjId" : 出库单ID
-        */
+ * TODO 根据任务Id下发任务 POST /mfunck/issuedCkrw
+ * 参数 参数对象：setModel
+ * {
+ *   "userName": "张三",         （当前登录用户名称）
+ *  "ids": [   任务ID集合
+ *     1,
+ *     2
+ *   ]
+ * }
+ * 返回 jsonModel  20002成功 50002失败
+ */
         /**
-        * TODO 5 下架 GET /mfunck/xiajiaById
-        *          参数名称 ：serModel
-        *          {
-                *              "ids" : [32,33]  多个出库单ID
-                *          }
-        *
-        */
-    /**
-     *  TODO 出库发运页面
-     */
+ * TODO 挑选任务单据分页查询 POST /mfunck/selectChooseCkrwByPage
+ * 参数：参数对象：ckRwDocPageParam
+ * {
+      "draw": 0,
+      "ckrwNo": "",               任务单号（可模糊查询）
+      "ckrwCph": "",              车牌号（可模糊查询）
+      "ckrwWls": "",              物流商（可模糊查询）
+      "ckrwStartGreatTime": "",   制作开始时间
+      "ckrwEndGreatTime": "",     制作结束时间
+      "pageNum": 1,               页码
+      "pageSize": 10              当页条数
+    }
+    出库任务对象 mfunckRwDoc
+    {
+       "ckrwId": 1,                         出库任务ID
+       "ckrwNo": "ckrw_no",                 出库任务号
+       "ckrwYjdcsj": 1489550217000,         预计到车时间
+       "ckrwCph": "CPH",                    车牌号
+       "ckrwSjdcsj": 1492150687000,         实际到车时间
+       "ckrwStatus": 10,                    出库任务状态（任务状态10.初始，11.下发 21.已挑选，31.已激活，41部分出库，42全部出库，51部分发运，52全部发运）
+       "ckrwQhStatus": 2,                   欠货状态（欠货状态：1.欠货(出库单据中存在"整单欠货"/"部分欠货"出库任务状态为"欠货" 2.未欠货(出库单据欠货状态全部为"未欠货"出库任务状态为"未欠货"）
+       "ckrwZlStatus": 2,                   滞留状态（滞留状态1.滞留，2.未滞留）
+       "ckrwWls": "jinan",                  物流商
+       "ckrwArehouseId": 1,                 仓库id（基本没用）
+       "ckrwClientId": 1,                   客户ID
+       "orderNum": 0,                       订单数
+       "goodsTypeNum": 0,                   品项数
+     }
+ */
         /**
-         * TODO 2 发运 POST /mfunck/ckFayunRw
-         *      参数名称：setModel
-         *      {
-                 *          "ids" :[6,7],   出库任务ID(多个)
-                 *          "useId" : 1    操作员Id
-                 *      }
-         */
+ * TODO 出库任务管理 挑选任务单据完成 POST /mfunck/chooseCompleteByCkrwId
+ * 参数类：setModel
+ * {
+ *  "ids": [
+ *    12,
+ *    13
+ *    ],
+ *   "userName": "李四"
+ * }
+ * 返回 jsonModel  20002成功 50002失败
+ */
         /**
-         * TODO 3 修改发运数量 POST /mfunck/updateFysl
-         *      {
-                 *          "cksCkmxId"　： 出库明细ID
-                 *          "cksGoodsId" : 货品ID
-                 *          "cksGoodsCount" : 货品数量
-                 *          "cksDwid" : 单位ID
-                 *          "cksCkfs" :  出库方式（分拣方式）
-                 *          "cksLocationId" : 货品库存ID
-                 *          "cksStatus" :  出库单明细 发货状态
-                 *          "cksCkdjId" : 出库单据ID
-                 *          "cksFyCount" : 修改后的发运数量
-                 *      }
+ * TODO 激活数据 激活任务单据分页查询 POST /mfunck/selectActivatedCkrwByPage
+  * 参数：查询参数对象：ckRwDocPageParam
+  * {
+      "draw": 0,
+      "ckrwNo": "",                任务单号（可模糊查询）
+      "ckrwCph": "",               车牌号（可模糊查询）
+      "ckrwWls": "",               物流商（可模糊查询）
+      "ckrwStartYjdcsj": "",       预计开始到车时间
+      "ckrwEndYjdcsj": "",         预计结束到车时间
+      "ckrwStartGreatTime": "",    制作开始时间
+      "ckrwEndGreatTime": "",      制作结束时间
+      "pageNum": 1,                页码
+      "pageSize": 10               当页条数
+    }
+  出库任务对象 mfunckRwDoc
+    {
+       "ckrwId": 1,                         出库任务ID
+       "ckrwNo": "ckrw_no",                 出库任务号
+       "ckrwYjdcsj": 1489550217000,         预计到车时间
+       "ckrwCph": "CPH",                    车牌号
+       "ckrwSjdcsj": 1492150687000,         实际到车时间
+       "ckrwStatus": 10,                    出库任务状态（任务状态10.初始，11.下发 21.已挑选，31.已激活，41部分出库，42全部出库，51部分发运，52全部发运）
+       "ckrwQhStatus": 2,                   欠货状态（欠货状态：1.欠货(出库单据中存在"整单欠货"/"部分欠货"出库任务状态为"欠货" 2.未欠货(出库单据欠货状态全部为"未欠货"出库任务状态为"未欠货"）
+       "ckrwZlStatus": 2,                   滞留状态（滞留状态1.滞留，2.未滞留）
+       "ckrwWls": "jinan",                  物流商
+       "ckrwArehouseId": 1,                 仓库id（基本没用）
+       "ckrwClientId": 1,                   客户ID
+       "orderNum": 0,                       订单数
+       "goodsTypeNum": 0,                   品项数
+     }
+ */
+        /**
+ * TODO 出库操作 操作出库单据分页查询 POST /mfunck/selectOperateCkDocByPage
+ * 参数 查询参数对象：ckDocPageModel
+ * {
+      "draw": 0,
+      "ckCkdjNo": "",               出库单号（可模糊查询）
+      "pageNum": 1,                 页码
+      "pageSize": 10,               当页条数
+      "ckStatus": 1,                出库单状态  21部分分拣，未下架状态 22部分出库，已下架 31全部分拣，未下架 32全部出库，下架完成
+      "ckCkdjClientname": "",       客户名称（可模糊查询）
+      "ckrwCph": "",                车牌号（可模糊查询）
+      "ckrwWls": "",                物流商（可模糊查询）
+      "mhStartCreateTime": "",      制作开始时间
+      "mhEndCreateTime": "",        制作结束时间
+      "ckStartXdsj": "",            下单开始时间
+      "ckEndXdsj": ""               下单结束时间
+    }
+ * {
+      ckCkdjId : 2                              出库单ID
+      ckCkdjNo : "jy33333"                      出库单号
+      ckErpNo : "testerp_no"                    erp单号
+      ckCkdjType : 0                            单据类型（0正常单据，1挂起单据，2滞留单据）
+      ckCkdjClientno : "ckdanju"                客户编号
+      ckCkdjClientname : "高新区银座超市"        客户名称
+      ckContacts : "郭靖"                        联系人
+      ckTel : "15689878987"                     电话
+      ckAdress : "高新区银座超市"                地址
+      ckXdsj : 1486531654000                    下单时间
+      ckBjsj : 1487741258000                    编辑时间
+      ckYfhsj : 1487827662000                   预发货时间
+      ckRemarks : "rrrrrrr"                     备注
+      ckStatus : 1                              出库单状态（1初始 21部分分拣，未下架状态 22部分出库，已下架 31全部分拣，未下架 32全部出库，下架完成41已挂起， 50作废）
+      ckIsauto : 1                              制单方式（1手动 2 excel 3接口）
+      ckCksj : 1486445274000                    出库时间
+      ckStartwith : 0                           设备端（1电脑端 2PDA）
+      ckIsyadan : 1                             是否压单（1是2否）
+      ckIsqianhuo : 1                           是否欠货（1是2否）
+      ckArehouseId : 1                          仓库ID
+      ckClientId : 2                            客户ID
+      ckEndtime : 1487050087000                 pda结束时间
+      ckRwStatus : 1                            出库任务状态（任务状态10.初始，11.下发 21.已挑选，31.已激活，41部分出库，42全部出库，51部分发运，52全部发运）
+      ckQhStatus : 3                            欠货状态（1.整单欠货(明细欠货状态全部为"全部欠货"出库单状态为"整单欠货"，2.部分欠货(明细欠货状态存在"未欠货","部分欠货"出库单状态为"部分欠货"，3.未欠货(明细欠货状态全部为"未欠货",出库单据为"未欠货"）
+      ckZlStatus : 1                            滞留状态（1.未到车滞留(出库单据明细滞留状态全部为"未到车滞留"出库单据滞留状态为"未到车滞留"，2.到车滞留(出库单据明细滞留状态存在"到车滞留"出库单据滞留状态为"到车滞留"，3.未滞留(出库单据明细滞留状态全部为"未滞留",出库单据滞留状态为"未滞留"）
+      ckGqStatus : 1                            挂起状态（1.未挂起，2.已挂起）
+      ckrwId : 0                                出库任务ID
+      mfunckDocs []                             出库明细对象
+      allCount : null                           总数量
+      allTj : null                              总体积
+      allHeight : null                          总重量
+      }
+ */
+        /**
+ * TODO 出库发运 出库任务发运单据分页查询 POST /mfunck/selectDespatchCkrwByPage
+ * 参数：查询参数对象：ckRwDocPageParam
+ * {
+      "draw": 0,
+      "ckrwNo": "",                任务单号（可模糊查询）
+      "ckrwCph": "",               车牌号（可模糊查询）
+      "ckrwWls": "",               物流商（可模糊查询）
+      "ckrwStartYjdcsj": "",       预计开始到车时间
+      "ckrwEndYjdcsj": "",         预计结束到车时间
+      "ckrwStartSjdcsj": "",       实际开始到车时间
+      "ckrwEndSjdcsj": "",         实际结束到车时间
+      "ckrwStartGreatTime": "",    制作开始时间
+      "ckrwEndGreatTime": "",      制作结束时间
+      "pageNum": 1,                页码
+      "pageSize": 10               当页条数
+    }
+ 出库任务对象 mfunckRwDoc
+     {
+        "ckrwId": 1,                         出库任务ID
+        "ckrwNo": "ckrw_no",                 出库任务号
+        "ckrwYjdcsj": 1489550217000,         预计到车时间
+        "ckrwCph": "CPH",                    车牌号
+        "ckrwSjdcsj": 1492150687000,         实际到车时间
+        "ckrwStatus": 10,                    出库任务状态（任务状态10.初始，11.下发 21.已挑选，31.已激活，41部分出库，42全部出库，51部分发运，52全部发运）
+        "ckrwQhStatus": 2,                   欠货状态（欠货状态：1.欠货(出库单据中存在"整单欠货"/"部分欠货"出库任务状态为"欠货" 2.未欠货(出库单据欠货状态全部为"未欠货"出库任务状态为"未欠货"）
+        "ckrwZlStatus": 2,                   滞留状态（滞留状态1.滞留，2.未滞留）
+        "ckrwWls": "jinan",                  物流商
+        "ckrwArehouseId": 1,                 仓库id（基本没用）
+        "ckrwClientId": 1,                   客户ID
+        "orderNum": 0,                       订单数
+        "goodsTypeNum": 0,                   品项数
+      }
+ */
+        /**
+ * TODO 回收存档 回收存档出库单据分页查询 POST /mfunck/selectConserveCkDocByPage
+ * 参数 查询参数对象：ckDocPageModel
+ * {
+      "draw": 0,
+      "ckCkdjNo": "",               出库单号（可模糊查询）
+      "mhStartCreateTime": "",      制作开始时间
+      "mhEndCreateTime": "",        制作结束时间
+      "ckStartXdsj": "",            下单开始时间
+      "ckEndXdsj": ""               下单结束时间
+    }
+ * {
+      ckCkdjId : 2                              出库单ID
+      ckCkdjNo : "jy33333"                      出库单号
+      ckErpNo : "testerp_no"                    erp单号
+      ckCkdjType : 0                            单据类型（0正常单据，1挂起单据，2滞留单据）
+      ckCkdjClientno : "ckdanju"                客户编号
+      ckCkdjClientname : "高新区银座超市"        客户名称
+      ckContacts : "郭靖"                        联系人
+      ckTel : "15689878987"                     电话
+      ckAdress : "高新区银座超市"                地址
+      ckXdsj : 1486531654000                    下单时间
+      ckBjsj : 1487741258000                    编辑时间
+      ckYfhsj : 1487827662000                   预发货时间
+      ckRemarks : "rrrrrrr"                     备注
+      ckStatus : 1                              出库单状态（1初始 21部分分拣，未下架状态 22部分出库，已下架 31全部分拣，未下架 32全部出库，下架完成41已挂起， 50作废）
+      ckIsauto : 1                              制单方式（1手动 2 excel 3接口）
+      ckCksj : 1486445274000                    出库时间
+      ckStartwith : 0                           设备端（1电脑端 2PDA）
+      ckIsyadan : 1                             是否压单（1是2否）
+      ckIsqianhuo : 1                           是否欠货（1是2否）
+      ckArehouseId : 1                          仓库ID
+      ckClientId : 2                            客户ID
+      ckEndtime : 1487050087000                 pda结束时间
+      ckRwStatus : 1                            出库任务状态（任务状态10.初始，11.下发 21.已挑选，31.已激活，41部分出库，42全部出库，51部分发运，52全部发运）
+      ckQhStatus : 3                            欠货状态（1.整单欠货(明细欠货状态全部为"全部欠货"出库单状态为"整单欠货"，2.部分欠货(明细欠货状态存在"未欠货","部分欠货"出库单状态为"部分欠货"，3.未欠货(明细欠货状态全部为"未欠货",出库单据为"未欠货"）
+      ckZlStatus : 1                            滞留状态（1.未到车滞留(出库单据明细滞留状态全部为"未到车滞留"出库单据滞留状态为"未到车滞留"，2.到车滞留(出库单据明细滞留状态存在"到车滞留"出库单据滞留状态为"到车滞留"，3.未滞留(出库单据明细滞留状态全部为"未滞留",出库单据滞留状态为"未滞留"）
+      ckGqStatus : 1                            挂起状态（1.未挂起，2.已挂起）
+      ckrwId : 0                                出库任务ID
+      mfunckDocs []                             出库明细对象
+      allCount : null                           总数量
+      allTj : null                              总体积
+      allHeight : null                          总重量
+      }
+ */
+        /**
+ * TODO 出库单管理 根据发运任务Id查询状态为（部分出库，全部出库）的出库单 POST /mfunck/selectDespatchCkDocByCkrwId
+ * 参数类 setModel
+ * {
+ *   "id": 5
+ *  }
+ *  返回jsonModel mfunckDoc 出库单集合
+ */
+        /**
+ * TODO 出库任务管理 修改出库发运数量 POST /mfunck/editGoodsCountByMfunckDocs
+ * {
+ *     cksCkmxId                        出库明细ID
+ *     cksGoodsId                        货品ID
+ *     cksGoodsCount                     货品数量
+ *     cksDwid                           单位ID
+ *     cksCkfs                           出库方式（分拣方式）
+ *     cksLocationId                      货品库存ID
+ *     cksStatus                         出库单明细 发货状
+ *     cksCkdjId                         出库单据ID
+ *     cksFyCount                         修改后的发运数量
+ * }
+
          *
-         */
-    /**
-     * TODO 回收存档
-     */
-        /**
-         * TODO 1 欠货补发信息(整单) POST /mfunck/QianHuoBuFaZd
-         *      参数名称 ckCdDocsParam
-         *      {
-                 *          "ckdjId" : 出库单据ID
-                 *          "cksBfNo" :补发单号
-                 *          "cksQhbfInfo" : 补发情况
-                 *          "cksQhRemarks" : 欠货备注
-                 *          "cksBfStatus" :补发状态
-                 *      }
-         */
-        /**
-            * TODO 2 欠货补发信息（明细） POST  /mfunck/QianHuoBuFaMx
-            *      参数名称 ckCdDocsParam
-            *      {
-                    *          "cksCkmxId" : 出库单明细ID
-                    *          "cksBfNo" :补发单号
-                    *          "cksQhbfInfo" : 补发情况
-                    *          "cksQhRemarks" : 欠货备注
-                    *          "cksBfStatus" :补发状态
-                    *      }
-         */
-        /**
-         * * TODO 3 滞留补发信息 POST /mfunck/zhiLiuBuFa
-          *         参数名称 ckCdDocsParam
-         *         {
-
-                  *              "ckrwNo" :"dddddfff", 补发单号
-
-                  *              "ckdjIds" :[34,35]   出库单据ID （多个）
-
-                  *         }
-         */
-        /**
- *      TODO 4  滞留导出 POST /mfunck/exportZldocByExcel
- *          参数名称 setModel
- *          {
-         *              "ids" :[32,33,34]  出库单据ID(多个)
-         *          }
-         */
-        /**
- *         TODO 5  欠货导出 POST /mfunck/exportQhdocByExcel
- *          参数名称 setModel
- *          {
-         *              "ids" :[31,32,33] 出库单据ID（多个）
-         *          }
-         */
-            /*
- * TODO 挑选数据
-
- * TODO 激活数据
- * TODO 出库操作
- * TODO 出库发运
- * TODO 回收存档
-
- *  TODO 欠货补发信息
+ *
+ */
+        /**  TODO 欠货补发信息
  *   补发单号
  *   补发情况
  *   欠货备注
@@ -3854,377 +2783,470 @@
  *     3.需跟进
  *  TODO 滞留补发信息
  *    任务号
- */
-
- /** TODO 库内管理*/
-    /**
-     *TODO 库位转移
-     *
-    */
-        /**
- * TODO 1 分页查询库位转移 /stockZyDoc/page
-         * {
-          "startTimeParam": "string",     开始时间
-          "endTimeParam": "string",       结束时间
-          "zyStatus": 0,                  转移状态
-          "zyMentionUserName": "string",  提起人
-          "zyCreateUserName": "string",   创建人
-          "pageNum": 0,
-          "pageSize": 0,
-          "draw": 0
-        }
-         *
- */
-        /**
-        * TODO 2 新增   POST /stockZyDoc
-         * {
-            "zyMentionUserId": 1,                 提起人id
-            "zyMentionUserName": "string",        提起人名称
-            "zyReason": "string",                 转移原因
-            "zyStatus": "0",                      转移状态
-            "zyCreateUserId": 1,                  创建人id
-            "zyCreateUserName": "string",         创建人名称
-            "zyConfirmUserId": 1,                 确认人id
-            "zyConfirmUserName": "string",        确认人名称
-            "zyCancelUserId": 1,                  作废人id
-            "zyCancelUserName": "string",         作废人名称
-            "zyArehouseId": 1,                    仓库id
-            "zyDocsList": [            转移明细
-                {
-                    "zysRepertoryId": 176,        合并后的库存id
-                    "zysZyBeforeLocationId": 2,   转移前储位id
-                    "zysZyAfterLocationId": 1,    转移后储位id
-                    "zysZyBeforeKyCount": 190,    转移前的可用数量
-                    "zysZyCount": 90              转移数量
-                },
-                {
-                    "zysRepertoryId": 183,
-                    "zysZyBeforeLocationId": 3,
-                    "zysZyAfterLocationId": 1,
-                    "zysZyBeforeKyCount": 720,
-                    "zysZyCount": 100
-                }
-            ]
-        }
-        */
-            /**
- * TODO 2-1 选择库存  POST /repertory/groupPage
-             *{
-              "bgGoodsNo": "",          货品编号
-              "bgGoodsName": "",        货品名称
-              "mrGoodsBatch": "",       货品批次
-              "blLname": "",            储位名称
-              "mrDjStatus": "",         冻结状态
-              "pageNum": 1,
-              "pageSize": 10,
-              "draw": 0
-            }
- */
-        /**
- *  TODO 3编辑    PUT /stockZyDoc
-         *  {
-            "zyId":9,                                 转移单id
-            "zyMentionUserId": 1,                     提起人id
-            "zyMentionUserName": "string",            提起人名称
-            "zyReason": "string",                     转移原因
-            "zyStatus": "0",                          转移状态
-            "zyCreateUserId": 1,                      创建人id
-            "zyCreateUserName": "string",             创建人名称
-            "zyCreateTime":"2017-04-20T11:56:42.597Z",创建时间
-            "zyConfirmUserId": 1,                     确认人id
-            "zyConfirmUserName": "string",            确认人名称
-            "zyCancelUserId": 1,                      作废人id
-            "zyCancelUserName": "string",             作废人名称
-            "zyArehouseId": 1,                        仓库id
-            "zyDocsList": [                           转移明细id
-                {
-                    "zysRepertoryId": 176,            合并后的库存id
-                    "zysZyBeforeLocationId": 2,       转移前库位id
-                    "zysZyAfterLocationId": 1,        转移后库位id
-                    "zysZyBeforeKyCount": 340,        转移前可用数量
-                    "zysZyCount": 150                 转移数量
-                },
-                {
-                    "zysRepertoryId": 183,
-                    "zysZyBeforeLocationId": 3,
-                    "zysZyAfterLocationId": 1,
-                    "zysZyBeforeKyCount": 720,
-                    "zysZyCount": 200
-                }
-            ]
-        }
- */
-            /**
- * TODO 3-1 选择库存  POST /repertory/groupPage
-             * {
-              "bgGoodsNo": "",          货品编号
-              "bgGoodsName": "",        货品名称
-              "mrGoodsBatch": "",       货品批次
-              "blLname": "",            储位名称
-              "mrDjStatus": "",         冻结状态
-              "pageNum": 1,
-              "pageSize": 10,
-              "draw": 0
-            }
- */
-        /**
-        * TODO 4删除     POST /stockZyDoc/deleteOfSoft
-        */
-/**
- * TODO 5 库存转移确认     GET /stockZyDoc/confirmZy/{zyId}
- *
- * /
- /**
- * TODO 库存冻结/解冻
- * /
- /**
- *TODO 新增
- */
-/**
- *TODO 新增
- */
-/**
- *TODO 新增
- */
-/**
- *TODO 新增
- */
-
-
-
-
- /**
  * TODO 库内管理
  * TODO 库位转移
  * TODO 库存转移确认
- */
+ * TODO 库存冻结/解冻
+ * TODO 入库日报
+ * TODO 出库日报
+ * TODO 动碰查询
+ * TODO 库存查询
     /**
-     * TODO  TODO 库存冻结/解冻
+    * TODO 入库单据查询
+    */
+        /**
+     *  TODO 分页查询
+         "rkArehouseId":"仓库",
+         "rkCreatetime":"下单时间",
+         "rkrkSjsj":"上架开始时间",
+         "rkEndTime":"上架结束时间",
+         "rkStatus":"入库状态",
+         "rkRkdjNo":"入库单号",
+         "rkZdfs":"制作方式",
+         "rkStartwith":"操作方式",
+         "allSL":"总数量",
+         "allTJ":"总体积",
+         "sssl":"实收数量",
+         "sstj":"实收体积",
+         "mdtUserId":"上架人员"
      */
         /**
-         *  TODO 1 分页查询库存冻结
-                djId                库存冻结主键
-                djReason            冻结原因/备注
-                djStatus            冻结状态0 冻结 1 解冻  2 作废
-                djCreateUserId      创建人员ID
-                djCreateTime        创建时间
-                djJdUserId          解冻人员ID
-                djJdTime            解冻时间
-                djDjTime            冻结时间
-                djZfUserId          作废人员ID
-                djZfTime            作废时间
-                djArehouseId        仓库ID
-                djDocsList[
-                        djsId           库存冻结明细主键
-                        djsDjId         库存冻结ID
-                        djsRepertoryId; 库存ID
-                        djsStatus;      0.已冻结 1.未冻结(可用)
-                ]
-
+         * TODO 查看入库明细信息
+         货品编号       rksGoodsId(关联货品表)
+         货品名称       rksGoodsId(关联货品表)
+         货品批次       mdtBatch
+         货品数量       rksCount
+         货品体积       bgGoodsTj
+         实收数量       sum(mdt_count)(暂用sssl)
+         实收体积       (暂用sstj)
+         入库明细状态   rksStatus
+         上架人员       mdtUserId(多个上架人员,在一列显示逗号隔开)
+         */
+        /**
+         * TODO 查看入库储位信息
+         货品编号    rksGoodsId(关联货品表)
+         货品名称    rksGoodsId(关联货品表)
+         货品批次    mdtBatch
+         上架库位    mdtLocationId
+         上架数量    mdtCount
+         实收体积    (暂用shtj)
+         上架人员    mdtUserId(多个上架人员,在一列显示逗号隔开)
+         上架时间    mdtSjsj
+         */
 
 /**
-         *  TODO 库存冻结分拣查询信息
+ * TODO 0 出库任务-查询-任务单 /mfunck/selectMfunckRwByPage
+ */
+/**
+ * TODO 1 出库任务-查询-任务单-详情 /mfunck/checkCkrwInfoByCkrwId
+ */
+/**
+ * TODO 2 出库任务-查询-任务单-详细-明细 /mfunck/checkMfunckDocsByCkdjId
+ */
+/**
+ * TODO 3 出库任务-下发 /mfunck/issuedCkrw
+ *
+ {
+  "ids": [
+    1,2,3
+  ],
+  "userName": "超Q"
+}
+ */
+/**
+ * TODO 4 出库任务-倒车 /mfunck/editSJdcsjByCkrwId
+ *
+ {
+  "id": 10,
+  "ckrwSjdcsj": "2017-05-08T03:14:27.609Z",
+  "userName": "张三"
+}
+ */
+/**
+ * TODO 5 出库任务-修改-任务单 /mfunck/editCkrw
+ *
+ *
+ {
+   "ckrwId":10,
+   "ckrwNo": "CK20170509-03",
+   "ckrwYjdcsj": "2017-04-18T03:45:44.353Z",
+   "ckrwCph": "鲁A56895",
+   "ckrwQhStatus": "1",
+   "ckrwZlStatus": "1",
+   "ckrwWls": "佳怡物流",
+   "ckrwArehouseId": 1,
+   "ckrwClientId": 1,
+ "userName":"超级管理员",
+   "ckCkdjIds": [
+     43,
+     44
+   ]
+ }
+
+ */
+/**
+ * TODO 6 出库任务-取消任务 /mfunck/checkMfunckDocsByCkdjId
+
+ {
+  "id": 10,
+  "userName": "张三"
+}
+
+ */
+/**
+ * TODO 7 出库任务-挂起单据 /mfunck/hangUpCkdocByCkdjId
+ *
+ *ids 为 出库单id
+ {
+  "id": 10,
+  "userName": "string"
+}
+ */
+/**
+ * TODO 8 出库任务-取消挂起 /mfunck/cancelHangUpCkdocByCkdjId
+ *
+ *ids 为 出库单id
+ {
+   "id":10,
+   "userName": "string"
+ }
+ */
+/**
+ * TODO 9 出库任务-修改分拣方式 /mfunck/editCkDocsFJFSByCkmxId
+ *
+ *
+ {
+  "cksCkmxId  ": 1,
+  "cksCkfs   ": "X"
+}
+
+
+ 库位
+ {
+  "cksCkmxId": 14,
+  "cksCkfs": "K",
+"cksLocationId": 1
+}
+
+ 批次    TODO 日期
+
+ {
+  "cksCkmxId": 14,
+  "cksCkfs": "P",
+"cksZdpc": 1
+}
+
+ */
+/**
+ * TODO 挑选单据
+ */
+        /**
+         *  TODO 0 挑选单据-查询-任务单据 POST /mfunck/selectChooseCkrwByPage
+         {
+           "draw": 0,
+           "ckrwNo": "",               任务单号（可模糊查询）
+           "ckrwCph": "",              车牌号（可模糊查询）
+           "ckrwWls": "",              物流商（可模糊查询）
+           "ckrwStartGreatTime": "",   制作开始时间
+           "ckrwEndGreatTime": "",     制作结束时间
+           "pageNum": 1,               页码
+           "pageSize": 10              当页条数
+         }
+         */
+        /**
+         *  TODO 1 挑选单据-挑选完成 POST /mfunck/chooseCompleteByCkrwId
+         *
+         *
+         *ids 为 出库单id
+         {
+           "ids":[2],
+           "userName": "string"
+         }
          *
          */
 /**
- *  TODO 盘点作业
- * */
-    /**
-     * TODO 动碰盘点
-     */
-        /**
-         *  盘点主表mfunpd_doc
-                pdId            盘点计划主键id
-                pdType          盘点计划类型 0 异动盘点 1 货品盘点 2 全仓盘点
-                pdYdBeginTime   异动开始时间
-                pdYdEndTime     异动结束时间
-                pdZyBeginTime   盘点作业开始时间
-                pdZyEndTime     盘点作业结束时间
-                pdCreateTime    盘点计划创建时间
-                pdCreateUserId  盘点计划创建人员ID
-                pdQrsj          盘点计划确认时间
-                pdQrUserId      盘点计划确认人员ID
-                pdZfsj          盘点计划作废时间
-                pdZfUserId      盘点计划作废人员
-                pdStatus        盘点状态0 初始 1 盘点确认  2 作废
-                pdChargePerson  负责人
-                pdOperator      经办人(多人)盘点操作人
-                pdArehouseId    仓库ID
-                pdDiffStatus    盘点差异 0 无差异  1 有差异
-         盘点明细表mfunpd_docs
-                pdsId               盘点计划明细主键
-                pdsPdId             盘点计划主键ID
-                pdsGoodsId          货品ID
-                pdsLocationId       库位ID
-                pdsRepertoryCount   库存数量
-                pdsPdCount          盘点数量
-                pdsDiffStatus       差异状态 0 无差异 1 有差异
-                pdsStatus           盘点状态0 未盘点   1 已盘点
-                pdsUserId           盘点人员id
-                pdsPdTime           盘点时间
-        */
-    /**
-            * TODO 循环盘点
-        */
-    /**
-            * TODO 全面盘点
-        */
-/**
- * TODO 业务查询
+ * TODO  激活单据分页查询
  */
     /**
-         * TODO 入库日报
-         */
+     * TODO 0 激活单据-查询-任务单  POST /mfunck/selectActivatedCkrwByPage
+     *  * 参数
+             {
+             "draw": 0,
+             "ckrwNo": "",                    (任务单号)
+             "ckrwCph": "",                    (车牌号)
+             "ckrwWls": "",                         (物流商)
+             "ckrwStartYjdcsj": "",        (预计到车时间)
+             "ckrwEndSjdcsj": "",          (实际倒车时间)
+             "ckrwStartGreatTime": "",                  (创建时间/制作时间)
+             "ckrwEndGreatTime": "",                    (创建结束时间)
+             "pageNum": 1,
+             "pageSize": 10
+            }
+     */
     /**
-         * TODO 出库日报
-         */
+     * TODO 1 激活任务
+     *
+     * 参数 setModel
+     {
+         "ids": [ 1,2,3,4], 任务ID（多个）
+        "useId": 1,      操作员ID
+        "userName": "超级管理员"   操作员名称
+}
+     */
     /**
-         * TODO 库存查询
+ * TODO 2 根据出库明细id修改分拣方式 POST /mfunck/editCkDocsFJFSByCkmxId
+ * 参数 参数对象：paramsModel
+ * {
+ *   "cksCkmxId": ,     出库明细id
+ *   "cksCkfs": "",     分拣方式 先进先出,指定批次,指定库位(x：p：k)
+ *   "cksZdpc": "",     指定批次（x,k时为空，不用传）
+ *   "cksLocationId": 1  指定库位（x,p时为空，不用传）
+ * }
+ * 返回 jsonModel  20002成功 50002失败
+ */
+/**
+ * TODO 3 追加分拣  POST /mfunck/bujianById
+ *          参数名称 ：serModel
+ *        {
+         *           "id": 43, 出库单据ID
+         *          "useId": 1  操作员ID
+         *         }
+ */
+/**
+ *  TODO 4 挂起确认 POST  /mfunck/guaQiById
+ *      参数名称 ：serModel
+ *      {
+         *          "id": 37,  出库单据ID
+         *          "useId": 1  操作员ID
+         *          "userName": "超级管理员"   操作员名称
+         *      }
+ */
+/**
+ *  TODO 5 激活单据 POST /mfunck/fenjianById
+ *      参数名称 ：serModel
+ *      {
+         *         "id": 44,  出库单据ID
+         *         "useId": 1  操作员ID
+         *       }
+ */
+/**
+ *  TODO 6 修改出库明细分拣数量 POST /mfunck/xiugaifenjian
+ *          参数名称 ：serModel
+ *      {
+         *           "id": 123, 出库单明细ID
+         *          "useId": 1,  操作员ID
+         *        "mxCount": 7，  修改后的数量（小于分拣数量）
+         *        "mxsXt": 1,修改数量原因(下拉框选择 1货品损坏2库存不足3其它)
+         *     }
+ */
+
+/**
+ * TODO 出库操作
+ */
+/**
+ * TODO 0 出库操作 出库单据分页查询 POST /mfunck/selectOperateCkDocByPage
+          {
+          "draw": 0,
+          "ckCkdjNo": "",           (出库单号)
+          "pageNum": 1,
+          "pageSize": 10,
+          "ckStatus": -1,           (状态)
+          "ckCkdjClientname": "",   (客户名称)
+          "ckrwCph": "",            (车牌号)
+          "ckrwWls": "",            (物流商)
+          "mhStartCreateTime": "",  (制作时间)
+          "mhEndCreateTime": "",
+          "ckStartXdsj": "",        (下单时间)
+          "ckEndXdsj": ""
+         }
+
+ */
+/**
+ * TODO 出库发运
+ */
+/**
+ * TODO 0 分页查询 POST /mfunck/selectDespatchCkrwByPage
+ * 参数：
+      {
+      "draw": 0,
+      "ckrwNo": "",
+      "ckrwCph": "",
+      "ckrwWls": "",
+      "ckrwStartYjdcsj": "",
+      "ckrwEndSjdcsj": "",
+      "ckrwStartSjdcsj": "",
+      "ckrwEndYjdcsj": "",
+      "ckrwStartGreatTime": "",
+      "ckrwEndGreatTime": "",
+      "pageNum": 1,
+      "pageSize": 10
+    }
+
+ *
+ */
+    /**
+     * TODO 回收存档
+     */
+        /**
+         * TODO 0 分页查询 POST /mfunck/selectConserveCkDocByPage
+         * 参数
+         * {
+                "draw": 0,
+                "ckCkdjNo": "jy33333",                              (出库单号)
+                "pageNum": 1,
+                "pageSize": 10,
+                "mhStartCreateTime": "2017-04-01T00:00:00.000Z",    (创建时间/制作时间)
+                "mhEndCreateTime": "2017-04-22T00:00:00.000Z",      (创建时间/制作时间)
+                "ckStartXdsj": "2017-02-01T00:00:00.000Z",          (下单时间)
+                "ckEndXdsj": "2017-02-22T00:00:00.000Z"             (下单时间)
+            }
          */
         /**
-         * TODO 库存查询
+         * TODO 1 欠货不发信息
          */
-    /**
-        * TODO 入库单据查询
+        /**
+        * TODO 2 滞留不发信息
         */
-            /**
-                TODO 分页查询
-                 "rkArehouseId":"仓库",
-                 "rkCreatetime":"下单时间",
-                 "rkrkSjsj":"上架开始时间",
-                 "rkEndTime":"上架结束时间",
-                 "rkStatus":"入库状态",
-                 "rkRkdjNo":"入库单号",
-                 "rkZdfs":"制作方式",
-                 "rkStartwith":"操作方式",
-                 "allSL":"总数量",
-                 "allTJ":"总体积",
-                 "sssl":"实收数量",
-                 "sstj":"实收体积",
-                 "mdtUserId":"上架人员"
-             */
-            /**
-             * TODO 查看入库明细信息
-             货品编号       rksGoodsId(关联货品表)
-             货品名称       rksGoodsId(关联货品表)
-             货品批次       mdtBatch
-             货品数量       rksCount
-             货品体积       bgGoodsTj
-             实收数量       sum(mdt_count)(暂用sssl)
-             实收体积       (暂用sstj)
-             入库明细状态   rksStatus
-             上架人员       mdtUserId(多个上架人员,在一列显示逗号隔开)
-             */
-            /**
-             * TODO 查看入库储位信息
-             货品编号    rksGoodsId(关联货品表)
-             货品名称    rksGoodsId(关联货品表)
-             货品批次    mdtBatch
-             上架库位    mdtLocationId
-             上架数量    mdtCount
-             实收体积    (暂用shtj)
-             上架人员    mdtUserId(多个上架人员,在一列显示逗号隔开)
-             上架时间    mdtSjsj
-             */
-            /**
-                 * TODO 出库单据查询
-             */
-            /**
-             *  TODO 分页查询
-             *  搜索条件的字段
-                    仓库             ckArehouseId
-                    下单时间         ckXdsj
-                    激活时间         mhCreatetime
-                    下架开始时间     ckCksj
-                    下架结束时间     ckEndtime
-                    出库单据状态     ckStatus  出库单据状态(1初始 21部分分拣，未下架状态 22部分出库，已下架 31全部分拣，未下架 32全部出库，下架完成 50作废)
-                    是否欠货         ckQhStatus 欠货状态
-                                     1.整单欠货(明细欠货状态全部为"全部欠货"出库单状态为"整单欠货")
-                                     2.部分欠货(明细欠货状态存在"未欠货","部分欠货"出库单状态为"部分欠货")
-                                     3.未欠货(明细欠货状态全部为"未欠货",出库单据为"未欠货")
-                    是否滞留         ckZlStatus  滞留状态
-                                     1.未到车滞留(出库单据明细滞留状态全部为"未到车滞留"出库单据滞留状态为"未到车滞留")
-                                     2.到车滞留(出库单据明细滞留状态存在"到车滞留"出库单据滞留状态为"到车滞留")
-                                     3.未滞留(出库单据明细滞留状态全部为"未滞留",出库单据滞留状态为"未滞留")
-                    联系电话         ckTel
-                    联系人           ckContacts
-                    客户编号         ckCkdjClientno
-                    客户名称         ckCkdjClientname
-                    出库单号         ckCkdjNo
-                    客户地址         ckAdress
-                    制作方式         ckIsauto制单方式(1手动 2excel/导入 3接口)
-                    操作方式         ckStartwith 1电脑端 2PDA
-                    单据类型         ckCkdjType 出库 单据类型 0正常单据 1挂起单据    2滞留单据
-             一级菜单：出库单
-             {
-                    TODO 仓库        ckArehouseId
-                    出库单号            ckCkdjNo
-                    单据类型            ckCkdjType
-                    单据状态            ckStatus    1:'初始',  21:'部分分拣'  22:'部分出库', 31:'全部分拣', 32:'全部出库 50:'作废',
-                    欠货状态            ckQhStatus
-                    滞留状态            ckZlStatus
-                    TODO 总数量       sum(cksGoodsCount)(暂用allSL)
-                    TODO 总体积       (暂用allTJ)
-                    TODO 下架数量     sum(msxMxCount)(暂用xjsl)
-                    TODO 下架体积     (暂用xjtj)
-                    TODO 欠货数量     sum(cksQhCount)(暂用qhsl)
-                    TODO 欠货体积     cksQhCount*bgGoodsTj(暂用qhtj)
-                    滞留数量            cksZlCount
-                    TODO 滞留体积     cksZlCount*bgGoodsTj(暂用zltj)
-                    客户编号            ckCkdjClientno
-                    客户名称            ckCkdjClientname
-                    客户地址            ckAdress
-                    联系电话            ckTel
-                    制作方式            ckIsauto
-                    操作方式            ckStartwith
-                    激活人员            ckrwHistoryOperator
-                    TODO 备货人员      msUserId
-                    下架人员            msxXjry（多个）
-              }
-             二级菜单：出库明细
-             {
-                    TODO 货品编号     cksGoodsId(关联货品表)
-                    TODO 货品名称     cksGoodsId（关联货品表）
-                    货品数量            cksGoodsCount
-                    TODO 货品体积     cksGoodsCount*bgGoodsTj(暂用hptj)
-                    下架数量            msxMxCount
-                    TODO 下架体积     msxMxCount*bgGoodsTj(暂用xjtj)
-                    欠货数量            cksQhCounts
-                    TODO 欠货体积     cksQhCounts*bgGoodsTj(暂用qhtj)
-                    滞留数量            cksZlCount
-                    TODO 滞留体积     cksZlCount*bgGoodsTj(暂用zltj)
-                    欠货(补发)单号      cksBfNo
-                    滞留任务号          cksZlbfInfo
-                    发运数量            cksFyCount
-                    TODO 发运体积     cksFyCount*bgGoddsTj(暂用fytj)
-                    欠货备注            cksQhRemarks
-                    补发状态            cksBfStatus
-             }
-             三级菜单： 分拣明细
-             {
-                    TODO 货品编号   msxHpkcid（关联货品库存表再关键货品表）
-                    TODO 货品名称   msxHpkcid（关联货品库存表再关联货品表）
-                    TODO 下架库位   msxHpkcid（关联货品库存表再关联库位表）
-                    下架数量         msxMxCount
-                    TODO 下架体积   msxMxCount*bgGoodsTj(暂用xjtj)
-                    TODO 下架批次   msx_hpkcid（关联货品库存表取mr_good_batch）
-                    操作人员         msxXjry
-                    操作时间         msxQrsj
-                    修改分拣数量原因 msxWt
-             }
-             *
-             *
-             */
+        /**
+         * TODO 3 导出欠货
+         */
+        /**
+         * TODO 4 导出滞留
+         */
+/**
+ *  参数类：ckDocPageModel
+         *  实例：
+         *  {
+              "draw": 0,
+              "ckCkdjNo": "jy1333",                        （出库单号）
+              "pageNum": 1,
+              "pageSize": 10,
+              "ckStatus": 0,                               （出库单状态）
+              "ckCkdjClientno": "jd465",                   （客户编号）
+              "ckCkdjClientname": "九阳",                  （客户名称）
+              "ckCkdjType": 0,                             （单据类型）
+              "ckArehouseId": 1,                           （仓库ID）
+              "mhStartCreateTime": "2017-03-12",           （激活开始时间）
+              "mhEndCreateTime": "2017-03-12",             （激活结束时间）
+              "ckStartXdsj": "2017-03-12",                 （下单开始时间）
+              "ckEndXdsj": "2017-03-12",                   （下单结束时间）
+              "ckEndtime": "2017-03-12",                   （下架结束时间）
+              "ckCksj": "2017-03-12",                      （下架开始时间）
+              "ckZlStatus": 0,                             （滞留状态）
+              "ckTel": "138",                              （电话）
+              "ckContacts": "郭靖",                         （联系人）
+              "ckAdress": "济南市",                         （地址）
+              "ckIsauto": 0,                                （制单方式）
+              "ckStartwith": 0,                             （操作方式）
+              "ckQhStatus": 0                               （缺货状态）
+            }
+         返回 pagelist
+
+         *  搜索条件的字段
+                仓库             ckArehouseId
+                下单时间         ckXdsj
+                激活时间         mhCreatetime
+                下架开始时间     ckCksj
+                下架结束时间     ckEndtime
+                出库单据状态     ckStatus  出库单据状态(1初始 21部分分拣，未下架状态 22部分出库，已下架 31全部分拣，未下架 32全部出库，下架完成 50作废)
+                是否欠货         ckQhStatus 欠货状态
+                                 1.整单欠货(明细欠货状态全部为"全部欠货"出库单状态为"整单欠货")
+                                 2.部分欠货(明细欠货状态存在"未欠货","部分欠货"出库单状态为"部分欠货")
+                                 3.未欠货(明细欠货状态全部为"未欠货",出库单据为"未欠货")
+                是否滞留         ckZlStatus  滞留状态
+                                 1.未到车滞留(出库单据明细滞留状态全部为"未到车滞留"出库单据滞留状态为"未到车滞留")
+                                 2.到车滞留(出库单据明细滞留状态存在"到车滞留"出库单据滞留状态为"到车滞留")
+                                 3.未滞留(出库单据明细滞留状态全部为"未滞留",出库单据滞留状态为"未滞留")
+                联系电话         ckTel
+                联系人           ckContacts
+                客户编号         ckCkdjClientno
+                客户名称         ckCkdjClientname
+                出库单号         ckCkdjNo
+                客户地址         ckAdress
+                制作方式         ckIsauto制单方式(1手动 2excel/导入 3接口)
+                操作方式         ckStartwith 1电脑端 2PDA
+                单据类型         ckCkdjType 出库 单据类型 0正常单据 1挂起单据    2滞留单据
+         一级菜单：出库单
+         {
+                TODO 仓库        ckArehouseId
+                出库单号            ckCkdjNo
+                单据类型            ckCkdjType
+                单据状态            ckStatus    1:'初始',  21:'部分分拣'  22:'部分出库', 31:'全部分拣', 32:'全部出库 50:'作废',
+                欠货状态            ckQhStatus
+                滞留状态            ckZlStatus
+                TODO 总数量       sum(cksGoodsCount)(暂用allSL)                allCount
+                TODO 总体积       (暂用allTJ)                                  allTj
+                TODO 下架数量     sum(msxMxCount)(暂用xjsl)                    allSortingCount
+                TODO 下架体积     (暂用xjtj)                                   allSortingTj
+                TODO 欠货数量     sum(cksQhCount)(暂用qhsl)                    allQhCount
+                TODO 欠货体积     cksQhCount*bgGoodsTj(暂用qhtj)               allQhTj
+                滞留数量            cksZlCount                                        allZlCount
+                TODO 滞留体积     cksZlCount*bgGoodsTj(暂用zltj)               allZlTj
+                客户编号            ckCkdjClientno
+                客户名称            ckCkdjClientname
+                客户地址            ckAdress
+                联系电话            ckTel
+                制作方式            ckIsauto
+                操作方式            ckStartwith
+                激活人员            ckrwHistoryOperator
+                TODO 备货人员      msUserId
+                下架人员            msxXjry（多个）
+          }
+         二级菜单：出库明细 POST /mfunck/findMfunckDocsByCkCkdjId
+         参数类： setModel
+         {
+           "id": 2     (出库单ID)
+         }
+         返回 jsonModel mfunckDocs 出库明细集合
+
+         {
+                TODO 货品编号     cksGoodsId(关联货品表)
+                TODO 货品名称     cksGoodsId（关联货品表）
+                货品数量            cksGoodsCount
+                TODO 货品体积     cksGoodsCount*bgGoodsTj(暂用hptj)    goodsTj
+                下架数量            msxMxCount                               sortingCount
+                TODO 下架体积     msxMxCount*bgGoodsTj(暂用xjtj)       sortingTj
+                欠货数量            cksQhCounts
+                TODO 欠货体积     cksQhCounts*bgGoodsTj(暂用qhtj)      cksQhTj
+                滞留数量            cksZlCount
+                TODO 滞留体积     cksZlCount*bgGoodsTj(暂用zltj)       cksZlTj
+                欠货(补发)单号      cksBfNo
+                滞留任务号          cksZlbfInfo
+                发运数量            cksFyCount
+                TODO 发运体积     cksFyCount*bgGoddsTj(暂用fytj)        cksFyTj
+                欠货备注            cksQhRemarks
+                补发状态            cksBfStatus
+         }
+         三级菜单： 分拣明细 POST /mfunck/findMfunckSortingMxByCkmxId
+         参数类： setModel
+         {
+           "id": 35       (出库明细ID)
+         }
+         返回 jsonModel mfunckSortingMx （分拣明细集合）
+         {
+                TODO 货品编号   msxHpkcid（关联货品库存表再关键货品表）
+                TODO 货品名称   msxHpkcid（关联货品库存表再关联货品表）
+                TODO 下架库位   msxHpkcid（关联货品库存表再关联库位表）
+                下架数量         msxMxCount
+                TODO 下架体积   msxMxCount*bgGoodsTj(暂用xjtj)                sortingTj
+                TODO 下架批次   msx_hpkcid（关联货品库存表取mr_good_batch）
+                操作人员         msxXjry
+                操作时间         msxQrsj
+                修改分拣数量原因 msxWt
+         }
+         *
+         *
+         */
     /**
      * TODO 货品流向查询 goodsFlowSelect
      */
         /**
-         *  TODO 分页查询
+         *  分页查询
          *  搜索条件
          *  {
                     仓库              ckArehouseId
-                    TODO 货品名称     msxHpkid（关联货品库存表再关联货品表）
-                    TODO 货品编号     msxHpkid（关联货品库存表再关联货品表）
+                    TODO 货品名称    msxHpkid（关联货品库存表再关联货品表）
+                    TODO 货品编号    msxHpkid（关联货品库存表再关联货品表）
                     客户名称          ckCkdjClientname
                     客户地址          ckAdress
                     联系人            ckContacts
@@ -4251,9 +3273,9 @@
      * TODO 库位转移查询
      *
      */
-        /**
-         * TODO 分页查询
-         * 搜索条件
+    /**
+     * 分页查询
+     * 搜索条件
      *  {
             创建时间    zyCreateTime
             确认时间    zyConfirmTime
@@ -4289,10 +3311,10 @@
 
      */
     /**
-        * TODO 库位冻结查询
-    */
-        /**
-        * TODO 分页查询
+ * 库位冻结查询
+ */
+       /**
+        * 分页查询
         * 搜索条件
         * {
                创建时间     djCreateTime
@@ -4363,7 +3385,6 @@
 
 
 
-
  */
         /**
          * TODO 1 盘点详情(盘点明细表mfunpd_docs)
@@ -4382,93 +3403,1181 @@
      * TODO 库内管理
      */
     /**
-     * 库存转移
-     */
+ *TODO 库位转移
+ *
+ */
         /**
-     *  TODO 库存管理 分页 根据货品id 库位id 仓库id 合并获取库存单据 POST /repertory/groupPage
-         {
+ * TODO 0 分页查询库位转移 POST /stockZyDoc/page
+ * {
+          "startTimeParam": "string",     开始时间
+          "endTimeParam": "string",       结束时间
+          "zyStatus": 0,                  转移状态
+          "zyMentionUserName": "string",  提起人
+          "zyCreateUserName": "string",   创建人
+          "pageNum": 0,
+          "pageSize": 0,
+          "draw": 0
+        }
+ *
+ */
+        /**
+ * TODO 1 新增   POST /stockZyDoc
+ * {
+            "zyMentionUserId": 1,                 提起人id
+            "zyMentionUserName": "string",        提起人名称
+            "zyReason": "string",                 转移原因
+            "zyStatus": "0",                      转移状态
+            "zyCreateUserId": 1,                  创建人id
+            "zyCreateUserName": "string",         创建人名称
+            "zyConfirmUserId": 1,                 确认人id
+            "zyConfirmUserName": "string",        确认人名称
+            "zyCancelUserId": 1,                  作废人id
+            "zyCancelUserName": "string",         作废人名称
+            "zyArehouseId": 1,                    仓库id
+            "zyDocsList": [            转移明细
+                {
+                    "zysRepertoryId": 176,        合并后的库存id
+                    "zysZyBeforeLocationId": 2,   转移前储位id
+                    "zysZyAfterLocationId": 1,    转移后储位id
+                    "zysZyBeforeKyCount": 190,    转移前的可用数量
+                    "zysZyCount": 90              转移数量
+                },
+                {
+                    "zysRepertoryId": 183,
+                    "zysZyBeforeLocationId": 3,
+                    "zysZyAfterLocationId": 1,
+                    "zysZyBeforeKyCount": 720,
+                    "zysZyCount": 100
+                }
+            ]
+        }
+ */
+        /**
+ *  TODO 2 编辑    PUT /stockZyDoc
+ *  {
+            "zyId":9,                                 转移单id
+            "zyMentionUserId": 1,                     提起人id
+            "zyMentionUserName": "string",            提起人名称
+            "zyReason": "string",                     转移原因
+            "zyStatus": "0",                          转移状态
+            "zyCreateUserId": 1,                      创建人id
+            "zyCreateUserName": "string",             创建人名称
+            "zyCreateTime":"2017-04-20T11:56:42.597Z",创建时间
+            "zyConfirmUserId": 1,                     确认人id
+            "zyConfirmUserName": "string",            确认人名称
+            "zyCancelUserId": 1,                      作废人id
+            "zyCancelUserName": "string",             作废人名称
+            "zyArehouseId": 1,                        仓库id
+            "zyDocsList": [                           转移明细id
+                {
+                    "zysRepertoryId": 176,            合并后的库存id
+                    "zysZyBeforeLocationId": 2,       转移前库位id
+                    "zysZyAfterLocationId": 1,        转移后库位id
+                    "zysZyBeforeKyCount": 340,        转移前可用数量
+                    "zysZyCount": 150                 转移数量
+                },
+                {
+                    "zysRepertoryId": 183,
+                    "zysZyBeforeLocationId": 3,
+                    "zysZyAfterLocationId": 1,
+                    "zysZyBeforeKyCount": 720,
+                    "zysZyCount": 200
+                }
+            ]
+        }
+ */
+        /**
+ *  TODO 3 库存管理 分页 根据货品id 库位id 仓库id 合并获取库存单据 POST /repertory/groupPage
+ {
+"data": [
+{
+"mrRepertoryId": 107,
+"mrLocationId": 3,
+"mrGoodsId": 13,
+"mrGoodsBatch": "2017-04-26",
+"mrDwid": 1,
+"mrCount": 40,
+"mrDxjCount": 0,
+"mrDjCount": 0,
+"mrDjStatus": true,
+"mrDzyCount": 0,
+"mrKcydsj": 1493197331000,
+"mrArehouseId": 1,
+"kyCount": 40,
+"baseLocation": {
+"blLocationId": 3,
+"blLname": "H16-39-A4",
+"blRegionId": 1,
+"blLtray": 21,
+"blLorder": 3,
+"blStatus": 1,
+"blArehouseId": 1
+},
+"baseGoods": {
+"bgGoodsId": 13,
+"bgGoodsNo": "13701003002",
+"bgGoodsName": "电热锅、JK-28R2（28R2-A）、红色+黑色+不锈钢一体、3L、220V、2100W、50HZ、内销、I类结构",
+"bgNamejc": "电热锅、JK-28R2（28R2-A）、红色+黑色+不锈钢一体、3L、220V、2100W、50HZ、内销、I类结构",
+"bgT": null,
+"bgI": null,
+"bgHsl": 4,
+"bgZxdw": 8,
+"bgSzdw": 1,
+"bgStatus": 1,
+"bgArehouseId": 1,
+"bgClientId": 2,
+"bgGoodsType": "",
+"bgGoodsTj": 23.83,
+"bgGoodsZl": 2,
+"bgGoodsPrice": null,
+"bgCreatetime": 1488942628000,
+"bgRemarks": "",
+"bgGoodsGg": "",
+"baseDws": null
+},
+"baseDw": {
+"bdDwId": 1,
+"bdName": "台",
+"bdStatus": 2,
+"bdIsdel": true,
+"bdCreatetime": 1488786104000
+},
+"baseArehouse": {
+"baArehouseId": 1,
+"baName": "九阳齐河仓",
+"baAddr": "齐河",
+"baScity": "济南",
+"baScontacts": "联系人1",
+"baPhone": "13267890789",
+"baAcreage": "baAcreage",
+"baCtype": "baCtype",
+"baHumidity": "baHumidity",
+"baFax": "baFax",
+"baPostoffice": "baPostoffice",
+"baIsti": 1,
+"baStatus": 1,
+"baClientId": 1,
+"baRemarks": "baRemarks",
+"baCreatetime": 1488092935000,
+"baPgroupinfo": null,
+"arehouseKqs": null
+},
+"baseArehouseKq": null
+}
+],
+"draw": 0,
+"recordsTotal": 1,
+"recordsFiltered": 1
+}
+
+ */
+        /**
+ * TODO 4 库存转移 软删除多个或单个库存转移数据  POST  /stockZyDoc/deleteOfSoft
+ */
+        /**
+            * TODO 5 分页获取库存转移单据(包含详细信息) POST /stockZyDoc/selectByPage
+         * {
   "data": [
     {
-      "mrRepertoryId": 107,
-      "mrLocationId": 3,
-      "mrGoodsId": 13,
-      "mrGoodsBatch": "2017-04-26",
-      "mrDwid": 1,
-      "mrCount": 40,
-      "mrDxjCount": 0,
-      "mrDjCount": 0,
-      "mrDjStatus": true,
-      "mrDzyCount": 0,
-      "mrKcydsj": 1493197331000,
-      "mrArehouseId": 1,
-      "kyCount": 40,
-      "baseLocation": {
-        "blLocationId": 3,
-        "blLname": "H16-39-A4",
-        "blRegionId": 1,
-        "blLtray": 21,
-        "blLorder": 3,
-        "blStatus": 1,
-        "blArehouseId": 1
-      },
-      "baseGoods": {
-        "bgGoodsId": 13,
-        "bgGoodsNo": "13701003002",
-        "bgGoodsName": "电热锅、JK-28R2（28R2-A）、红色+黑色+不锈钢一体、3L、220V、2100W、50HZ、内销、I类结构",
-        "bgNamejc": "电热锅、JK-28R2（28R2-A）、红色+黑色+不锈钢一体、3L、220V、2100W、50HZ、内销、I类结构",
-        "bgT": null,
-        "bgI": null,
-        "bgHsl": 4,
-        "bgZxdw": 8,
-        "bgSzdw": 1,
-        "bgStatus": 1,
-        "bgArehouseId": 1,
-        "bgClientId": 2,
-        "bgGoodsType": "",
-        "bgGoodsTj": 23.83,
-        "bgGoodsZl": 2,
-        "bgGoodsPrice": null,
-        "bgCreatetime": 1488942628000,
-        "bgRemarks": "",
-        "bgGoodsGg": "",
-        "baseDws": null
-      },
-      "baseDw": {
-        "bdDwId": 1,
-        "bdName": "台",
-        "bdStatus": 2,
-        "bdIsdel": true,
-        "bdCreatetime": 1488786104000
-      },
-      "baseArehouse": {
-        "baArehouseId": 1,
-        "baName": "九阳齐河仓",
-        "baAddr": "齐河",
-        "baScity": "济南",
-        "baScontacts": "联系人1",
-        "baPhone": "13267890789",
-        "baAcreage": "baAcreage",
-        "baCtype": "baCtype",
-        "baHumidity": "baHumidity",
-        "baFax": "baFax",
-        "baPostoffice": "baPostoffice",
-        "baIsti": 1,
-        "baStatus": 1,
-        "baClientId": 1,
-        "baRemarks": "baRemarks",
-        "baCreatetime": 1488092935000,
-        "baPgroupinfo": null,
-        "arehouseKqs": null
-      },
-      "baseArehouseKq": null
+      "zyId": 7,
+      "zyMentionUserId": 1,
+      "zyMentionUserName": "超级管理员",
+      "zyReason": "string",
+      "zyStatus": 0,
+      "zyCreateUserId": 1,
+      "zyCreateUserName": "超级管理员",
+      "zyCreateTime": 1494221354000,
+      "zyConfirmUserId": null,
+      "zyConfirmUserName": "",
+      "zyConfirmTime": null,
+      "zyCancelUserId": null,
+      "zyCancelUserName": "",
+      "zyCancelTime": null,
+      "zyArehouseId": 1,
+      "zyDocsList": [
+        {
+          "zysId": 8,
+          "zysZyId": 7,
+          "zysRepertoryId": 205,
+          "zysZyBeforeLocationId": 1,
+          "zysZyAfterLocationId": 1,
+          "zysZyBeforeKyCount": 100,
+          "zysZyCount": 0,
+          "mfunRepertory": {
+            "mrRepertoryId": 205,
+            "mrLocationId": 8,
+            "mrGoodsId": 1,
+            "mrGoodsBatch": "2017-04-27",
+            "mrDwid": 1,
+            "mrCount": 100,
+            "mrDxjCount": 20,
+            "mrDjCount": 0,
+            "mrDjStatus": true,
+            "mrDzyCount": 0,
+            "mrKcydsj": 1494315188000,
+            "mrArehouseId": 1,
+            "kyCount": null,
+            "baseLocation": {
+              "blLocationId": 8,
+              "blLname": "H16-43-A3", --货品库位
+              "blRegionId": 4,
+              "blLtray": 2,
+              "blLorder": 7,
+              "blStatus": 1,
+              "blArehouseId": 1
+            },
+            "baseGoods": {
+              "bgGoodsId": 1,
+              "bgGoodsNo": "13701003002",
+              "bgGoodsName": "电热锅、JK-30R2（30R2-A）、红色+黑色+不锈钢一体、3L、220V、2100W、50HZ、内销、I类结构",
+              "bgNamejc": "电热锅、JK-30R2（30R2-A）、红色+黑色+不锈钢一体、3L、220V、2100W、50HZ、内销、I类结构",
+              "bgT": 50,
+              "bgI": 10,
+              "bgHsl": 5,
+              "bgZxdw": 2,
+              "bgSzdw": 1,
+              "bgStatus": 1,
+              "bgArehouseId": 1,
+              "bgClientId": 1,
+              "bgGoodsType": "type1",
+              "bgGoodsTj": 9,
+              "bgGoodsZl": 10,
+              "bgGoodsPrice": 70,
+              "bgCreatetime": 1489643786000,
+              "bgRemarks": "九阳电磁炉",
+              "bgGoodsGg": "bg_goods_gg",
+              "baseDws": null
+            },
+            "baseDw": {
+              "bdDwId": 1,
+              "bdName": "台",
+              "bdStatus": 2,
+              "bdIsdel": true,
+              "bdCreatetime": 1488786104000
+            },
+            "baseArehouse": null,
+            "baseArehouseKq": null,
+            "baseRegion": null
+          }
+        }
+      ]
     }
   ],
   "draw": 0,
-  "recordsTotal": 1,
-  "recordsFiltered": 1
+  "recordsTotal": 5,
+  "recordsFiltered": 5
 }
-
+         *
+        */
+        /**
+ * TOOD 6  库存转移过程 通过库存转移单据id删除库存转移单据 DELETE /stockZyDoc/{zyId}
+ */
+        /**
+ *  TODO 7 通过库存转移单据id获取一条库存转移单据 GET /stockZyDoc/{zyId}
+ */
+    /**
+ * TODO 库存转移确认
+ */
+        /**
+ * TODO 0 分页查询库位转移 POST /stockZyDoc/page
+ * {
+          "startTimeParam": "string",     开始时间
+          "endTimeParam": "string",       结束时间
+          "zyStatus": 0,                  转移状态
+          "zyMentionUserName": "string",  提起人
+          "zyCreateUserName": "string",   创建人
+          "pageNum": 0,
+          "pageSize": 0,
+          "draw": 0
+        }
+ *
+ */
+        /**
+ *  TODO 1 库存转移过程 通过库存转移单据id确认转移一条转移单 GET /stockZyDoc/confirmZy/{zyId}
+ */
+        /**
+ * TODO 2 库存转移过程 软删除多个或单个库存转移数据 POST /stockZyDoc/deleteOfSoft
+ */
+        /**
+ * TODO 3 库存转移过程 分页获取库存转移单据 POST /stockZyDoc/page
+ */
+        /**
+ *  TODO 4 库存转移过程 分页获取库存转移单据(包含详细信息) POST /stockZyDoc/selectByPage
+ */
+        /**
+ * TODO 5 库存转移过程 通过库存转移单据id删除库存转移单据 DELETE /stockZyDoc/{zyId}
+ */
+        /**
+ * TODO 6 库存转移过程 通过库存转移单据id获取一条库存转移单据 GET /stockZyDoc/{zyId}
+ */
+    /**
+ * TODO 库存冻结/解冻
+ */
+        /**
+ *      TODO 0 库存冻结过程 分页获取库存冻结单据 POST /stockDjDoc/page
+ *      参数
+        *  {
+         "data": [
+           {
+             "djId": 3,
+             "djReason": "冻结原因",
+             "djStatus": 0,
+             "djCreateUserId": 1,
+             "djCreateTime": 1494238898000,
+             "djCreateUserName": "string",
+             "djDjUserId": 0,
+             "djDjTime": 1493774111000,
+             "djJdUserId": 0,
+             "djJdTime": 1493774111000,
+             "djJdUserName": "",
+             "djZfUserId": 0,
+             "djZfTime": 1493774111000,
+             "djZfUserName": "",
+             "djArehouseId": 0,
+             "djDocsList": []
+           }
+         ],
+         "draw": 0,
+         "recordsTotal": 3,
+         "recordsFiltered": 3
+         }
+ */
+        /**
+ *  TODO 1 库存冻结过程 分页获取库存冻结单据(包含明细) POST /stockDjDoc/selectByPage
+ *  {
+  "data": [
+    {
+      "djId": 3,
+      "djReason": "冻结原因",
+      "djStatus": 0,
+      "djCreateUserId": 1,
+      "djCreateTime": 1494238898000,
+      "djCreateUserName": "string",
+      "djDjUserId": 0,
+      "djDjTime": 1493774111000,
+      "djJdUserId": 0,
+      "djJdTime": 1493774111000,
+      "djJdUserName": "",
+      "djZfUserId": 0,
+      "djZfTime": 1493774111000,
+      "djZfUserName": "",
+      "djArehouseId": 0,
+      "djDocsList": [
+        {
+          "djsId": 5,
+          "djsDjId": 3,
+          "djsRepertoryId": 209,
+          "djsStatus": 1,
+          "mfunRepertory": {
+            "mrRepertoryId": 209,
+            "mrLocationId": 6,
+            "mrGoodsId": 2,
+            "mrGoodsBatch": "2017-05-04",
+            "mrDwid": 2,
+            "mrCount": 100,
+            "mrDxjCount": 0,
+            "mrDjCount": 0,
+            "mrDjStatus": true,
+            "mrDzyCount": 100,
+            "mrKcydsj": null,
+            "mrArehouseId": 1,
+            "kyCount": null,
+            "baseLocation": {
+              "blLocationId": 6,
+              "blLname": "H16-43-A1",
+              "blRegionId": 2,
+              "blLtray": 2,
+              "blLorder": 5,
+              "blStatus": 1,
+              "blArehouseId": 1
+            },
+            "baseGoods": {
+              "bgGoodsId": 2,
+              "bgGoodsNo": "13701002007",
+              "bgGoodsName": "电火锅、JK-40H8（40H8-A）、浅咖色、φ31cm、1300W、220V、50Hz、内销、I类结构",
+              "bgNamejc": "电火锅、JK-40H8（40H8-A）、浅咖色、φ31cm、1300W、220V、50Hz、内销、I类结构",
+              "bgT": 50,
+              "bgI": 1,
+              "bgHsl": 3,
+              "bgZxdw": 2,
+              "bgSzdw": 1,
+              "bgStatus": 1,
+              "bgArehouseId": 1,
+              "bgClientId": 2,
+              "bgGoodsType": "type1",
+              "bgGoodsTj": 11,
+              "bgGoodsZl": 22,
+              "bgGoodsPrice": 33,
+              "bgCreatetime": 1487913251000,
+              "bgRemarks": "任溶溶",
+              "bgGoodsGg": "太太团",
+              "baseDws": null
+            },
+            "baseDw": {
+              "bdDwId": 2,
+              "bdName": "箱",
+              "bdStatus": 1,
+              "bdIsdel": true,
+              "bdCreatetime": 1488786130000
+            },
+            "baseArehouse": null,
+            "baseArehouseKq": null,
+            "baseRegion": null
+          }
+        }
+      ]
+    }
+  ],
+  "draw": 0,
+  "recordsTotal": 3,
+  "recordsFiltered": 3
+}
+ */
+        /**
+ * TODO 2 库存冻结过程 新增库存冻结单据/包含库存冻结单明细 POST /stockDjDoc
+ * {
+  "djId": 0,
+  "djReason": "string",
+  "djStatus": "string",
+  "djCreateUserId": 0,
+  "djCreateTime": "2017-05-08T10:57:34.368Z",
+  "djCreateUserName": "string",
+  "djDjUserId": 0,
+  "djDjTime": "2017-05-08T10:57:34.368Z",
+  "djJdUserId": 0,
+  "djJdTime": "2017-05-08T10:57:34.368Z",
+  "djJdUserName": "string",
+  "djZfUserId": 0,
+  "djZfTime": "2017-05-08T10:57:34.368Z",
+  "djZfUserName": "string",
+  "djArehouseId": 0,
+  "djDocsList": [
+    {
+      "djsId": 0,
+      "djsDjId": 0,
+      "djsRepertoryId": 0,
+      "djsStatus": "string",
+      "mfunRepertory": {
+        "mrRepertoryId": 0,
+        "mrLocationId": 0,
+        "mrGoodsId": 0,
+        "mrGoodsBatch": "string",
+        "mrDwid": 0,
+        "mrCount": 0,
+        "mrDxjCount": 0,
+        "mrDjCount": 0,
+        "mrDjStatus": true,
+        "mrDzyCount": 0,
+        "mrKcydsj": "2017-05-08T10:57:34.368Z",
+        "mrArehouseId": 0,
+        "kyCount": 0,
+        "baseLocation": {
+          "blLocationId": 0,
+          "blLname": "string",
+          "blRegionId": 0,
+          "blLtray": 0,
+          "blLorder": 0,
+          "blStatus": 0,
+          "blArehouseId": 0
+        },
+        "baseGoods": {
+          "bgGoodsId": 0,
+          "bgGoodsNo": "string",
+          "bgGoodsName": "string",
+          "bgNamejc": "string",
+          "bgT": 0,
+          "bgI": 0,
+          "bgHsl": 0,
+          "bgZxdw": 0,
+          "bgSzdw": 0,
+          "bgStatus": 0,
+          "bgArehouseId": 0,
+          "bgClientId": 0,
+          "bgGoodsType": "string",
+          "bgGoodsTj": 0,
+          "bgGoodsZl": 0,
+          "bgGoodsPrice": 0,
+          "bgCreatetime": "2017-05-08T10:57:34.368Z",
+          "bgRemarks": "string",
+          "bgGoodsGg": "string",
+          "baseDws": [
+            {
+              "bdDwId": 0,
+              "bdName": "string",
+              "bdStatus": 0,
+              "bdIsdel": true,
+              "bdCreatetime": "2017-05-08T10:57:34.369Z"
+            }
+          ]
+        },
+        "baseDw": {
+          "bdDwId": 0,
+          "bdName": "string",
+          "bdStatus": 0,
+          "bdIsdel": true,
+          "bdCreatetime": "2017-05-08T10:57:34.369Z"
+        },
+        "baseArehouse": {
+          "baArehouseId": 0,
+          "baName": "string",
+          "baAddr": "string",
+          "baScity": "string",
+          "baScontacts": "string",
+          "baPhone": "string",
+          "baAcreage": "string",
+          "baCtype": "string",
+          "baHumidity": "string",
+          "baFax": "string",
+          "baPostoffice": "string",
+          "baIsti": 0,
+          "baStatus": 0,
+          "baClientId": 0,
+          "baRemarks": "string",
+          "baCreatetime": "2017-05-08T10:57:34.369Z",
+          "baPgroupinfo": "string",
+          "arehouseKqs": [
+            {
+              "baqKqId": 0,
+              "baqArehouseId": 0,
+              "baqKqName": "string",
+              "baqIsdel": 0,
+              "baqStatus": 0,
+              "baseRegions": [
+                {
+                  "brgRegionId": 0,
+                  "brgArehouseId": 0,
+                  "brgRegionNo": "string",
+                  "brgKqId": 0,
+                  "brgRegionStatus": 0,
+                  "baseLocationList": [
+                    {
+                      "blLocationId": 0,
+                      "blLname": "string",
+                      "blRegionId": 0,
+                      "blLtray": 0,
+                      "blLorder": 0,
+                      "blStatus": 0,
+                      "blArehouseId": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "baseArehouseKq": [
+          {
+            "baqKqId": 0,
+            "baqArehouseId": 0,
+            "baqKqName": "string",
+            "baqIsdel": 0,
+            "baqStatus": 0,
+            "baseRegions": [
+              {
+                "brgRegionId": 0,
+                "brgArehouseId": 0,
+                "brgRegionNo": "string",
+                "brgKqId": 0,
+                "brgRegionStatus": 0,
+                "baseLocationList": [
+                  {
+                    "blLocationId": 0,
+                    "blLname": "string",
+                    "blRegionId": 0,
+                    "blLtray": 0,
+                    "blLorder": 0,
+                    "blStatus": 0,
+                    "blArehouseId": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "baseRegion": {
+          "brgRegionId": 0,
+          "brgArehouseId": 0,
+          "brgRegionNo": "string",
+          "brgKqId": 0,
+          "brgRegionStatus": 0,
+          "baseLocationList": [
+            {
+              "blLocationId": 0,
+              "blLname": "string",
+              "blRegionId": 0,
+              "blLtray": 0,
+              "blLorder": 0,
+              "blStatus": 0,
+              "blArehouseId": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+ *
+ */
+        /**
+ * TODO 3 库存冻结过程 更新库存冻结数据 PUT /stockDjDoc
+ * {
+  "djId": 0,
+  "djReason": "string",
+  "djStatus": "string",
+  "djCreateUserId": 0,
+  "djCreateTime": "2017-05-08T10:57:34.370Z",
+  "djCreateUserName": "string",
+  "djDjUserId": 0,
+  "djDjTime": "2017-05-08T10:57:34.370Z",
+  "djJdUserId": 0,
+  "djJdTime": "2017-05-08T10:57:34.370Z",
+  "djJdUserName": "string",
+  "djZfUserId": 0,
+  "djZfTime": "2017-05-08T10:57:34.370Z",
+  "djZfUserName": "string",
+  "djArehouseId": 0,
+  "djDocsList": [
+    {
+      "djsId": 0,
+      "djsDjId": 0,
+      "djsRepertoryId": 0,
+      "djsStatus": "string",
+      "mfunRepertory": {
+        "mrRepertoryId": 0,
+        "mrLocationId": 0,
+        "mrGoodsId": 0,
+        "mrGoodsBatch": "string",
+        "mrDwid": 0,
+        "mrCount": 0,
+        "mrDxjCount": 0,
+        "mrDjCount": 0,
+        "mrDjStatus": true,
+        "mrDzyCount": 0,
+        "mrKcydsj": "2017-05-08T10:57:34.370Z",
+        "mrArehouseId": 0,
+        "kyCount": 0,
+        "baseLocation": {
+          "blLocationId": 0,
+          "blLname": "string",
+          "blRegionId": 0,
+          "blLtray": 0,
+          "blLorder": 0,
+          "blStatus": 0,
+          "blArehouseId": 0
+        },
+        "baseGoods": {
+          "bgGoodsId": 0,
+          "bgGoodsNo": "string",
+          "bgGoodsName": "string",
+          "bgNamejc": "string",
+          "bgT": 0,
+          "bgI": 0,
+          "bgHsl": 0,
+          "bgZxdw": 0,
+          "bgSzdw": 0,
+          "bgStatus": 0,
+          "bgArehouseId": 0,
+          "bgClientId": 0,
+          "bgGoodsType": "string",
+          "bgGoodsTj": 0,
+          "bgGoodsZl": 0,
+          "bgGoodsPrice": 0,
+          "bgCreatetime": "2017-05-08T10:57:34.370Z",
+          "bgRemarks": "string",
+          "bgGoodsGg": "string",
+          "baseDws": [
+            {
+              "bdDwId": 0,
+              "bdName": "string",
+              "bdStatus": 0,
+              "bdIsdel": true,
+              "bdCreatetime": "2017-05-08T10:57:34.371Z"
+            }
+          ]
+        },
+        "baseDw": {
+          "bdDwId": 0,
+          "bdName": "string",
+          "bdStatus": 0,
+          "bdIsdel": true,
+          "bdCreatetime": "2017-05-08T10:57:34.371Z"
+        },
+        "baseArehouse": {
+          "baArehouseId": 0,
+          "baName": "string",
+          "baAddr": "string",
+          "baScity": "string",
+          "baScontacts": "string",
+          "baPhone": "string",
+          "baAcreage": "string",
+          "baCtype": "string",
+          "baHumidity": "string",
+          "baFax": "string",
+          "baPostoffice": "string",
+          "baIsti": 0,
+          "baStatus": 0,
+          "baClientId": 0,
+          "baRemarks": "string",
+          "baCreatetime": "2017-05-08T10:57:34.371Z",
+          "baPgroupinfo": "string",
+          "arehouseKqs": [
+            {
+              "baqKqId": 0,
+              "baqArehouseId": 0,
+              "baqKqName": "string",
+              "baqIsdel": 0,
+              "baqStatus": 0,
+              "baseRegions": [
+                {
+                  "brgRegionId": 0,
+                  "brgArehouseId": 0,
+                  "brgRegionNo": "string",
+                  "brgKqId": 0,
+                  "brgRegionStatus": 0,
+                  "baseLocationList": [
+                    {
+                      "blLocationId": 0,
+                      "blLname": "string",
+                      "blRegionId": 0,
+                      "blLtray": 0,
+                      "blLorder": 0,
+                      "blStatus": 0,
+                      "blArehouseId": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "baseArehouseKq": [
+          {
+            "baqKqId": 0,
+            "baqArehouseId": 0,
+            "baqKqName": "string",
+            "baqIsdel": 0,
+            "baqStatus": 0,
+            "baseRegions": [
+              {
+                "brgRegionId": 0,
+                "brgArehouseId": 0,
+                "brgRegionNo": "string",
+                "brgKqId": 0,
+                "brgRegionStatus": 0,
+                "baseLocationList": [
+                  {
+                    "blLocationId": 0,
+                    "blLname": "string",
+                    "blRegionId": 0,
+                    "blLtray": 0,
+                    "blLorder": 0,
+                    "blStatus": 0,
+                    "blArehouseId": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "baseRegion": {
+          "brgRegionId": 0,
+          "brgArehouseId": 0,
+          "brgRegionNo": "string",
+          "brgKqId": 0,
+          "brgRegionStatus": 0,
+          "baseLocationList": [
+            {
+              "blLocationId": 0,
+              "blLname": "string",
+              "blRegionId": 0,
+              "blLtray": 0,
+              "blLorder": 0,
+              "blStatus": 0,
+              "blArehouseId": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+ *
+ */
+        /**
+        * TODO 4 库存冻结过程 通过库存冻结/解冻单据 冻结/解冻一条或多条库存单 POST /stockDjDoc/djAndJd
+        */
+        /**
+         * TODO 5 库存冻结过程 通过库存冻结单据id删除库存冻结单据  DELETE /stockDjDoc/{djId}
+         */
+        /**
+         * TODO 6  库存冻结过程 通过库存冻结单据id获取一条库存冻结单据 GET /stockDjDoc/{djId}
+         */
+/**
+ * TODO 库内管理
+ */
+    /**
+ * TODO 动碰盘点
+ */
+        /**
+ * TODO 0 POST /mfunpd/selectDPPDByPage 盘点查询 动碰盘点分页查询
+         * {
+          "data": [
+            {
+              "pdId": 1,
+              "pdType": 0,
+              "pdYdBeginTime": 1493308800000,
+              "pdYdEndTime": null,
+              "pdZyBeginTime": null,
+              "pdZyEndTime": null,
+              "pdCreateTime": 1493349660000,
+              "pdCreateUserId": 1,
+              "pdQrsj": 1493349772000,
+              "pdQrUserId": null,
+              "pdZfsj": null,
+              "pdZfUserId": null,
+              "pdStatus": 0,
+              "pdChargePerson": "",
+              "pdOperator": "",
+              "pdArehouseId": 1,
+              "pdDiffStatus": 1,
+              "mfunpdDocs": [],
+              "mrGoodsIds": null,
+              "rmsUser": null
+            }
+          ],
+          "draw": 0,
+          "recordsTotal": 1,
+          "recordsFiltered": 1
+        }
+         */
+        /**
+ * TODO 1 盘点作业 新增动碰盘点计划及明细 POST /mfunpd/insertDPMfunpdDocAndDocs
+ * {
+  "pdId": 0,
+  "pdType": "string",
+  "pdYdBeginTime": "2017-05-08T11:47:54.237Z",
+  "pdYdEndTime": "2017-05-08T11:47:54.237Z",
+  "pdZyBeginTime": "2017-05-08T11:47:54.237Z",
+  "pdZyEndTime": "2017-05-08T11:47:54.237Z",
+  "pdCreateTime": "2017-05-08T11:47:54.237Z",
+  "pdCreateUserId": 0,
+  "pdQrsj": "2017-05-08T11:47:54.237Z",
+  "pdQrUserId": 0,
+  "pdZfsj": "2017-05-08T11:47:54.237Z",
+  "pdZfUserId": 0,
+  "pdStatus": "string",
+  "pdChargePerson": "string",
+  "pdOperator": "string",
+  "pdArehouseId": 0,
+  "pdDiffStatus": "string",
+  "mfunpdDocs": [
+    {
+      "pdsId": 0,
+      "pdsPdId": 0,
+      "pdsGoodsId": 0,
+      "pdsLocationId": 0,
+      "pdsRepertoryCount": 0,
+      "pdsPdCount": 0,
+      "pdsDiffStatus": "string",
+      "pdsStatus": "string",
+      "pdsUserId": 0,
+      "pdsPdTime": "2017-05-08T11:47:54.238Z",
+      "baseGoods": {
+        "bgGoodsId": 0,
+        "bgGoodsNo": "string",
+        "bgGoodsName": "string",
+        "bgNamejc": "string",
+        "bgT": 0,
+        "bgI": 0,
+        "bgHsl": 0,
+        "bgZxdw": 0,
+        "bgSzdw": 0,
+        "bgStatus": 0,
+        "bgArehouseId": 0,
+        "bgClientId": 0,
+        "bgGoodsType": "string",
+        "bgGoodsTj": 0,
+        "bgGoodsZl": 0,
+        "bgGoodsPrice": 0,
+        "bgCreatetime": "2017-05-08T11:47:54.238Z",
+        "bgRemarks": "string",
+        "bgGoodsGg": "string",
+        "baseDws": [
+          {
+            "bdDwId": 0,
+            "bdName": "string",
+            "bdStatus": 0,
+            "bdIsdel": true,
+            "bdCreatetime": "2017-05-08T11:47:54.238Z"
+          }
+        ]
+      },
+      "baseLocation": {
+        "blLocationId": 0,
+        "blLname": "string",
+        "blRegionId": 0,
+        "blLtray": 0,
+        "blLorder": 0,
+        "blStatus": 0,
+        "blArehouseId": 0
+      },
+      "rmsUser": {
+        "ruUserId": 0,
+        "ruUserName": "string",
+        "ruLoginName": "string",
+        "ruLoginPassword": "string",
+        "ruPhone": "string",
+        "ruTelephone": "string",
+        "ruEmail": "string",
+        "ruSex": true,
+        "ruBirthday": "2017-05-08T11:47:54.238Z",
+        "ruHomeaddress": "string",
+        "ruQicq": "string",
+        "ruCreateTime": "2017-05-08T11:47:54.238Z",
+        "ruLastModifiedTime": "2017-05-08T11:47:54.239Z",
+        "ruStatus": 0,
+        "ruSalt": "string",
+        "ruUserType": 0,
+        "ruUserZyq": "string",
+        "ruRemarks": "string",
+        "ruIspda": true,
+        "ruPortrait": "string"
+      }
+    }
+  ],
+  "mrGoodsIds": [
+    0
+  ],
+  "rmsUser": {
+    "ruUserId": 0,
+    "ruUserName": "string",
+    "ruLoginName": "string",
+    "ruLoginPassword": "string",
+    "ruPhone": "string",
+    "ruTelephone": "string",
+    "ruEmail": "string",
+    "ruSex": true,
+    "ruBirthday": "2017-05-08T11:47:54.239Z",
+    "ruHomeaddress": "string",
+    "ruQicq": "string",
+    "ruCreateTime": "2017-05-08T11:47:54.239Z",
+    "ruLastModifiedTime": "2017-05-08T11:47:54.239Z",
+    "ruStatus": 0,
+    "ruSalt": "string",
+    "ruUserType": 0,
+    "ruUserZyq": "string",
+    "ruRemarks": "string",
+    "ruIspda": true,
+    "ruPortrait": "string"
+  }
+}
+ */
+        /**
+         * TODO 2 盘点作业 根据盘点明细id分配任务 POST /mfunpd/allocatingTaskByPdsId
+         */
+        /**
+         *  TODO 3 盘点作业 根据盘点计划id确认盘点信息（修改库存) POST /mfunpd/confirmPdDocByPdId
+         */
+        /**
+         * TODO 4 盘点作业 根据盘点明细id重盘（修改状态) POST /mfunpd/againPdByPdsId
+         */
+        /**
+         * TODO 5 盘点作业 分配任务页面根据盘点计划ID查询详情 POST /mfunpd/selectPdInfoByPdId
+         */
+        /**
+         * TODO 6 盘点作业 盘点详情页面根据盘点计划ID查询详情 POST /mfunpd/selectPdInfoByPdsPdId
+         */
+    /**
+ * TODO 循环盘点
+  */
+        /**
+         *   TODO 0 盘点查询 循环盘点分页查询 POST /mfunpd/selectXHPDByPage
+         *
+        */
+        /**
+         * TODO 1 盘点作业 新增循环盘点计划及明细  POST /mfunpd/insertXHMfunpdDocAndDocs
+         */
+        /**
+         * TODO 2 盘点作业 根据盘点明细id重盘（修改状态） POST /mfunpd/againPdByPdsId
+         */
+        /**
+         * TODO 3 盘点作业 根据盘点明细id分配任务  POST /mfunpd/allocatingTaskByPdsId
+         */
+        /**
+         * TODO 4 盘点作业 根据盘点计划id确认盘点信息（修改库存）POST /mfunpd/confirmPdDocByPdId
+         */
+        /**
+         * TODO 5 盘点作业 分配任务页面根据盘点计划ID查询详情 POST /mfunpd/selectPdInfoByPdId
+         */
+        /**
+         * TODO 6 盘点作业 盘点详情页面根据盘点计划ID查询详情  POST /mfunpd/selectPdInfoByPdsPdId
+         */
+    /**
+    * TODO 全面盘点
+    */
+        /**
+         * TODO 0  盘点查询 全面盘点分页查询 POST /mfunpd/selectQMPDByPage
+         */
+        /**
+         * TODO 1 盘点作业 新增全面盘点计划及明细  POST /mfunpd/insertQMMfunpdDocAndDocs
+         */
+        /**
+         *  TODO 2 盘点作业 根据盘点明细id重盘（修改状态)  POST /mfunpd/againPdByPdsId
+         */
+        /**
+         * TODO 3 盘点作业 根据盘点明细id分配任务  POST /mfunpd/allocatingTaskByPdsId
+         */
+        /**
+         * TODO 4 盘点作业 根据盘点计划id确认盘点信息（修改库存） POST /mfunpd/confirmPdDocByPdId
+         */
+        /**
+         * TODO 5 盘点作业 分配任务页面根据盘点计划ID查询详情  POST /mfunpd/selectPdInfoByPdId
+         */
+        /**
+         * TODO 6 盘点作业 盘点详情页面根据盘点计划ID查询详情 POST /mfunpd/selectPdInfoByPdsPdId
+         */
+/**
+ * TODO 业务查询
+ */
+    /**
+     * TODO 入库日报
+     *
      */
+        /**
+        * TODO 0 分页查询
+        */
+        /**
+         * TODO 1 导出
+         */
+    /**
+     * TODO 出库日报
+     */
+        /**
+         * TODO 0 分页查询  POST /mfunck/SelectCkRb
+         */
+        /**
+         * TODO 1 导出 post /mfunck/exportCkRbByExcel
+         */
+    /**
+     * 库存查询
+      */
+        /**
+         * TODO 0 分页查询 POST /repertory/groupPage
+         */
+        /**
+         * TODO 1 导出
+         */
+    /**
+     * TODO 入库单据查询
+     */
+        /**
+         * TODO 0 分页查询
+         */
+        /**
+        * TODO 1 导出
+        */
+    /**
+     * TODO 出库单据查询
+     */
+        /**
+         * TODO 0 分页查询  POST /mfunck/findMfunckDocByPage
+         */
+        /**
+         * TODO 1 业务查询 根据出库单id查询出库明细（二级菜单）POST /mfunck/findMfunckDocsByCkCkdjId
+         */
+        /**
+         * TODO 2 业务查询 根据出库明细id查询分拣明细集合（三级菜单） POST /mfunck/findMfunckSortingMxByCkmxId
+          */
+        /**
+         * TODO 3 导出出库单
+          */
+        /**
+         * TODO 4 导出明细
+          */
+        /**
+         * TODO 5 导出分拣明细
+          */
+        /**
+         * TODO 6 导出出库
+          */
+
+
+    /**
+ * TODO 货品流向查询
+     */
+        /**
+         * TODO 0 分页查询  post /mfunck/selectHplxCx
+         */
+        /**
+         * TODO 1 导出  post /mfunck/exportHplxCxByExcel
+
+         */
+    /**
+     * TODO 库存转移查询
+     */
+        /**
+         * TODO 0  库存转移过程 分页获取库存转移单据(包含详细信息) POST /stockZyDoc/selectByPage
+         */
+    /**
+    * TODO 库存冻结查询
+     */
+        /**
+         * TODO 0 库存冻结过程 分页获取库存冻结单据 POST /stockDjDoc/page
+         */
+    /**
+        * TODO 盘点查询
+     */
+        /**
+        * TODO 0 业务查询 根据查询条件分页查询盘点计划 POST /mfunpd/selectMfunpdByPage
+        * 参数：
+        * {
+               "draw": 0,
+               "pageNum": 1,
+               "pageSize": 10
+          }
+        字段
+        {
+           "data": [
+             {
+               "pdId": 1,
+               "pdType": 0,
+               "pdYdBeginTime": 1493308800000,
+               "pdYdEndTime": null,
+               "pdZyBeginTime": null,
+               "pdZyEndTime": null,
+               "pdCreateTime": 1493349660000,
+               "pdCreateUserId": 1,
+               "pdQrsj": 1493349772000,
+               "pdQrUserId": null,
+               "pdZfsj": null,
+               "pdZfUserId": null,
+               "pdStatus": 0,
+               "pdChargePerson": "",
+               "pdOperator": "",
+               "pdArehouseId": 1,
+               "pdDiffStatus": 1,
+               "mfunpdDocs": [],
+               "mrGoodsIds": null,
+               "rmsUser": null
+             }
+           ],
+           "draw": 0,
+           "recordsTotal": 1,
+           "recordsFiltered": 1
+          }
+        */
+        /**
+         * TODO 1 业务查询 根据盘点计划ID查询盘点详情 POST /mfunpd/selectMfunpdDocsByPdsPdId
+         */
+        /**
+         * TODO 2 导出
+         */
+
+
+
+
+
+
 
 
 

@@ -4,32 +4,57 @@
             element-loading-text="拼命加载中">
         <el-col :span="24">
             <div class="inner btn-nav">
+                <el-input
+                        @change="selectReturn"
+                        class="input"
+                        v-model="rkRkdjNo"
+                        icon="search"
+                        placeholder="入库单号"></el-input>
+                <el-date-picker
+                        v-model="date"
+                        type="daterange"
+                        align="right"
+                        placeholder="下单时间"
+                        class="input"
+                        :picker-options="pickerOptions">
+                </el-date-picker>
+                <el-select
+                        @visible-change="selectReturn"
+                        v-model="rkStatus" placeholder="请选择">
+                    <el-option :value="-1" label="全部"></el-option>
+                    <el-option :value="1" label="原始状态"></el-option>
+                    <el-option :value="21" label="部分分配"></el-option>
+                    <el-option :value="22" label="全部分配"></el-option>
+                    <el-option :value="31" label="部分收货"></el-option>
+                    <el-option :value="32" label="全部收货"></el-option>
+                </el-select>
+                <el-select
+                        :disabled="watchView"
+                        v-model="rkArehouseId"
+                        placeholder="请选择所属仓库">
+                    <el-option :label="obj.baName" :value="obj.baArehouseId"
+                               v-for="obj of baseArehouses"></el-option>
+                </el-select>
                 <button @click="dialogSelectVisible=!dialogSelectVisible" class="btn btn-search"><i
                         class="icon search"></i><span>详细查询</span>
                 </button>
                 <button @click="multiSelectClick" class="btn btn-multiSelect"><i
                         class="icon sel"></i><span>多选</span>
                 </button>
-                <button @click="exportInputList" class="btn btn-modify" v-show="multiSelect"><i
+                <button @click="multiExportInputList" class="btn btn-modify" v-show="multiSelect"><i
                         class="icon modify"></i><span>导出入库单</span>
                 </button>
-                <button @click="exportInputDetailed" class="btn btn-modify" v-show="multiSelect"><i
+                <button @click="multiExportInputDetailed" class="btn btn-modify" v-show="multiSelect"><i
                         class="icon modify"></i><span>导出入库明细</span>
                 </button>
-                <button @click="exportInputStorage" class="btn btn-modify" v-show="multiSelect"><i
+                <button @click="multiExportInputStorage" class="btn btn-modify" v-show="multiSelect"><i
                         class="icon modify"></i><span>导出入库储位</span>
                 </button>
-                 <button @click="exportInput" class="btn btn-modify" v-show="multiSelect"><i
-                        class="icon modify"></i><span>导出入库</span>
-                </button>
-
-
-
             </div>
             <el-table
                     :data="inputSelect"
                     :default-sort="{prop: 'sjsj', order: 'descending'}"
-                    :max-height="570"
+                    :max-height="config_table_height()"
                     ref="table"
                     class="inputSelectTable"
                     @selection-change='multiSelectionChange'
@@ -44,72 +69,148 @@
                             <el-row>
                                 <el-col :span="10">
                                     <el-form-item label="仓库">
-                                        <span>{{ props.row.rkArehouseId }}</span>
+                                        <span>{{ props.row.baArehouse.baName }}</span>
                                     </el-form-item>
                                     <el-form-item label="入库单号">
-                                        <span>{{ props.row.rkRkdjNo }}</span>
+                                        <el-tag type="success">{{props.row.rkRkdjNo }}</el-tag>
                                     </el-form-item>
-                                    <el-form-item label="收货状态">
-                                        <span>{{ auto_rkStatus(props.row.rkStatus) }}</span>
+                                    <el-form-item label="单据状态">
+                                        <el-tag-s :val="auto_el_tag('rkStatus',props.row.rkStatus)"></el-tag-s>
                                     </el-form-item>
-                                      <el-form-item label="总数量">
-                                        <span>{{props.row.allSL }}</span>
+                                    <el-form-item label="总台数">
+                                        <span>{{props.row.allCount }}</span>
                                     </el-form-item>
-                                      <el-form-item label="总体积">
-                                        <span>{{ props.row.allTJ}}</span>
+                                    <el-form-item label="总体积">
+                                        <span>{{ props.row.allTj}}</span>
                                     </el-form-item>
-                                      <el-form-item label="实收数量">
-                                        <span>{{ props.row.sssl }}</span>
+                                      <el-form-item label="总件数">
+                                        <span>{{ props.row.jianAndtaiAllCount}}</span>
                                     </el-form-item>
-                                      <el-form-item label="实收体积">
-                                        <span>{{props.row.sstj }}</span>
+                                    <el-form-item label="实收件数">
+                                        <span>{{ props.row.mdtJianAndTaiCount }}</span>
+                                    </el-form-item>
+                                    <el-form-item label="实收台数">
+                                        <span>{{ props.row.mdtAllCount }}</span>
+                                    </el-form-item>
+                                    <el-form-item label="实收体积">
+                                        <span>{{props.row.mdtAllTj }}</span>
                                     </el-form-item>
                                     <el-form-item label="下单时间">
                                         <span>
                                             <el-icon name="time"></el-icon>
-                                            {{auto_rkCreatetime(props.row.rkCreatetime)}}</span>
+                                            {{auto_time_new(props.row.rkCreatetime,6)}}</span>
                                     </el-form-item>
                                 </el-col>
                                 <el-col :span="10" :offset="2">
                                     <el-form-item label="上架开始">
                                         <span>
                                             <el-icon name="time"></el-icon>
-                                            {{ auto_rkrkSjsj(props.row.rkrkSjsj) }}</span>
+                                            {{ auto_time_new(props.row.rkSjsj,6) }}</span>
                                     </el-form-item>
                                     <el-form-item label="上架结束">
                                         <span>
                                             <el-icon name="time"></el-icon>
-                                            {{ auto_rkEndTime(props.row.rkEndTime) }}</span>
+                                            {{ auto_time_new(props.row.rkEndTime,6) }}</span>
                                     </el-form-item>
                                     <el-form-item label="上架人员">
-                                        <span>{{ props.row.mdtUserId }}</span>
+                                        <span>{{ props.row.mdtUserName }}</span>
                                     </el-form-item>
                                     <el-form-item label="制作方式">
-                                        <span>{{ auto_rkZdfs(props.row.rkZdfs) }}</span>
+                                        <el-tag-s :val="auto_el_tag('rkZdfs',props.row.rkZdfs)"></el-tag-s>
                                     </el-form-item>
                                     <el-form-item label="操作方式">
-                                        <span>{{ auto_rkStartwith(props.row.rkStartwith) }}</span>
+                                        <el-tag-s :val="auto_el_tag('rkStartwith',props.row.rkStartwith)"></el-tag-s>
                                     </el-form-item>
                                     <el-form-item
                                             label="可用操作">
-                                        <el-button
-                                                size="small"
-                                                @click="selectInputDetailed(props.$index, props.row)">查看入库明细信息
-                                        </el-button>
-                                        <el-button
-                                                size="small"
-                                                @click="selectInputStorage(props.$index, props.row)">查看入库储位信息
-                                        </el-button>
+                                        <el-row v-if="window.body.kjQyW>1366">
+                                            <el-button
+                                                    size="small"
+                                                    type="success"
+                                                    @click="inlineExportInputList(props.$index, props.row)">导出入库
+                                            </el-button>
+                                            <el-button
+                                                    size="small"
+                                                    type="success"
+                                                    @click="inlineExportInputDetailed(props.$index, props.row)">导出明细
+                                            </el-button>
+                                            <el-button
+                                                    size="small"
+                                                    type="success"
+                                                    @click="inlineExportInputStorage(props.$index, props.row)">导出储位
+                                            </el-button>
+                                        </el-row>
+                                        <el-row v-if="window.body.kjQyW>1366">
+                                            <el-button
+                                                    size="small"
+                                                    @click="inlineSelectInputDetailed(props.$index, props.row)">查看入库明细信息
+                                            </el-button>
+                                            <el-button
+                                                    size="small"
+                                                    @click="inlineSelectInputStorage(props.$index, props.row)">查看入库储位信息
+                                            </el-button>
+                                        </el-row>
+                                        <el-row v-if="window.body.kjQyW<=1366">
+                                            <el-row>
+                                                <el-button
+                                                        size="small"
+                                                        type="success"
+                                                        @click="inlineExportInputList(props.$index, props.row)">导出入库
+                                                </el-button>
+                                            </el-row>
+
+                                            <el-row>
+                                                <el-button
+                                                        size="small"
+                                                        type="success"
+                                                        @click="inlineExportInputDetailed(props.$index, props.row)">导出明细
+                                                </el-button>
+                                            </el-row>
+
+                                            <el-row>
+                                                <el-button
+                                                        size="small"
+                                                        type="success"
+                                                        @click="inlineExportInputStorage(props.$index, props.row)">导出储位
+                                                </el-button>
+                                            </el-row>
+
+                                            <el-row>
+                                                <el-button
+                                                        size="small"
+                                                        @click="inlineSelectInputDetailed(props.$index, props.row)">
+                                                    查看入库明细信息
+                                                </el-button>
+                                            </el-row>
+
+                                            <el-row>
+                                                <el-button
+                                                        size="small"
+                                                        @click="inlineSelectInputStorage(props.$index, props.row)">
+                                                    查看入库储位信息
+                                                </el-button>
+                                            </el-row>
+                                        </el-row>
+
                                     </el-form-item>
                                 </el-col>
                             </el-row>
                         </el-form>
                     </template>
                 </el-table-column>
-                <!--<el-table-column-->
-                <!--type="index"-->
-                <!--width="55">-->
-                <!--</el-table-column>-->
+                <el-table-column
+                        label="仓库"
+                        show-overflow-tooltip
+                        prop="baArehouse.baName"
+                        align="center">
+                    <template scope="scope">
+                        <el-tag
+                                type="success"
+                                close-transition>
+                            {{(scope.row.baArehouse.baName)}}
+                        </el-tag>
+                    </template>
+                </el-table-column>
                 <el-table-column
                         label="入库单号"
                         show-overflow-tooltip
@@ -117,45 +218,38 @@
                         align="center">
                 </el-table-column>
                 <el-table-column
-                        label="下单时间"
+                        label="总数量"
                         show-overflow-tooltip
+                        prop="allCount"
                         align="center">
-                    <template scope="scope">
-                        {{auto_rkCreatetime(scope.row.rkCreatetime,true)}}
-                    </template>
                 </el-table-column>
                 <el-table-column
-                        label="上架人员"
+                        label="总体积"
                         show-overflow-tooltip
-                        align="center"
-                        prop="mdtUserId">
+                        prop="allTj"
+                        align="center">
                 </el-table-column>
                 <el-table-column
                         label="实收数量"
                         show-overflow-tooltip
                         align="center"
-                        prop="sssl">
+                        prop="mdtAllCount">
                 </el-table-column>
                 <el-table-column
-                        label="制作方式"
+                        label="下单时间"
                         show-overflow-tooltip
-                        align="center"
-                        prop="rkZdfs">
+                        align="center">
                     <template scope="scope">
-                        <el-tag
-                                close-transition> {{auto_rkZdfs(scope.row.rkZdfs,true)}}
-                        </el-tag>
+                        {{auto_time_new(scope.row.rkCreatetime)}}
                     </template>
                 </el-table-column>
                 <el-table-column
-                        label="入库状态"
+                        label="单据状态"
                         prop="rkStatus"
                         align="center"
                         width="100">
                     <template scope="scope">
-                        <el-tag
-                                close-transition> {{auto_rkStatus(scope.row.rkStatus)}}
-                        </el-tag>
+                        <el-tag-s :val="auto_el_tag('rkStatus',scope.row.rkStatus)"></el-tag-s>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -172,7 +266,7 @@
                         :page-sizes="[5, 10, 15, 20]"
                         :page-size="pageSize"
                         layout="total, sizes, prev, pager, next, jumper"
-                        :total="inputSelect.length">
+                        :total="currentTotal">
                 </el-pagination>
             </div>
         </el-col>
@@ -184,7 +278,7 @@
         <div class="dialog-title clearfix" slot="title">
             <span class="el-dialog__title">详细查询</span>
         </div>
-        <el-form :model="select">
+        <el-form :model="form">
             <el-form-item label="下单时间"
                           :label-width="formLabelWidth">
                 <el-date-picker
@@ -196,18 +290,26 @@
                         :picker-options="pickerOptions">
                 </el-date-picker>
             </el-form-item>
-            <el-form-item label="上架时间"
+            <el-form-item label="上架开始"
                           :label-width="formLabelWidth">
                 <el-date-picker
-                        v-model="form.rkrkSjsj"
-                        type="daterange"
+                        v-model="form.rkSjsj"
+                        type="date"
                         align="right"
-                        placeholder="上架时间"
-                        class="input"
-                        :picker-options="pickerOptions">
+                        placeholder="上架开始"
+                        class="input">
                 </el-date-picker>
             </el-form-item>
-
+            <el-form-item label="上架结束"
+                          :label-width="formLabelWidth">
+                <el-date-picker
+                        v-model="form.rkEndTime"
+                        type="date"
+                        align="right"
+                        placeholder="上架结束"
+                        class="input">
+                </el-date-picker>
+            </el-form-item>
             <el-form-item label="入库单号"
                           :label-width="formLabelWidth">
                 <el-input
@@ -216,14 +318,15 @@
                         icon="search"
                         placeholder="入库单号"></el-input>
             </el-form-item>
-            <el-form-item label="入库状态"
+            <el-form-item label="单据状态"
                           :label-width="formLabelWidth">
                 <el-select v-model="form.rkStatus" placeholder="请选择">
                     <el-option :value="-1" label="全部"></el-option>
+                    <el-option :value="1" label="原始状态"></el-option>
                     <el-option :value="21" label="部分分配"></el-option>
                     <el-option :value="22" label="全部分配"></el-option>
-                    <el-option :value="31" label="部分上架"></el-option>
-                    <el-option :value="32" label="全部上架"></el-option>
+                    <el-option :value="31" label="部分收货"></el-option>
+                    <el-option :value="32" label="全部收货"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="制单方式"
@@ -239,34 +342,24 @@
                           :label-width="formLabelWidth">
                 <el-select v-model="form.rkStartwith" placeholder="请选择">
                     <el-option :value="-1" label="全部"></el-option>
+                    <el-option :value="0" label="初始"></el-option>
                     <el-option :value="1" label="电脑端"></el-option>
                     <el-option :value="2" label="PDA"></el-option>
                 </el-select>
             </el-form-item>
+            <el-form-item label="所属仓库" :label-width="formLabelWidth">
+                <el-select
+                        :disabled="watchView"
+                        v-model="form.rkArehouseId"
+                        placeholder="请选择所属仓库">
+                    <el-option :label="obj.baName" :value="obj.baArehouseId"
+                               v-for="obj of baseArehouses"></el-option>
+                </el-select>
+            </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="form = _form()">重置</el-button>
             <el-button type="primary" @click="selectSubmit" :loading="selectLoading">查询</el-button>
-        </div>
-    </el-dialog>
-    <el-dialog
-            size="large"
-            class="printf"
-            class="printf"
-            v-model="dialogPrintfVisible">
-        <div class="dialog-title clearfix" slot="title">
-            <span class="el-dialog__title">打印标签页</span>
-        </div>
-        <el-tree
-                :data="printf"
-                :props="{label: 'name',children: 'children'}"
-                :load="printfLoadNode"
-                lazy
-                show-checkbox
-                ref="printf"
-                @check-change="printfCheckChange">
-        </el-tree>
-        <div slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="printfSubmit" :loading="printfLoading">打印</el-button>
         </div>
     </el-dialog>
     <el-dialog
@@ -279,45 +372,41 @@
                 style="width: 100%">
             <el-table-column
                     label="货品编号"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="rksGoodsId">
+                    prop="baseGoods.bgGoodsNo">
             </el-table-column>
             <el-table-column
                     label="货品名称"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="rksGoodsId">
-            </el-table-column>
-            <el-table-column
-                    label="货品批次"
-                    width="140"
-                    show-overflow-tooltip
-                    align="center"
-                    prop="mdtBatch">
+                    prop="baseGoods.bgGoodsName">
             </el-table-column>
             <el-table-column
                     label="货品数量"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
                     prop="rksCount">
             </el-table-column>
             <el-table-column
                     label="货品体积"
+                    show-overflow-tooltip
+                    align="center"
+                    prop="goodsTj">
+            </el-table-column>
+            <el-table-column
+                    label="实收数量"
                     width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="bgGoodsTj">
+                    prop="mdtCount">
             </el-table-column>
             <el-table-column
                     label="实收体积"
                     width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="shtj">
+                    prop="mdtTj">
             </el-table-column>
             <el-table-column
                     label="入库明细状态"
@@ -325,13 +414,16 @@
                     show-overflow-tooltip
                     align="center"
                     prop="rksStatus">
+                <template scope="scope">
+                    {{auto_rksStatus(scope.row.rksStatus)}}
+                </template>
             </el-table-column>
             <el-table-column
                     label="上架人员"
                     width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="mdtUserId">
+                    prop="mdtUser">
             </el-table-column>
         </el-table>
     </el-dialog>
@@ -345,810 +437,61 @@
                 style="width: 100%">
             <el-table-column
                     label="货品编号"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="rksGoodsId">
+                    prop="goodsNo">
             </el-table-column>
             <el-table-column
                     label="货品名称"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="rksGoodsId">
+                    prop="goodsName">
             </el-table-column>
             <el-table-column
                     label="货品批次"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
                     prop="mdtBatch">
             </el-table-column>
             <el-table-column
                     label="上架库位"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="mdtLocationId">
+                    prop="baseLocation.blLname">
             </el-table-column>
             <el-table-column
                     label="上架数量"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
                     prop="mdtCount">
             </el-table-column>
             <el-table-column
                     label="实收体积"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="shtj">
+                    prop="mdtTj">
             </el-table-column>
             <el-table-column
                     label="上架人员"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
-                    prop="mdtUserId">
+                    prop="rmsUser.ruUserName">
             </el-table-column>
             <el-table-column
                     label="上架时间"
-                    width="140"
                     show-overflow-tooltip
                     align="center"
                     prop="mdtSjsj">
+                <template scope="scope">
+                    {{auto_time_new(scope.row.mdtSjsj,4)}}
+                </template>
+
             </el-table-column>
         </el-table>
     </el-dialog>
 </div>
-
-<style>
-    #inputSelect {
-        width: 100%;
-        min-width: 890px;
-        position: relative;
-    }
-
-    #inputSelect .demo-table-expand {
-        font-size: 0;
-    }
-
-    #inputSelect .demo-table-expand label {
-        width: 90px;
-        color: #99a9bf;
-    }
-
-    #inputSelect .demo-table-expand .el-form-item {
-        margin-right: 0;
-        margin-bottom: 0;
-        width: 80%;
-    }
-
-    #inputSelect .el-table__expand-column .el-table__expand-icon {
-        height: 39px;
-    }
-
-    #inputSelect .table {
-        transition: 1s all;
-    }
-
-    #inputSelect .el-carousel__container {
-        height: 440px;
-    }
-
-    .el-tooltip__popper {
-        max-width: 400px;
-    }
-
-    .el-step__main {
-        max-width: calc(100% - 60px);
-    }
-
-    #inputSelect .inputSelectTable {
-        width: 95% !important;
-        margin: 20px auto;
-    }
-
-    #inputSelect .datePicker {
-        width: 140px !important;
-        height: 24px !important;
-        margin-top: 29px;
-        margin-right: 18px;
-        float: left;
-    }
-
-    #inputSelect .datePicker .el-input__inner {
-        border-radius: 2px !important;
-        height: 24px !important;
-    }
-
-    #inputSelect .add {
-        background: url("/static/images/add.png") no-repeat center;
-    }
-
-    #inputSelect .del {
-        background: url("/static/images/del.png") no-repeat center;
-    }
-
-    #inputSelect .search {
-        background: url("/static/images/search.png") no-repeat center;
-    }
-
-    #inputSelect .sel {
-        background: url("/static/images/sel.png") no-repeat center;
-    }
-
-    #inputSelect .icon {
-        float: left;
-    }
-
-    #inputSelect .btn span {
-        float: left;
-        margin-top: 4px;
-        margin-left: 2px;
-    }
-
-    #inputSelect .btn {
-        height: 24px;
-        line-height: 1;
-        border: none;
-        background: #f8fafb;
-        outline: none;
-        cursor: pointer;
-        padding: 0;
-        margin: 0;
-        float: left;
-        font-size: 14px;
-        color: #1f2d3d;
-        margin-top: 29px;
-        margin-right: 16px;
-    }
-
-    #inputSelect .btn-print {
-        margin-right: 0;
-    }
-
-    #inputSelect .btn:hover {
-        color: #5468ee;
-    }
-
-    #inputSelect .inner {
-        margin: 0 20px;
-    }
-
-    #inputSelect .btn-nav {
-        height: 60px;
-        overflow: hidden;
-    }
-
-    #inputSelect .btn-nav .el-input .el-input__inner {
-        height: 24px;
-    }
-
-    #inputSelect .btn-nav .el-input {
-        float: left;
-        margin-top: 29px;
-        margin-right: 18px;
-        width: 140px;
-        height: 24px;
-    }
-</style>
-<style>
-    .steps {
-        position: absolute;
-        bottom: 10px;
-        left: 30px;
-        margin: auto;
-    }
-
-    .el-dialog__headerbtn {
-        position: absolute;
-        right: 25px;
-        top: 15px;
-    }
-
-    .el-step__main {
-        margin-left: -8px !important;
-    }
-</style>
-<style>
-    .select {
-
-    }
-
-    .select .input {
-        width: 70%;
-    }
-</style>
-<script>
-    function form() {
-        return {
-            rkrwN: '',
-            rkrwCph: '',
-            dds: '',
-            pxs: '',
-            rkrwSjxm: '',
-            rkrwDhrq: '',
-            rkrwDbd: '',
-            rkrwCys: '',
-            rkrwDh: '',
-            rkrwStatus: '',
-            rkCreatetime:[null,null],//模糊查询--下单时间
-            rkrkSjsj:[null,null],     //模糊查询--上架时间
-            rkRkdjNo:'',                //模糊查询--入库单号
-            rkStatus:'',                 //模糊查询--入库状态
-            rkZdfs:'',                   //模糊查询--制单方式
-            rkStartwith:'',              //模糊查询--操作方式
-        }
-    }
-    function formDetailed() {
-        return {
-            rksGoodsId: '',     // 货品编号
-            rksGoodsId1: '',     // 货品名称
-            mdtBatch: '',       // 货品批次
-            rksCount: '',       // 货品数量
-            bgGoodsTj:'',       //货品体积
-            sssl: '',           // 实收数量
-            sstj:'',            //实收体积
-            rksStatus: '',      //入库明细状态
-            mdtUserId: ''       // 上架人员
-        }
-    }//明细
-    function formStorage() {
-        return {
-            rksGoodsId: '',     //货品编号
-            rksGoodsId1: '',     //货品名称
-            mdtBatch: '',       //货品批次
-            mdtLocationId: '',  //上架库位
-            mdtCount: '',       //上架数量
-            sstj:'',             //实收体积
-            mdtUserId:'',       //上架人员
-            mdtSjsj: ''         //上架时间
-        }
-    }//储位
-
-    var inputSelect = new Vue({
-        el: '#inputSelect',
-        prop: {},
-        data: function () {
-            return {
-                inputSelect: [],
-                multipleSelection: [],
-                multiSelect: false,
-                pickerOptions: {
-                    shortcuts: [{
-                        text: '最近一周',
-                        onClick: function (picker) {
-                            var end = new Date();
-                            var start = new Date();
-                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-                            picker.$emit('pick', [start, end]);
-                        }
-                    }, {
-                        text: '最近一个月',
-                        onClick: function (picker) {
-                            var end = new Date();
-                            var start = new Date();
-                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-                            picker.$emit('pick', [start, end]);
-                        }
-                    }, {
-                        text: '最近三个月',
-                        onClick: function (picker) {
-                            var end = new Date();
-                            var start = new Date();
-                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-                            picker.$emit('pick', [start, end]);
-                        }
-                    }]
-                },
-                showLoading: false,
-                currentPage: 1,
-                pageSize: 10,
-                date: [null, null],                 //主页面 选择日期 搜索
-                rkRkdjNo: '',                       //主页面 入库单号 搜索
-                formLabelWidth: '120px',          //表单 配置
-                form: form(),                       //表单 弹出层 信息集合
-                dialogFormActive: 0,              //新建 弹出层 steps 当前进度
-                dialogFormVisible: false,         //新建 弹出层 是否可见
-                submitLoading: false,             //新建 弹出层 提交等待
-
-                //detailed: formDetailed(), //表单           //查看入库明细信息 弹出层 信息集合(表单格式)
-                detailed:[],
-                dialogDetailedVisible: false,    //查看入库明细信息 弹出层 是否可见
-
-                storage: [],           //查看入库储位信息 弹出层 信息集合
-                dialogStorageVisible: false,     //查看入库储位信息 弹出层 是否可见
-
-                select: form(),                      //搜索 弹出层 信息集合,
-                printf: [],                         //搜索 弹出层 信息集合,
-                dialogSelectVisible: false,
-                dialogPrintfVisible: false,
-                selectLoading: false,
-                printfLoading: false,
-
-                printDatas: [],          // 打印数据
-            }
-        },
-        computed: {
-            // TODO 表格提交
-            option: function () {
-                return {
-                    "draw": 1,
-                    "pageNum": this.currentPage,
-                    "pageSize": this.pageSize
-                }
-            },
-            search: function () {
-                return {
-                    "draw": 1,
-                    "pageNum": this.currentPage,
-                    "pageSize": this.pageSize,
-                    "rkrwN": this.form.rkrwN,
-                    "rkrwCph": this.form.rkrwCph,
-                    "dds": this.form.dds,
-                    "pxs": this.form.pxs,
-                    "rkrwSjxm": this.form.rkrwSjxm,
-                    "rkrwDhrq": this.form.rkrwDhrq,
-                    "rkrwDbd": this.form.rkrwDbd,
-                    "rkrwCys": this.form.rkrwCys,
-                    "rkrwDh": this.form.rkrwDh,
-                    "rkrwStatus": this.form.rkrwStatus
-                }
-            },
-            distributionForm: function () {
-                return {
-                    distribution: this.distribution
-                }
-            },                                      //分配 表单
-        },
-        methods: {
-            inlineModify: function (index, row) {
-                this.multipleSelection = [row];
-                printfCompile(this);
-                this.dialogPrintfVisible = !this.dialogPrintfVisible;
-            },                                //行内按钮 打印标签页
-            multiSelectClick: function () {
-                this.multiSelect = !this.multiSelect;
-            },                                      //多选 状态维护
-            multiSelectionChange: function (val) {
-                /*<debug>*/
-                console.log(this.multipleSelection);
-                /*</debug>*/
-                this.multipleSelection = val;
-            },                               //多选 选中控制
-            exportInputList: function () {
-                printfCompile(this);
-                this.dialogPrintfVisible = !this.dialogPrintfVisible;
-            },                                       //多选 导出入库单
-            exportInputDetailed: function () {
-                printfCompile(this);
-                this.dialogPrintfVisible = !this.dialogPrintfVisible;
-            },                                   //多选 导出入库明细
-            exportInputStorage: function () {
-                printfCompile(this);
-                this.dialogPrintfVisible = !this.dialogPrintfVisible;
-            },                                    //多选 导出入库储位
-            exportInput: function () {
-                printfCompile(this);
-                this.dialogPrintfVisible = !this.dialogPrintfVisible;
-            },                                           //多选 导出入库
-            handleSizeChange: function (val) {
-                /*<debug>*/
-                console.log('每页' + val + '条');
-                /*</debug>*/
-                this.pageSize = val;
-                post(this, this.option);
-            },                                   //分页 Size
-            handleCurrentChange: function (val) {
-                /*<debug>*/
-                console.log('当前第' + val + '页');
-                /*</debug>*/
-                this.currentPage = val;
-                post(this, this.option);
-            },                                //分页 当前页
-            prev: function () {
-                this.dialogFormActive--;
-                this.$refs.carousel.prev();
-            },                                                  //新建 弹出层banner控制 前一个
-            next: function () {
-                this.dialogFormActive++;
-                this.$refs.carousel.next();
-            },                                                  //新建 弹出层banner控制 后一个
-            submit: function () {
-                var _this = this;
-                this.dialogFormActive++;
-                this.submitLoading = true;
-                //TODO 此处应是ajax请求
-                setTimeout(function () {
-                    _this.submitLoading = false;
-                    _this.$notify({
-                        title: '成功',
-                        message: '保存成功！',
-                        type: 'success'
-                    });
-                    _this.dialogFormVisible = false;
-                    _this.form = {
-                        rkRkdjNo: '',
-                        rkType: '',
-                        rkRemarks: '',
-                        rkDocsList: [],
-                        bgGoodsNo: '',
-                        selectGood: {
-                            value: '',
-                            bgGoodsName: '',
-                            count: 0,
-                            bgGoodsId: ''
-                        },
-                        saveARkDocsList: true,
-                        deleteARkDocsList: true
-                    };
-                    _this.dialogFormActive = 0;
-                    _this.$refs.carousel.setActiveItem(0);
-                    post(inputSelect);
-                }, 1500);
-            },                                                //新建 表单提交
-            selectSubmit: function () {
-                this.dialogSelectVisible = !this.dialogSelectVisible;
-                post(this, {});
-            },                                          //详细查询 提交
-            printfSubmit: function () {
-                var datas=[];
-                var checkData=inputSelect.$refs.printf.getCheckedNodes();
-                for(var i in checkData){
-                    if(typeof checkData[i].val2!=='undefined'){
-                        datas.push(checkData[i]);
-                    }
-                }
-                this.printDatas=datas;
-                this.dialogPelectVisible = !this.dialogPrintfVisible;
-                wap.print(this);
-            },                                          //打印 提交
-            printfCheckChange: function () {
-
-            },                                     //打印 选中维护
-            selectInputDetailed: function () {
-                this.dialogDetailedVisible = true;
-            },                                   //行内按钮-查看入库明细信息
-            selectInputStorage: function () {
-                this.dialogStorageVisible = true;
-            },                                    //行内按钮-入库储位信息
-            detailedSubmit: function () {
-
-            },
-            storageSubmit: function () {
-
-            },
-
-            printfLoadNode: function (node, resolve) {
-                console.log(node.data);
-                switch (node.level) {
-                    case 0:
-                        return resolve(this.printf);
-                    case 1:
-                        postRkrwNo(this, {
-                            rkrwNo:node.data.rkrwNo,
-                            rkrwDhrq:node.data.rkrwDhrq
-                        }, resolve);
-                        break;
-                    case 2:
-                        console.log(node.data.name);
-                        postRkdjId(this, {
-                            rkrwNo:node.data.rkrwNo,
-                            rkrwDhrq:node.data.rkrwDhrq
-                        }, resolve);
-                        break;
-                    case 3:
-                        return resolve([]);
-                }
-            },
-            auto_mdtSjsj: function (value, bool) {
-                if (!bool) return dateFormat(new Date(parseInt(value)), 'yyyy年 MM月 dd日');
-                else return dateFormat(new Date(parseInt(value)), 'yyyy-MM-dd');
-            },                               //作业时间
-            auto_rkrkSjsj: function (value, bool) {
-                if (!bool) return dateFormat(new Date(parseInt(value)), 'yyyy年 MM月 dd日');
-                else return dateFormat(new Date(parseInt(value)), 'yyyy-MM-dd');
-            },                              //上架开始时间
-            auto_rkEndTime: function (value, bool) {
-                if (!bool) return dateFormat(new Date(parseInt(value)), 'yyyy年 MM月 dd日');
-                else return dateFormat(new Date(parseInt(value)), 'yyyy-MM-dd');
-            },                             //上架结束时间
-            auto_rkCreatetime: function (value, bool) {
-                if (!bool) return dateFormat(new Date(parseInt(value)), 'yyyy年 MM月 dd日');
-                else return dateFormat(new Date(parseInt(value)), 'yyyy-MM-dd');
-            },                          //下单时间
-            auto_rkStatus:function(value){
-                var temp={}
-                if(!isNaN(value)){
-                    temp={
-                        1:'原始状态',
-                        21:'部分分配',
-                        22:'全部分配',
-                        31:'部分收货',
-                        32:'完全收货',
-                    }
-                }else{
-                    temp={
-                        '原始状态':1,
-                        '部分分配':21,
-                        '全部分配':22,
-                        '部分收货':31,
-                        '完全收货':32
-                    }
-                }
-                return temp[value];
-            },                                       //入库状态
-            auto_rkZdfs:function(value){
-                var temp={}
-                if(!isNaN(value)){
-                    temp={
-                        1:'手动',
-                        2:'导入',
-                        3:'接口',
-                    }
-                }else{
-                    temp={
-                        '手动':1,
-                        '导入':2,
-                        '接口':3,
-                    }
-                }
-                return temp[value];
-            },                                         //操作方式
-            auto_rkStartwith:function(value){
-                var temp={}
-                if(!isNaN(value)){
-                    temp={
-                        1:'电脑端',
-                        2:'PDA',
-                    }
-                }else{
-                    temp={
-                        '电脑端':1,
-                        'PDA':2,
-                    }
-                }
-                return temp[value];
-            },                                    //入库状态
-
-
-
-
-        }
-    });
-
-    // 高级 监视器的 使用方法
-    //    inputSelect.$watch('date', function () {
-    //        if (!this.option.dateStart)return;
-    //        /*<debug>*/
-    //        console.log(this.option);
-    //        /*</debug>*/
-    //        post(this, this.option);
-    //    }, {deep: true});
-
-    post(inputSelect);
-    function post(obj, option) {
-        obj.showLoading = true;
-
-        /*<debug>*/
-        url = "/hock/inputSelect/page.json";
-        /*</debug>*/
-
-        /*<prod>*/
-        url = "/data/inputOption/" + option;
-        /*</prod>*/
-
-        $.ajax(url, {
-            type: "GET",
-            data: option | {
-                "draw": 1,                      //* 没有意义
-                "pageNum": 1,                   //* 当前页
-                "pageSize": 10                  //* 每页大小
-            },
-            error: function (error) {
-                errorTip(obj, error);
-            },
-            success: function (json) {
-                console.log(json);
-                obj.$data.inputSelect = json.data;
-                obj.$data.currentTotal = json.recordsFiltered;
-            },
-            complete: function () {
-                obj.showLoading = false;
-            }
-        });
-    }                        //TODO 获取入库日报主页面
-    function postSelectInputDetailed(obj, option) {
-        obj.showLoading = true;
-
-        /*<debug>*/
-        url = "/hock/inputSelect/selectInputDetailed.json";
-        /*</debug>*/
-
-        /*<prod>*/
-        url = "/data/inputOption/" + option;
-        /*</prod>*/
-
-        $.ajax(url, {
-            type: "GET",
-            data: option | {
-                "draw": 1,                      //* 没有意义
-                "pageNum": 1,                   //* 当前页
-                "pageSize": 10                  //* 每页大小
-            },
-            error: function (error) {
-                errorTip(obj, error);
-            },
-            success: function (json) {
-                console.log(json);
-                obj.$data.inputSelect = json.data;
-            },
-            complete: function () {
-                obj.showLoading = false;
-            }
-        });
-    }     //TODO 查看入库明细信息
-    function postSelectInputStorage(obj, option) {
-        obj.showLoading = true;
-
-        /*<debug>*/
-        url = "/hock/inputSelect/selectInputStorage.json";
-        /*</debug>*/
-
-        /*<prod>*/
-        url = "/data/inputOption/" + option;
-        /*</prod>*/
-
-        $.ajax(url, {
-            type: "GET",
-            data: option | {
-                "draw": 1,                      //* 没有意义
-                "pageNum": 1,                   //* 当前页
-                "pageSize": 10                  //* 每页大小
-            },
-            error: function (error) {
-                errorTip(obj, error);
-            },
-            success: function (json) {
-                console.log(json);
-                obj.$data.inputSelect = json.data;
-                obj.$data.currentTotal = json.recordsFiltered;
-            },
-            complete: function () {
-                obj.showLoading = false;
-            }
-        });
-    }     //TODO 查看入库储位信息
-
-    function postRkrwNo(obj, option, resolve) {
-        /*<debug>*/
-        url = "/hock/inputSelect/rkrwNo.json";
-        /*</debug>*/
-
-        /*<prod>*/
-        url = "/data/inputOption/" + option;
-        /*</prod>*/
-
-        $.ajax(url, {
-            type: "GET",
-            data: option | {
-                "draw": 1,                      //* 没有意义
-                "pageNum": 1,                   //* 当前页
-                "pageSize": 10                  //* 每页大小
-            },
-            error: function (error) {
-                errorTip(obj, error);
-            },
-            success: function (json) {
-                var resoleveStep = [];
-                for (var i = 0; i < json.data.length; i++) {
-                    resoleveStep.push({
-                        name: json.data[i].rkdjId,
-                        rkrwNo:option.rkrwNo,
-                        rkrwDhrq:option.rkrwDhrq});
-                }
-                return resolve(resoleveStep);
-            },
-            complete: function () {
-
-            }
-        });
-    }          //TODO 获取任务单号中详细信息
-    function postRkdjId(obj, option, resolve) {
-        /*<debug>*/
-        url = "/hock/inputSelect/rkdjId.json";
-        /*</debug>*/
-
-        /*<prod>*/
-        url = "/data/inputOption/" + option;
-        /*</prod>*/
-
-        $.ajax(url, {
-            type: "GET",
-            data: option | {
-                "draw": 1,                      //* 没有意义
-                "pageNum": 1,                   //* 当前页
-                "pageSize": 10                  //* 每页大小
-            },
-            error: function (error) {
-                errorTip(obj, error);
-            },
-            success: function (json) {
-                var resoleveStep = [];
-                for (var i = 0; i < json.length; i++) {
-                    resoleveStep.push({
-                        name: json[i].baseGoods.bgGoodsNo + '\t' + json[i].baseGoods.bgNamejc,
-                        val2:json[i].baseGoods.bgGoodsNo,
-                        val:dateFormat(new Date(option.rkrwDhrq), 'yyyyMMdd'),
-                        rwdh:option.rkrwNo,
-                        dhrq:dateFormat(new Date(option.rkrwDhrq), 'yyyyMMdd'),
-                        dysj:changeDate(new Date())
-                    });
-                }
-                return resolve(resoleveStep);
-            },
-            complete: function () {
-
-            }
-        });
-    }          //TODO 获取入库单号中详细信息
-    function changeDate(date) {
-        return dateFormat(new Date(date), 'MM-dd hh:mm');
-    }
-    function errorTip(obj, error) {                    // 错误提示
-        /*<debug>*/
-        console.log(error);
-        /*</debug>*/
-        obj.$alert(error.status + '\n' + error.statusText, '网络异常');
-    }
-    function dateFormat(date, fmt) {
-        var o = {
-            "M+": date.getMonth() + 1,                 //月份
-            "d+": date.getDate(),                    //日
-            "h+": date.getHours(),                   //小时
-            "m+": date.getMinutes(),                 //分
-            "s+": date.getSeconds(),                 //秒
-            "q+": Math.floor((date.getMonth() + 3) / 3), //季度
-            "S": date.getMilliseconds()             //毫秒
-        };
-        if (/(y+)/.test(fmt))
-            fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
-        for (var k in o)
-            if (new RegExp("(" + k + ")").test(fmt))
-                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-        return fmt;
-    }
-    function remove(obj, data) {
-        for (var i = 0; i < data.length; i++) {
-            var temp = data[i];
-            if (!isNaN(obj)) {
-                temp = i;
-            }
-            if (temp == obj) {
-                for (var j = i; j < data.length; j++) {
-                    data[j] = data[j + 1];
-
-                    console.log(temp);
-                }
-                data.pop();
-            }
-        }
-    }
-    function printfCompile(obj) {
-        var resoleveStep = [];
-        for (var i = 0; i < obj.multipleSelection.length; i++) {
-            resoleveStep.push({
-                name: obj.multipleSelection[i].rkrwNo,
-                rkrwNo:obj.multipleSelection[i].rkrwNo,
-                rkrwDhrq:obj.multipleSelection[i].rkrwDhrq
-            });
-        }
-        obj.printf = resoleveStep;
-    }
-
-</script>
+<link rel="stylesheet" href="index.scss">
+<script src="index.js"></script>
 
 
 

@@ -162,92 +162,183 @@
             element-loading-text="拼命加载中">
         <el-col :span="24">
             <div class="inner btn-nav">
-                <button @click="dialogSelectVisible=!dialogSelectVisible" class="btn btn-search"><i
-                        class="icon search"></i><span>详细查询</span>
-                </button>
-                <button @click="multiSelectClick" class="btn btn-multiSelect"><i
-                        class="icon sel"></i><span>多选</span>
-                </button>
-                <button @click="moreOperationDelete" class="btn btn-del" v-show="multiSelect"><i
-                        class="icon del"></i><span>批量删除</span>
-                </button>
+                <el-input
+                        v-model="zyMentionUserName"
+                        icon="search"
+                        placeholder="提起人"></el-input>
+                <el-input
+                        v-model="zyCreateUserName"
+                        icon="search"
+                        placeholder="创建人"></el-input>
+                <el-date-picker
+                        v-model="date"
+                        type="daterange"
+                        align="right"
+                        placeholder="创建日期"
+                        class="datePicker"
+                        :picker-options="pickerOptions">
+                </el-date-picker>
+                <el-select
+                        v-model="zyStatus"
+                        placeholder="请选择">
+                    <el-option label="全部" :value.number="-1"></el-option>
+                    <el-option label="未确认" :value.number="0"></el-option>
+                    <el-option label="已确认" :value.number="1"></el-option>
+                </el-select>
+                <el-select
+                        @visible-change="selectReturn"
+                        v-model="zyArehouseId"
+                        placeholder="请选择所属仓库">
+                    <el-option :label="obj.baName" :value="obj.baArehouseId"
+                               v-for="obj of baseArehouses"></el-option>
+                </el-select>
             </div>
             <el-table
                     :data="stockTransferConfirm"
                     :default-sort="{prop: 'sjsj', order: 'descending'}"
-                    :max-height="570"
+                    :max-height="config_table_height()"
                     ref="table"
+                    @expand="expandChange"
                     class="stockTransferConfirmTable"
                     @selection-change='multiSelectionChange'
                     style="width: 100%">
                 <el-table-column
                         type="expand">
                     <template scope="props">
-                        <el-row>
-                            <h3 style="margin-top: 0; margin-left: -15px;">库存转移详细</h3>
-                        </el-row>
-                        <el-form label-position="left" inline class="demo-table-expand">
-                            <el-row>
-                                <el-col :span="10">
-                                    <el-form-item label="创建时间">
+                        <el-carousel
+                                arrow="hover"
+                                height="280px"
+                                indicator-position="none"
+                                :autoplay="false">
+                            <el-carousel-item>
+                                <el-row>
+                                    <h3>库存转移详细</h3>
+                                </el-row>
+                                <el-form label-position="left" inline class="demo-table-expand">
+                                    <el-row>
+                                        <el-col :span="10">
+                                            <el-form-item label="创建时间">
                                         <span>
                                             <el-icon name="time"></el-icon>
-                                            {{ auto_zyCreateTime(props.row.zyCreateTime) }}
+                                            {{ auto_time_new(props.row.zyCreateTime,6) }}
                                         </span>
-                                    </el-form-item>
-                                    <el-form-item label="提起人">
-                                        <span>{{ props.row.zyMentionUserName }}</span>
-                                    </el-form-item>
-                                    <el-form-item label="创建人">
-                                        <span>{{props.row.zyCreateUserName}}</span>
-                                    </el-form-item>
-                                    <el-form-item label="确认人">
-                                        <span>{{props.row.zyConfirmUserName}}</span>
-                                    </el-form-item>
-                                </el-col>
-                                <el-col :span="10" :offset="2">
-                                    <el-form-item label="转移原因">
-                                        <span>{{ props.row.zyReason	 }}</span>
-                                    </el-form-item>
-                                    <el-form-item label="确认时间">
+                                            </el-form-item>
+                                            <el-form-item label="提起人">
+                                                <span>{{ props.row.zyMentionUserName }}</span>
+                                            </el-form-item>
+                                            <el-form-item label="创建人">
+                                                <span>{{props.row.zyCreateUserName}}</span>
+                                            </el-form-item>
+                                            <el-form-item label="确认人">
+                                                <span>{{props.row.zyConfirmUserName}}</span>
+                                            </el-form-item>
+                                        </el-col>
+                                        <el-col :span="10" :offset="2">
+                                            <el-form-item label="转移原因">
+                                                <span>{{ props.row.zyReason	 }}</span>
+                                            </el-form-item>
+                                            <el-form-item
+                                                    v-if="props.row.zyStatus==0"
+                                                    label="确认时间">
                                         <span>
                                             <el-icon name="time"></el-icon>
-                                            {{ auto_zyConfirmTime(props.row.zyConfirmTime) }}
+                                            {{ auto_time_new(props.row.zyConfirmTime,6) }}
                                         </span>
-                                    </el-form-item>
-                                    <el-form-item label="转移状态">
-                                        <span>{{ auto_zyStatus(props.row.zyStatus) }}</span>
-                                    </el-form-item>
-                                    <el-form-item label="可用操作">
-                                        <el-button
-                                                size="small"
-                                                type="warning"
-                                                @click="inlineConfirm(props.$index, props.row)">确认
-                                        </el-button>
-                                        <el-button
-                                                size="small"
-                                                icon="delete"
-                                                type="danger"
-                                                @click="deleteOlder(props.$index, props.row)">删除
-                                        </el-button>
+                                            </el-form-item>
+                                            <el-form-item label="转移状态">
+                                                <el-tag-s :val="auto_el_tag('zyStatus',props.row.zyStatus)"></el-tag-s>
+                                            </el-form-item>
+                                            <el-form-item
+                                                    v-if="props.row.zyStatus==0"
+                                                    label="可用操作">
+                                                <el-button
+                                                        size="small"
+                                                        type="warning"
+                                                        @click="inlineConfirm(props.$index, props.row)">确认
+                                                </el-button>
+                                                <el-button
+                                                        size="small"
+                                                        icon="delete"
+                                                        type="danger"
+                                                        @click="deleteOlder(props.$index, props.row)">删除
+                                                </el-button>
 
-                                    </el-form-item>
-                                </el-col>
-                            </el-row>
-                        </el-form>
+                                            </el-form-item>
+                                        </el-col>
+                                    </el-row>
+                                </el-form>
+                            </el-carousel-item>
+                            <el-carousel-item>
+                                <el-table
+                                        :data="props.row.zyDocsList">
+                                    <el-table-column
+                                            type="index"
+                                            width="55">
+                                    </el-table-column>
+                                    <el-table-column
+                                            label="货品编号"
+                                            width="150"
+                                            show-overflow-tooltip
+                                            align="center"
+                                            prop="mfunRepertory.baseGoods.bgGoodsNo">
+                                    </el-table-column>
+                                    <el-table-column
+                                            label="货品名称"
+                                            show-overflow-tooltip
+                                            align="center"
+                                            prop="mfunRepertory.baseGoods.bgGoodsName">
+                                    </el-table-column>
+                                    <el-table-column
+                                            label="转移前储位"
+                                            width="120"
+                                            align="center"
+                                            prop="beforeLocationName">
+                                    </el-table-column>
+                                    <el-table-column
+                                            label="可转移数量"
+                                            width="150"
+                                            show-overflow-tooltip
+                                            align="center"
+                                            prop="zysZyBeforeKyCount">
+                                    </el-table-column>
+                                    <el-table-column
+                                            label="转移后储位"
+                                            width="120"
+                                            show-overflow-tooltip
+                                            align="center"
+                                            prop="afterLocationName">
+                                    </el-table-column>
+                                    <el-table-column
+                                            label="转移数量"
+                                            width="120"
+                                            show-overflow-tooltip
+                                            align="center"
+                                            prop="zysZyCount">
+                                    </el-table-column>
+                                    <!--<el-table-column-->
+                                    <!--label="操作"-->
+                                    <!--width="80">-->
+                                    <!--<template scope="scope">-->
+                                    <!--<el-button-->
+                                    <!--@click="form_click_delete(scope.$index,scope.row)"-->
+                                    <!--size="small"-->
+                                    <!--type="danger"-->
+                                    <!--icon="delete">-->
+                                    <!--</el-button>-->
+                                    <!--</template>-->
+                                    <!--</el-table-column>-->
+                                </el-table>
+                            </el-carousel-item>
+                        </el-carousel>
                     </template>
                 </el-table-column>
-                <!--<el-table-column-->
-                <!--type="index"-->
-                <!--width="55">-->
-                <!--</el-table-column>-->
                 <el-table-column
                         label="创建时间"
                         show-overflow-tooltip
                         align="center">
                     <template scope="scope">
                         <span>
-                            {{auto_zyCreateTime(scope.row.zyCreateTime,true)}}
+                            {{auto_time_new(scope.row.zyCreateTime)}}
                         </span>
                     </template>
                 </el-table-column>
@@ -276,13 +367,21 @@
                         prop="zyReason">
                 </el-table-column>
                 <el-table-column
+                        label="确认时间"
+                        show-overflow-tooltip
+                        align="center">
+                    <template scope="scope">
+                        <span>
+                            {{auto_time_new(scope.row.zyConfirmTime)}}
+                        </span>
+                    </template>
+                </el-table-column>
+                <el-table-column
                         label="转移状态"
                         align="center"
                         width="100">
                     <template scope="scope">
-                        <el-tag
-                                close-transition>{{auto_zyStatus(scope.row.zyStatus)}}
-                        </el-tag>
+                        <el-tag-s :val="auto_el_tag('zyStatus',scope.row.zyStatus)"></el-tag-s>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -299,167 +398,20 @@
                         :page-sizes="[5, 10, 15, 20]"
                         :page-size="pageSize"
                         layout="total, sizes, prev, pager, next, jumper"
-                        :total="stockTransferConfirm.length">
+                        :total="currentTotal">
                 </el-pagination>
             </div>
         </el-col>
     </el-row>
-    <el-dialog
-            size="large"
-            v-model="dialogFormVisible">
-        <div class="dialog-title clearfix" slot="title">
-            <span class="el-dialog__title">{{form.title}}</span>
-            <el-steps
-                    class="steps"
-                    :space="120"
-                    :active="dialogFormActive"
-                    finish-status="success">
-            </el-steps>
-        </div>
-        <el-form :model="form" ref="newForm">
-            <el-carousel
-                    ref="carousel"
-                    :autoplay="false"
-                    arrow="never"
-                    indicator-position="none"
-                    height="55vh">
-                <el-carousel-item>
-                    <el-row>
-                        <el-col :span="10">
-                            <el-form-item
-                                    label="创建时间"
-                                    :label-width="formLabelWidth">
-                                <el-input
-                                        v-model.number="form.zyCreateTime"
-                                        auto-complete="off"></el-input>
-                            </el-form-item>
-                            <el-form-item
-                                    label="提起人"
-                                    :label-width="formLabelWidth">
-                                <el-input
-                                        v-model.number="form.zyMentionUserName"
-                                        auto-complete="off"></el-input>
-                            </el-form-item>
-                            <el-form-item
-                                    label="创建人"
-                                    :label-width="formLabelWidth">
-                                <el-input
-                                        v-model.number="form.zyCreateUserName"
-                                        auto-complete="off"></el-input>
-                            </el-form-item>
-                            <el-form-item
-                                    label="确认人"
-                                    :label-width="formLabelWidth">
-                                <el-input
-                                        v-model.number="form.zyConfirmUserName"
-                                        auto-complete="off"></el-input>
-                            </el-form-item>
-
-                        </el-col>
-                        <el-col :span="10" :offset="2">
-                            <el-form-item
-                                    label="转移原因"
-                                    :label-width="formLabelWidth">
-                                <el-input
-                                        v-model.number="form.zyReason"
-                                        auto-complete="off"></el-input>
-                            </el-form-item>
-                            <el-form-item
-                                    label="确认时间"
-                                    :label-width="formLabelWidth">
-                                <el-input
-                                        v-model.number="form.zyConfirmTime"
-                                        auto-complete="off"></el-input>
-                            </el-form-item>
-                            <el-form-item
-                                    label="转移状态"
-                                    :label-width="formLabelWidth">
-                                <el-input
-                                        v-model.number="form.zyStatus"
-                                        auto-complete="off"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                </el-carousel-item>
-            </el-carousel>
-        </el-form>
-
-        <div slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="submit" :loading="submitLoading">保存
-            </el-button>
-        </div>
-    </el-dialog>
-    <el-dialog
-            size="tiny"
-            class="select"
-            v-model="dialogSelectVisible">
-        <div class="dialog-title clearfix" slot="title">
-            <span class="el-dialog__title">详细查询</span>
-        </div>
-        <el-form :model="select">
-            <el-form-item label="创建日期"
-                          :label-width="formLabelWidth">
-                <el-date-picker
-                        v-model="form.zyCreateTime"
-                        type="daterange"
-                        align="right"
-                        placeholder="创建日期"
-                        class="input"
-                        :picker-options="pickerOptions">
-                </el-date-picker>
-            </el-form-item>
-            <el-form-item label="转移状态"
-                          :label-width="formLabelWidth">
-                <el-select v-model="form.zyStatus" placeholder="请选择">
-                    <el-option :value="-1" label="全部"></el-option>
-                    <el-option :value="0" label="初始"></el-option>
-                    <el-option :value="1" label="已确认"></el-option>
-                    <el-option :value="2" label="作废"></el-option>
-                </el-select>
-            </el-form-item>
-            <el-form-item label="提起人"
-                          :label-width="formLabelWidth">
-                <el-input
-                        class="input"
-                        v-model="form.zyMentionUserName"
-                        icon="search"
-                        placeholder="提起人"></el-input>
-            </el-form-item>
-            <el-form-item label="确认人"
-                          :label-width="formLabelWidth">
-                <el-input
-                        class="input"
-                        v-model="form.zyConfirmUserName"
-                        icon="search"
-                        placeholder="确认人"></el-input>
-            </el-form-item>
-        </el-form>
-        <div slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="selectSubmit" :loading="selectLoading">查询</el-button>
-        </div>
-    </el-dialog>
 </div>
 <script>
-    function form() {
-        return {
-            zyCreateTime:'',
-            zyMentionUserName:'',
-            zyCreateUserName:'',
-            zyConfirmUserName:'',
-            zyReason:'',
-            zyConfirmTime:'',
-            zyStatus:'',
-            zyCreateTime:[null,null],//模糊查询--创建日期
-            zyStatus:'',//模糊查询--转移状态
-            zyMentionUserName:'',//模糊查询--提起人
-            zyConfirmUserName:''//模糊查询--确认人
-        }
-    }
     var stockTransferConfirm = new Vue({
         el: '#stockTransferConfirm',
         prop: {},
         data: function () {
             return {
+                watchView: false,
+                baseArehouses: window.dbmessage.baseArehouses,
                 stockTransferConfirm: [],
                 multipleSelection: [],
                 multiSelect: false,
@@ -493,33 +445,38 @@
                 showLoading: false,
                 currentPage: 1,
                 pageSize: 10,
-
+                currentTotal: 0,
                 date: [null, null],                 //主页面 选择日期 搜索
-                rkRkdjNo: '',                       //主页面 入库单号 搜索
-
+                zyMentionUserName: '',             //主页面 提起人 搜索
+                zyCreateUserName: '',                 //主页面 创建人 搜索
+                zyStatus: '',                        //主页面 转移状态
+                zyArehouseId:window.dbmessage.baseArehouses[0].baArehouseId,
                 formLabelWidth: '120px',            //表单 配置
                 form: form(),                           //表单 弹出层 信息集合
                 dialogFormActive: 0,                //新建 弹出层 steps 当前进度
                 dialogFormVisible: false,           //新建 弹出层 是否可见
                 submitLoading: false,               //新建 弹出层 提交等待
-
                 select: form(),                         //搜索 弹出层 信息集合,
                 printf: [],                         //搜索 弹出层 信息集合,
                 dialogSelectVisible: false,
                 dialogPrintfVisible: false,
                 selectLoading: false,
                 printfLoading: false,
-
                 printDatas: [],          // 打印数据
             }
         },
         computed: {
-            // TODO 表格提交
             option: function () {
                 return {
                     "draw": 1,
                     "pageNum": this.currentPage,
-                    "pageSize": this.pageSize
+                    "pageSize": this.pageSize,
+                    "zyMentionUserName": this.zyMentionUserName.trim(),
+                    "zyCreateUserName": this.zyCreateUserName.trim(),
+                    "zyStatus": this.zyStatus,
+                    "startCreateTimeParam": tsf_date(this.date[0]),
+                    "endCreateTimeParam": tsf_date(this.date[1]),
+                    "zyArehouseId":this.zyArehouseId
                 }
             },
             search: function () {
@@ -538,12 +495,7 @@
                     "rkrwDh": this.form.rkrwDh,
                     "rkrwStatus": this.form.rkrwStatus
                 }
-            },
-            distributionForm: function () {
-                return {
-                    distribution: this.distribution
-                }
-            },                                      //分配 表单
+            }
         },
         methods: {
             inlineConfirm: function (index, row) {
@@ -553,7 +505,15 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(function () {
-                    postPassword(stockTransferConfirm, {ids: row.ruUserId});
+                    p[1].post({
+                        "id": row.zyId,
+                        "useId": app.rmsUser.ruUserId,
+                        "userName": app.rmsUser.ruUserName
+                    }, function (json) {
+                        this.callbackAfter(json, function () {
+                            p[0].post(obj.option);
+                        })
+                    })
                 }).catch(function () {
                     obj.$message({
                         type: 'info',
@@ -568,10 +528,17 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(function () {
-                    remove(row, _this.stockTransferConfirm);
-                    postDelete(_this, {
-                        id: [row.rkdjNo]
-                    });
+                    p[5].post({
+                        "ids": [
+                            row.zyId
+                        ],
+                        "useId": app.rmsUser.ruUserId,
+                        "userName": app.rmsUser.ruUserName
+                    }, function (json) {
+                        this.callbackAfter(json, function () {
+                            remove(row, _this.stockTransferConfirm);
+                        })
+                    })
                 }).catch(function () {
                     _this.$message({
                         type: 'info',
@@ -601,14 +568,14 @@
                 console.log('每页' + val + '条');
                 /*</debug>*/
                 this.pageSize = val;
-                post(this, this.option);
+                p[0].post(this.option);
             },                                   //分页 Size
             handleCurrentChange: function (val) {
                 /*<debug>*/
                 console.log('当前第' + val + '页');
                 /*</debug>*/
                 this.currentPage = val;
-                post(this, this.option);
+                p[0].post(this.option);
             },                                //分页 当前页
             prev: function () {
                 this.dialogFormActive--;
@@ -648,247 +615,149 @@
                     };
                     _this.dialogFormActive = 0;
                     _this.$refs.carousel.setActiveItem(0);
-                    post(stockTransferConfirm);
+                    p[0].pos();
                 }, 1500);
             },                                                //新建 表单提交
             selectSubmit: function () {
                 this.dialogSelectVisible = !this.dialogSelectVisible;
-                post(this, {});
+                p[0].pos({});
             },                                          //详细查询 提交
-            printfSubmit: function () {
-                var datas=[];
-                var checkData=stockTransferConfirm.$refs.printf.getCheckedNodes();
-                for(var i in checkData){
-                    if(typeof checkData[i].val2!=='undefined'){
-                        datas.push(checkData[i]);
+            auto_zyStatus: function (value) {
+                var temp = {}
+                if (!isNaN(value)) {
+                    temp = {
+                        0: '未确认',
+                        1: '确认',
+                        2: '作废',
                     }
-                }
-                this.printDatas=datas;
-                this.dialogPelectVisible = !this.dialogPrintfVisible;
-                wap.print(this);
-            },                                          //打印 提交
-            printfCheckChange: function () {
-
-            },                                     //打印 选中维护
-            printfLoadNode: function (node, resolve) {
-                console.log(node.data);
-                switch (node.level) {
-                    case 0:
-                        return resolve(this.printf);
-                    case 1:
-                        postRkrwNo(this, {
-                            rkrwNo:node.data.rkrwNo,
-                            rkrwDhrq:node.data.rkrwDhrq
-                        }, resolve);
-                        break;
-                    case 2:
-                        console.log(node.data.name);
-                        postRkdjId(this, {
-                            rkrwNo:node.data.rkrwNo,
-                            rkrwDhrq:node.data.rkrwDhrq
-                        }, resolve);
-                        break;
-                    case 3:
-                        return resolve([]);
-                }
-            },
-            auto_zyCreateTime: function (value, bool) {
-                if (!bool) return dateFormat(new Date(parseInt(value)), 'yyyy年 MM月 dd日');
-                else return dateFormat(new Date(parseInt(value)), 'yyyy-MM-dd');
-            },                          //创建时间
-            auto_zyConfirmTime: function (value, bool) {
-                if (!bool) return dateFormat(new Date(parseInt(value)), 'yyyy年 MM月 dd日');
-                else return dateFormat(new Date(parseInt(value)), 'yyyy-MM-dd');
-            },                        //确认时间
-            auto_zyStatus:function(value){
-                var temp={}
-                if(!isNaN(value)){
-                    temp={
-                        0:'初始',
-                        1:'确认',
-                        2:'作废',
-                    }
-                }else{
-                    temp={
-                        '初始':0,
-                        '确认':1,
-                        '作废':2
+                } else {
+                    temp = {
+                        '未确认': 0,
+                        '确认': 1,
+                        '作废': 2
                     }
                 }
                 return temp[value];
             },                                       //转移状态
 
 
-        }
-    });
-
-    // 高级 监视器的 使用方法
-    //    stockTransferConfirm.$watch('date', function () {
-    //        if (!this.option.dateStart)return;
-    //        /*<debug>*/
-    //        console.log(this.option);
-    //        /*</debug>*/
-    //        post(this, this.option);
-    //    }, {deep: true});
-    post(stockTransferConfirm,stockTransferConfirm.option);
-
-    function post(obj, option) {
-        obj.showLoading = true;
-
-        /*<debug>*/
-        url =
-            url = "/hock/stockTransferConfirm/page.json";
-        /*</debug>*/
-
-        /*<prod>*/
-        url = "/route/stockTransferConfirm/0";
-        /*</prod>*/
-
-        $.ajax(url, {
-            type: "GET",
-            data: option || {
-                "draw": 1,                      //* 没有意义
-                "pageNum": 1,                   //* 当前页
-                "pageSize": 10                  //* 每页大小
-            },
-            error: function (error) {
-                errorTip(obj, error);
-            },
-            success: function (json) {
-                console.log(json);
-                obj.$data.stockTransferConfirm = json.data;
-                obj.$data.currentTotal = json.recordsFiltered;
-            },
-            complete: function () {
-                obj.showLoading = false;
-            }
-        });
-    }           ///TODO 库存转移分页查询的接口
-
-    function postRkrwNo(obj, option, resolve) {
-        /*<debug>*/
-        url = "/hock/stockTransferConfirm/rkrwNo.json";
-        /*</debug>*/
-
-        /*<prod>*/
-        url = "/data/inputOption/" + option;
-        /*</prod>*/
-
-        $.ajax(url, {
-            type: "GET",
-            data: option | {
-                "draw": 1,                      //* 没有意义
-                "pageNum": 1,                   //* 当前页
-                "pageSize": 10                  //* 每页大小
-            },
-            error: function (error) {
-                errorTip(obj, error);
-            },
-            success: function (json) {
-                var resoleveStep = [];
-                for (var i = 0; i < json.data.length; i++) {
-                    resoleveStep.push({
-                        name: json.data[i].rkdjId,
-                        rkrwNo:option.rkrwNo,
-                        rkrwDhrq:option.rkrwDhrq});
-                }
-                return resolve(resoleveStep);
-            },
-            complete: function () {
-
-            }
-        });
-    }          //TODO 获取任务单号中详细信息
-    function postRkdjId(obj, option, resolve) {
-        /*<debug>*/
-        url = "/hock/stockTransferConfirm/rkdjId.json";
-        /*</debug>*/
-
-        /*<prod>*/
-        url = "/data/inputOption/" + option;
-        /*</prod>*/
-
-        $.ajax(url, {
-            type: "GET",
-            data: option | {
-                "draw": 1,                      //* 没有意义
-                "pageNum": 1,                   //* 当前页
-                "pageSize": 10                  //* 每页大小
-            },
-            error: function (error) {
-                errorTip(obj, error);
-            },
-            success: function (json) {
-                var resoleveStep = [];
-                for (var i = 0; i < json.length; i++) {
-                    resoleveStep.push({
-                        name: json[i].baseGoods.bgGoodsNo + '\t' + json[i].baseGoods.bgNamejc,
-                        val2:json[i].baseGoods.bgGoodsNo,
-                        val:dateFormat(new Date(option.rkrwDhrq), 'yyyyMMdd'),
-                        rwdh:option.rkrwNo,
-                        dhrq:dateFormat(new Date(option.rkrwDhrq), 'yyyyMMdd'),
-                        dysj:changeDate(new Date())
+            expandChange:function (row, expanded) {
+                if (expanded && (typeof (row.mfunckDoc) === 'undefined' || row.mfunckDoc === null || row.mfunckDoc.length === 0)) {
+                    p[6].post({
+                        id: row.zyId
+                    }, function (json) {
+                        /*<debug>*/
+                        console.log(json);
+                        /*</debug>*/
+                        row.zyDocsList = json.zyDocsList;
                     });
                 }
-                return resolve(resoleveStep);
+            }
+        },
+        watch: {
+            zyMentionUserName: function () {
+                /*<debug>*/
+                console.log(this.option);
+                /*</debug>*/
+                p[0].post(this.option);
             },
-            complete: function () {
-
-            }
-        });
-    }          //TODO 获取入库单号中详细信息
-    function changeDate(date) {
-        return dateFormat(new Date(date), 'MM-dd hh:mm');
-    }
-    function errorTip(obj, error) {                    // 错误提示
+            zyCreateUserName: function () {
+                /*<debug>*/
+                console.log(this.option);
+                /*</debug>*/
+                p[0].post(this.option);
+            },
+            zyStatus: function () {
+                /*<debug>*/
+                console.log(this.option);
+                /*</debug>*/
+                p[0].post(this.option);
+            },
+            zyArehouseId: function () {
+                /*<debug>*/
+                console.log(this.option);
+                /*</debug>*/
+                p[0].post(this.option);
+            },
+        }
+    });
+    // 高级 监视器的 使用方法
+    stockTransferConfirm.$watch('date', function () {
         /*<debug>*/
-        console.log(error);
+        console.log(this.option);
         /*</debug>*/
-        obj.$alert(error.status + '\n' + error.statusText, '网络异常');
+        p[0].post(this.option);
+    }, {deep: true});
+    function form() {
+        return {
+            zyCreateTime: '',
+            zyMentionUserName: '',
+            zyCreateUserName: '',
+            zyConfirmUserName: '',
+            zyReason: '',
+            zyConfirmTime: '',
+            zyStatus: '',
+            zyCreateTime: [null, null],//模糊查询--创建日期
+            zyStatus: '',//模糊查询--转移状态
+            zyMentionUserName: '',//模糊查询--提起人
+            zyConfirmUserName: ''//模糊查询--确认人
+        }
     }
-    function dateFormat(date, fmt) {
-        var o = {
-            "M+": date.getMonth() + 1,                 //月份
-            "d+": date.getDate(),                    //日
-            "h+": date.getHours(),                   //小时
-            "m+": date.getMinutes(),                 //分
-            "s+": date.getSeconds(),                 //秒
-            "q+": Math.floor((date.getMonth() + 3) / 3), //季度
-            "S": date.getMilliseconds()             //毫秒
-        };
-        if (/(y+)/.test(fmt))
-            fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
-        for (var k in o)
-            if (new RegExp("(" + k + ")").test(fmt))
-                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-        return fmt;
-    }
-    function remove(obj, data) {
-        for (var i = 0; i < data.length; i++) {
-            var temp = data[i];
-            if (!isNaN(obj)) {
-                temp = i;
-            }
-            if (temp == obj) {
-                for (var j = i; j < data.length; j++) {
-                    data[j] = data[j + 1];
+    var obj = stockTransferConfirm;
+    var p = [];
+    // 0 库存转移确认 分页查询
+    p[0] = autoPost({
+        urlHock: "../../hock/stockTransferConfirm/page.json",
+        urlProd: "/route/stockTransferConfirm/0",
+        success: function (json) {
+            obj.$data.stockTransferConfirm = json.data;
+            obj.$data.currentTotal = json.recordsFiltered;
+        }
+    });
+    // 1 库存转移确认 通过库存转移单据id确认转移一条转移单
+    p[1] = autoPost({
+        urlHock: "",
+        urlProd: "/route/stockTransferConfirm/1",
+        success: function (json) {
 
-                    console.log(temp);
-                }
-                data.pop();
-            }
         }
-    }
-    function printfCompile(obj) {
-        var resoleveStep = [];
-        for (var i = 0; i < obj.multipleSelection.length; i++) {
-            resoleveStep.push({
-                name: obj.multipleSelection[i].rkrwNo,
-                rkrwNo:obj.multipleSelection[i].rkrwNo,
-                rkrwDhrq:obj.multipleSelection[i].rkrwDhrq
-            });
+    });
+    // 2 库存转移确认 软删除多个或单个库存转移数据
+    p[2] = autoPost({
+        urlHock: "",
+        urlProd: "/route/stockTransferConfirm/2",
+        success: function (json) {
+
         }
-        obj.printf = resoleveStep;
-    }
+    });
+    // 3 库存转移确认 分页获取库存转移单据
+    p[3] = autoPost({
+        urlHock: "",
+        urlProd: "/route/stockTransferConfirm/3",
+        success: function (json) {
+
+        }
+    });
+    // 4 库存转移确认  分页获取库存转移单据(包含详细信息)
+    p[4] = autoPost({
+        urlHock: "",
+        urlProd: "/route/stockTransferConfirm/4",
+        success: function (json) {
+        }
+    });
+    // 5 库存转移确认 通过库存转移单据id删除库存转移单据
+    p[5] = autoPost({
+        urlHock: "",
+        urlProd: "/route/stockTransferConfirm/5",
+        method: 'GET'
+    });
+
+    // 6 库存转移 通过库存转移单据id获取一条库存转移单据
+    p[6] = autoPost({
+        urlHock: "",
+        urlProd: "/route/stockTransferConfirm/6",
+        method: 'GET'
+    });
+    p[0].post(stockTransferConfirm.option);
 
 </script>

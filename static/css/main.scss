@@ -5,19 +5,36 @@ html, body {
   padding: 0 !important;
 }
 
+
+/*滚动条宽度*/
 ::-webkit-scrollbar {
-  width: 10px;
+ width: 0.2rem;
+ height: 0.2rem;
 }
 
+/* 轨道样式 */
+::-webkit-scrollbar-track {
+
+}
+
+/* Handle样式 */
 ::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: #eef1f6;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+ border-radius: 0.2rem;
+ background: rgba(0,0,0,0.2);
 }
 
+/*当前窗口未激活的情况下*/
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: #edf7ff;
+ background: rgba(0,0,0,0.1);
+}
+
+/*hover到滚动条上*/
+::-webkit-scrollbar-thumb:vertical:hover{
+ background-color: rgba(0,0,0,0.3);
+}
+/*滚动条按下*/
+::-webkit-scrollbar-thumb:vertical:active{
+ background-color: rgba(0,0,0,0.7);
 }
 
 .slide {
@@ -73,7 +90,7 @@ html, body {
       background-color: #424F63;
       font-size: 14px;
       color: #FAFAFA;
-      &:hover{
+      &:hover {
         background: #354051 !important;
       }
     }
@@ -239,6 +256,55 @@ html, body {
   }
 }
 
+/*********** 全局调整 elementUI *********************************/
+
+.el-table__expanded-cell .el-form--label-left .el-form-item {
+  .el-form-item__label {
+    float: left;
+  }
+  .el-form-item__content {
+    float: left;
+    width: calc(100% - 90px) !important;
+
+  }
+}
+
+.el-dialog__body .el-form-item__content .el-date-editor {
+  width: 100%;
+}
+
+.select {
+  .el-select, .input {
+    width: 100% !important;
+  }
+}
+
+.el-table {
+  .info-row {
+    background: #20A0FF;
+  }
+
+  .positive-row {
+    background: #e2f0e4;
+  }
+
+  .danger-row {
+    background: #FF4949;
+  }
+
+  .success-row {
+    background: #62ce86;
+  }
+
+  .warning-row {
+    background: #F7BA2A;
+  }
+
+  .gray-row {
+    background: #99A9BF;
+  }
+}
+
 /*********** 打印功能 *********************************/
 
 .barcode {
@@ -374,21 +440,91 @@ html, body {
     overflow: visible;
     position: static;
   }
-  .divImsunhao {
-    width: 88.2mm;
-    height: 57.6mm;
-    padding: 3.4mm 3.7mm;
-    position: relative;
-    margin-bottom: 0.5mm;
+
+  .p0 {
+    .divImsunhao {
+      width: 88.2mm;
+      height: 57.6mm;
+      padding: 3.4mm 3.7mm;
+      position: relative;
+      margin-bottom: 0.5mm;
+      overflow: hidden;
+      .barcode2 {
+        transform: scaleX(0.9);
+        width: 120%;
+        transform-origin: left;
+        margin-left: -7px;
+      }
+    }
+    p {
+      font: 0.200in/100% '宋体';
+      padding: 0;
+      margin: 0;
+      height: 9.5mm;
+      line-height: 9.5mm;
+      span {
+        padding-left: 3.3mm;
+      }
+    }
   }
-  p {
-    font: 0.200in/100% '宋体';
-    padding: 0;
-    margin: 0;
-    height: 9.5mm;
-    line-height: 9.5mm;
-    span {
-      padding-left: 3.3mm;
+  .p1 {
+    .el-table {
+      .cell {
+        height: 24px;
+      }
+
+      td {
+        height: 24px;
+      }
+    }
+    .el-dialog__body {
+      width: 1640px;
+    }
+    .p1_inner {
+      margin: 0 20px;
+      h2 {
+        margin: 0;
+      }
+      p {
+        margin: 3px 0;
+      }
+    }
+    .p1_2 {
+      float: left;
+      width: 400px;
+    }
+  }
+  .p2 {
+    .el-dialog__body {
+      width: 1040px;
+    }
+    .p2_inner {
+      margin: 0 20px;
+    }
+    .p2_2 {
+      float: left;
+      width: 500px;
+    }
+    .p2_3 {
+      .p2_2 .barcode2 div {
+        height: 50px;
+      }
+      .p2_2 .barcode2 label {
+        font: 14px helvetica;
+      }
+    }
+  }
+  .p3 {
+    .el-dialog__body {
+      width: 1120px;
+    }
+    .p3_inner {
+      margin: 0 5px;
+    }
+    .cell {
+      span {
+        display: block;
+      }
     }
   }
 }
@@ -411,9 +547,12 @@ html, body {
 /*** bigger ******************************************/
 
 /* 用户头像 */
-.avatar-uploader{
-  .el-upload{
+.avatar-uploader {
+  .el-upload {
     border-radius: 50% !important;
-    border:none !important;
+    border: none !important;
   }
 }
+
+
+
